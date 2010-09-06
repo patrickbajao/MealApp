@@ -1,0 +1,8 @@
+SfGuardUser:
+  tester:
+    username: tester
+    algorithm: sha1
+    salt: 9f5e530ddd1084dfa385eb05cca87cfa
+    password: p4ssw0rd!
+    is_active: 1
+    is_super_admin: 0
