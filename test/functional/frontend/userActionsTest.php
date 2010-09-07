@@ -8,8 +8,8 @@ $browser = new sfTestFunctional(new sfBrowser());
  * Feature 1: As a user, I can login to my account
  *
  * Given: I entered my correct username and password
- * When I press the Login button
- * Then I should be redirected to my home page
+ *   When I press the Login button
+ *   Then I should be redirected to my home page
  */
 
 $browser->info('1 - User Login')->
@@ -25,4 +25,4 @@ $browser->info('1 - User Login')->
     info('1.1.1 - Application redirects user to his home page')->
     with('response')->begin()->
         checkElement('#welcome', true)->
-    end()->
+    end();

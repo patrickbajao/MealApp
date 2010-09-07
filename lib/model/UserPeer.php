@@ -16,6 +16,17 @@
  *
  * @package    lib.model
  */
-class UserPeer extends BaseUserPeer {
-
+class UserPeer extends BaseUserPeer
+{
+    public static function checkUser($username, $password) {
+        $password = sha1($password . sfConfig::get('app_salt_string'));
+        $c = new Criteria();
+        $c->add(self::USERNAME, $username, Criteria::EQUAL);
+        $c->add(self::PASSWORD, $password, Criteria::EQUAL);
+        $user = self::doSelectOne($c);
+        if(!empty($user)) {
+            return true;
+        }
+        return false;
+    }
 } // UserPeer
