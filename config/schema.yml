@@ -1,8 +1,0 @@
-propel:
-  user:
-    id:         ~
-    username:   { type: varchar(255), required: true, index: unique }
-    password:   { type: varchar(40), required: true }
-    user_type:  { type: tinyint, required: true, default: 0 }
-    created_at: ~
-    updated_at: ~
