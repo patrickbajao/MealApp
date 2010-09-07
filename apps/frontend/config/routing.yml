@@ -26,3 +26,7 @@ sf_guard_signout:
 sf_guard_password:
   url:   /request_password
   param: { module: sfGuardAuth, action: password }
+
+chosen_menu:
+  url:   /chosen/menu
+  param: { module: menu, action: show, place: chosen }
