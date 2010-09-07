@@ -17,7 +17,7 @@ $browser->info('1 - User Login')->
     get('/')-> 
     with('request')->begin()->
         click('Login')->
-        post('/user/login', array('username' => 'patrick', 'password' => 'password'))->
+        post('/login', array('username' => 'patrick', 'password' => 'password'))->
     end()->
     with('response')->
         isRedirected()->
