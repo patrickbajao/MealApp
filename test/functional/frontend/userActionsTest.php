@@ -14,10 +14,10 @@ $browser = new sfTestFunctional(new sfBrowser());
 
 $browser->info('1 - User Login')->
     info('1.1 - User enters his correct username and password then clicks the Login button')->
-    get('/')-> 
+    get('/')->
+    with('response')->
     with('request')->begin()->
-        click('Login')->
-        post('/login', array('username' => 'patrick', 'password' => 'password'))->
+        click('Login', array('signin' => array('username' => 'tester', 'password' => 'p4ssw0rd!')))->
     end()->
     with('response')->
         isRedirected()->

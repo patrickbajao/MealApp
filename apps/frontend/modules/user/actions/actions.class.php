@@ -16,20 +16,7 @@ class userActions extends sfActions
      * @param sfRequest $request A request object
      */
     public function executeIndex(sfWebRequest $request) {
-    }
-    
-    public function executeHome(sfWebRequest $request) {
-    }
-    
-    public function executeLogin(sfWebRequest $request) {
-        $username = $request->getParameter('username');
-        $password = $request->getParameter('password');
-        if(('patrick' == $username) && ('password' == $password)) {
-            $this->redirect('user/home');
-        } else {
-            $this->getUser()->setFlash('login_error', 'Please enter a correct username or password.');
-            $this->redirect('/');
-        }
+        $this->username = $this->getUser()->getGuardUser()->getUsername();
     }
     
 }
