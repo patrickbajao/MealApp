@@ -8,6 +8,14 @@ homepage:
 
 # generic rules
 # please, remove them by adding more specific rules
+show_menu:
+  url:   /menu/:id
+  param: { module: menu, action: show }
+
+order_menu:
+  url:   /order/:meal
+  param: { module: menu, action: order }
+
 default_index:
   url:   /:module
   param: { action: index }
@@ -26,7 +34,3 @@ sf_guard_signout:
 sf_guard_password:
   url:   /request_password
   param: { module: sfGuardAuth, action: password }
-
-chosen_menu:
-  url:   /chosen/menu
-  param: { module: menu, action: show, place: chosen }

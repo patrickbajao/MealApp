@@ -1,0 +1,5 @@
+Item:
+  item_jollibee:
+    menu_id: menu_jollibee
+    name:    Yum
+    price:   50.00

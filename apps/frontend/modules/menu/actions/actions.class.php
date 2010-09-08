@@ -10,13 +10,31 @@
  */
 class menuActions extends sfActions
 {
- /**
-  * Executes index action
-  *
-  * @param sfRequest $request A request object
-  */
-  public function executeIndex(sfWebRequest $request)
-  {
-    $this->forward('default', 'module');
-  }
+    public function executeShow(sfWebRequest $request) {
+    }
+    
+    public function executeOrder(sfWebRequest $request) {
+        $meal_id  = $request->getParameter('meal');
+        $items    = $request->getPostParameter('item');
+        if(!empty($items)) {
+            $success = false;
+            foreach($items as $key => $value) {
+                if(1 == $items[$key]) {
+                    $order = new MealOrder();
+                    $order->setMealId($meal_id);
+                    $order->setItemId($key);
+                    $order->setSfGuardUserId($this->getUser()->getGuardUser()->getId());
+                    if($order->save()) {
+                        $success = true;
+                    }
+                }
+            }
+            if($success) {
+                $this->getUser()->setFlash('info', 'Your order has been placed.');
+                $this->redirect('/menu/' . $meal_id);
+            } else {
+                $this->getUser()->setFlash('error', 'There was a problem encountered in placing your order.');
+            }
+        }
+    }
 }
