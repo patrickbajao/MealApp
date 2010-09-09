@@ -17,5 +17,12 @@
  * @package    lib.model
  */
 class MealPeer extends BaseMealPeer {
-
+    
+    public static function getMealPlaceId($meal_id) {
+        $c = new Criteria();
+        $c->add(self::ID, $meal_id, Criteria::EQUAL);
+        $meal = self::doSelectOne($c);
+        return $meal->getPlaceId();
+    }
+    
 } // MealPeer

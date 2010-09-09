@@ -18,7 +18,7 @@ $browser->info('1 - Order Page')->
         isRedirected()->
         followRedirect()->
     info('1.1 - User picks a menu item')->
-    select('item[1]')->
+    select('item[0]')-> //First checkbox will be selected
     info('1.2 - User clicks on the Place Order button')->
     with('request')->begin()->
         click('Place Order')->

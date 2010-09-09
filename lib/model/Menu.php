@@ -17,5 +17,12 @@
  * @package    lib.model
  */
 class Menu extends BaseMenu {
-
+    
+    public function getMenuItems() {
+        $c = new Criteria();
+        $c->add(ItemPeer::MENU_ID, $this->getId(), Criteria::EQUAL);
+        
+        return ItemPeer::doSelect($c);
+    }
+    
 } // Menu

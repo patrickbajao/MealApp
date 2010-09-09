@@ -18,4 +18,12 @@
  */
 class MenuPeer extends BaseMenuPeer {
 
+    public static function getPlaceMenu($place_id) {
+        $c = new Criteria();
+        $c->addJoin(self::ID, ItemPeer::MENU_ID);
+        $c->add(self::PLACE_ID, $place_id, Criteria::EQUAL);
+        $menu = self::doSelectOne($c);
+        return $menu;
+    }
+
 } // MenuPeer
