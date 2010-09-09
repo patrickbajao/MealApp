@@ -1,13 +1,16 @@
-MealApp = function() {
+(function($) {
+var Menu = function() {
 };
 
-MealApp.prototype.init = function() {
+var Item = function() {
 };
 
-MealApp.prototype.clickItem = function() {
+$.extend(Item.prototype, {
     
-};
+});
+
+})(jQuery);
 
 $(function(){
-   
-};
+
+});

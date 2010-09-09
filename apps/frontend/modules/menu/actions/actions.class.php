@@ -16,24 +16,24 @@ class menuActions extends sfActions
     public function executeOrder(sfWebRequest $request) {
         $meal_id  = $request->getParameter('meal');
         $items    = $request->getPostParameter('item');
-        if(!empty($items)) {
-            $success = false;
-            foreach($items as $key => $value) {
-                if(1 == $items[$key]) {
+        if('POST' == $request->getMethod()) {
+            if(!empty($items)) {
+                $success = false;
+                foreach($items as $item_id) {
                     $order = new MealOrder();
                     $order->setMealId($meal_id);
-                    $order->setItemId($key);
+                    $order->setItemId($item_id);
                     $order->setSfGuardUserId($this->getUser()->getGuardUser()->getId());
                     if($order->save()) {
                         $success = true;
                     }
                 }
-            }
-            if($success) {
-                $this->getUser()->setFlash('info', 'Your order has been placed.');
-                $this->redirect('/menu/' . $meal_id);
+                if($success) {
+                    $this->getUser()->setFlash('info', 'Your order has been placed.');
+                    $this->redirect('/menu/' . $meal_id);
+                }
             } else {
-                $this->getUser()->setFlash('error', 'There was a problem encountered in placing your order.');
+                $this->getUser()->setFlash('info', 'Please order some food.');
             }
         }
     }
