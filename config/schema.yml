@@ -8,9 +8,10 @@ propel:
     updated_at:       ~
   meal:
     id:               ~
-    place_id:         { type: integer, foreignTable: place, foreignReference: id, required: true }
+    place_id:         { type: integer, foreignTable: place, foreignReference: id }
     type:             { type: varchar(9), required: true }
     created_at:       ~
+    updated_at:       ~
   item:
     id:               ~
     menu_id:          { type: integer, foreignTable: menu, foreignReference: id, required: true }
@@ -25,5 +26,12 @@ propel:
   menu:
     id:               ~
     place_id:         { type: integer, foreignTable: place, foreignReference: id, required: true }
+    created_at:       ~
+    updated_at:       ~
+  vote:
+    id:               ~
+    place_id:         { type: integer, foreignTable: place, foreignReference: id, required: true }
+    sf_guard_user_id: { type: integer, foreignTable: sf_guard_user, foreignReference: id, required: true }
+    meal_id:          { type: integer, foreignTable: meal, foreignReference: id, required: true }
     created_at:       ~
     updated_at:       ~

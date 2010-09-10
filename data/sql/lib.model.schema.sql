@@ -43,9 +43,10 @@ DROP TABLE IF EXISTS `meal`;
 CREATE TABLE `meal`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`place_id` INTEGER  NOT NULL,
+	`place_id` INTEGER,
 	`type` VARCHAR(9)  NOT NULL,
 	`created_at` DATETIME,
+	`updated_at` DATETIME,
 	PRIMARY KEY (`id`),
 	INDEX `meal_FI_1` (`place_id`),
 	CONSTRAINT `meal_FK_1`
@@ -108,6 +109,36 @@ CREATE TABLE `menu`
 	CONSTRAINT `menu_FK_1`
 		FOREIGN KEY (`place_id`)
 		REFERENCES `place` (`id`)
+)Type=InnoDB;
+
+#-----------------------------------------------------------------------------
+#-- vote
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `vote`;
+
+
+CREATE TABLE `vote`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`place_id` INTEGER  NOT NULL,
+	`sf_guard_user_id` INTEGER  NOT NULL,
+	`meal_id` INTEGER  NOT NULL,
+	`created_at` DATETIME,
+	`updated_at` DATETIME,
+	PRIMARY KEY (`id`),
+	INDEX `vote_FI_1` (`place_id`),
+	CONSTRAINT `vote_FK_1`
+		FOREIGN KEY (`place_id`)
+		REFERENCES `place` (`id`),
+	INDEX `vote_FI_2` (`sf_guard_user_id`),
+	CONSTRAINT `vote_FK_2`
+		FOREIGN KEY (`sf_guard_user_id`)
+		REFERENCES `sf_guard_user` (`id`),
+	INDEX `vote_FI_3` (`meal_id`),
+	CONSTRAINT `vote_FK_3`
+		FOREIGN KEY (`meal_id`)
+		REFERENCES `meal` (`id`)
 )Type=InnoDB;
 
 # This restores the fkey checks, after having unset them earlier

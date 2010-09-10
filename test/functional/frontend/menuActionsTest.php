@@ -9,10 +9,16 @@ $browser = new sfTestFunctional(new sfBrowser());
  */
 
 $browser->info('1 - Order Page')->
-    get('/order/1')->
+    get('/places')->
     with('response')->
     with('request')->begin()->
         click('Login', array('signin' => array('username' => 'tester', 'password' => 'p4ssw0rd!')))->
+    end()->
+    with('response')->
+        isRedirected()->
+        followRedirect()->
+    with('request')->begin()->
+        click('Order', array(), array('position' => 1))-> //Order button will be clicked
     end()->
     with('response')->
         isRedirected()->

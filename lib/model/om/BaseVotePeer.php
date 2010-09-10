@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Base static class for performing query and update operations on the 'meal_order' table.
+ * Base static class for performing query and update operations on the 'vote' table.
  *
  * 
  *
@@ -11,22 +11,22 @@
  *
  * @package    lib.model.om
  */
-abstract class BaseMealOrderPeer {
+abstract class BaseVotePeer {
 
 	/** the default database name for this class */
 	const DATABASE_NAME = 'propel';
 
 	/** the table name for this class */
-	const TABLE_NAME = 'meal_order';
+	const TABLE_NAME = 'vote';
 
 	/** the related Propel class for this table */
-	const OM_CLASS = 'MealOrder';
+	const OM_CLASS = 'Vote';
 
 	/** A class that can be returned by this peer. */
-	const CLASS_DEFAULT = 'lib.model.MealOrder';
+	const CLASS_DEFAULT = 'lib.model.Vote';
 
 	/** the related TableMap class for this table */
-	const TM_CLASS = 'MealOrderTableMap';
+	const TM_CLASS = 'VoteTableMap';
 	
 	/** The total number of columns. */
 	const NUM_COLUMNS = 6;
@@ -35,28 +35,28 @@ abstract class BaseMealOrderPeer {
 	const NUM_LAZY_LOAD_COLUMNS = 0;
 
 	/** the column name for the ID field */
-	const ID = 'meal_order.ID';
+	const ID = 'vote.ID';
 
-	/** the column name for the MEAL_ID field */
-	const MEAL_ID = 'meal_order.MEAL_ID';
-
-	/** the column name for the ITEM_ID field */
-	const ITEM_ID = 'meal_order.ITEM_ID';
+	/** the column name for the PLACE_ID field */
+	const PLACE_ID = 'vote.PLACE_ID';
 
 	/** the column name for the SF_GUARD_USER_ID field */
-	const SF_GUARD_USER_ID = 'meal_order.SF_GUARD_USER_ID';
+	const SF_GUARD_USER_ID = 'vote.SF_GUARD_USER_ID';
+
+	/** the column name for the MEAL_ID field */
+	const MEAL_ID = 'vote.MEAL_ID';
 
 	/** the column name for the CREATED_AT field */
-	const CREATED_AT = 'meal_order.CREATED_AT';
+	const CREATED_AT = 'vote.CREATED_AT';
 
 	/** the column name for the UPDATED_AT field */
-	const UPDATED_AT = 'meal_order.UPDATED_AT';
+	const UPDATED_AT = 'vote.UPDATED_AT';
 
 	/**
-	 * An identiy map to hold any loaded instances of MealOrder objects.
+	 * An identiy map to hold any loaded instances of Vote objects.
 	 * This must be public so that other peer classes can access this when hydrating from JOIN
 	 * queries.
-	 * @var        array MealOrder[]
+	 * @var        array Vote[]
 	 */
 	public static $instances = array();
 
@@ -75,10 +75,10 @@ abstract class BaseMealOrderPeer {
 	 * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
 	 */
 	private static $fieldNames = array (
-		BasePeer::TYPE_PHPNAME => array ('Id', 'MealId', 'ItemId', 'SfGuardUserId', 'CreatedAt', 'UpdatedAt', ),
-		BasePeer::TYPE_STUDLYPHPNAME => array ('id', 'mealId', 'itemId', 'sfGuardUserId', 'createdAt', 'updatedAt', ),
-		BasePeer::TYPE_COLNAME => array (self::ID, self::MEAL_ID, self::ITEM_ID, self::SF_GUARD_USER_ID, self::CREATED_AT, self::UPDATED_AT, ),
-		BasePeer::TYPE_FIELDNAME => array ('id', 'meal_id', 'item_id', 'sf_guard_user_id', 'created_at', 'updated_at', ),
+		BasePeer::TYPE_PHPNAME => array ('Id', 'PlaceId', 'SfGuardUserId', 'MealId', 'CreatedAt', 'UpdatedAt', ),
+		BasePeer::TYPE_STUDLYPHPNAME => array ('id', 'placeId', 'sfGuardUserId', 'mealId', 'createdAt', 'updatedAt', ),
+		BasePeer::TYPE_COLNAME => array (self::ID, self::PLACE_ID, self::SF_GUARD_USER_ID, self::MEAL_ID, self::CREATED_AT, self::UPDATED_AT, ),
+		BasePeer::TYPE_FIELDNAME => array ('id', 'place_id', 'sf_guard_user_id', 'meal_id', 'created_at', 'updated_at', ),
 		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, )
 	);
 
@@ -89,10 +89,10 @@ abstract class BaseMealOrderPeer {
 	 * e.g. self::$fieldNames[BasePeer::TYPE_PHPNAME]['Id'] = 0
 	 */
 	private static $fieldKeys = array (
-		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'MealId' => 1, 'ItemId' => 2, 'SfGuardUserId' => 3, 'CreatedAt' => 4, 'UpdatedAt' => 5, ),
-		BasePeer::TYPE_STUDLYPHPNAME => array ('id' => 0, 'mealId' => 1, 'itemId' => 2, 'sfGuardUserId' => 3, 'createdAt' => 4, 'updatedAt' => 5, ),
-		BasePeer::TYPE_COLNAME => array (self::ID => 0, self::MEAL_ID => 1, self::ITEM_ID => 2, self::SF_GUARD_USER_ID => 3, self::CREATED_AT => 4, self::UPDATED_AT => 5, ),
-		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'meal_id' => 1, 'item_id' => 2, 'sf_guard_user_id' => 3, 'created_at' => 4, 'updated_at' => 5, ),
+		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'PlaceId' => 1, 'SfGuardUserId' => 2, 'MealId' => 3, 'CreatedAt' => 4, 'UpdatedAt' => 5, ),
+		BasePeer::TYPE_STUDLYPHPNAME => array ('id' => 0, 'placeId' => 1, 'sfGuardUserId' => 2, 'mealId' => 3, 'createdAt' => 4, 'updatedAt' => 5, ),
+		BasePeer::TYPE_COLNAME => array (self::ID => 0, self::PLACE_ID => 1, self::SF_GUARD_USER_ID => 2, self::MEAL_ID => 3, self::CREATED_AT => 4, self::UPDATED_AT => 5, ),
+		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'place_id' => 1, 'sf_guard_user_id' => 2, 'meal_id' => 3, 'created_at' => 4, 'updated_at' => 5, ),
 		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, )
 	);
 
@@ -142,12 +142,12 @@ abstract class BaseMealOrderPeer {
 	 *		$c->addJoin(TablePeer::alias("alias1", TablePeer::PRIMARY_KEY_COLUMN), TablePeer::PRIMARY_KEY_COLUMN);
 	 * </code>
 	 * @param      string $alias The alias for the current table.
-	 * @param      string $column The column name for current table. (i.e. MealOrderPeer::COLUMN_NAME).
+	 * @param      string $column The column name for current table. (i.e. VotePeer::COLUMN_NAME).
 	 * @return     string
 	 */
 	public static function alias($alias, $column)
 	{
-		return str_replace(MealOrderPeer::TABLE_NAME.'.', $alias.'.', $column);
+		return str_replace(VotePeer::TABLE_NAME.'.', $alias.'.', $column);
 	}
 
 	/**
@@ -163,12 +163,12 @@ abstract class BaseMealOrderPeer {
 	 */
 	public static function addSelectColumns(Criteria $criteria)
 	{
-		$criteria->addSelectColumn(MealOrderPeer::ID);
-		$criteria->addSelectColumn(MealOrderPeer::MEAL_ID);
-		$criteria->addSelectColumn(MealOrderPeer::ITEM_ID);
-		$criteria->addSelectColumn(MealOrderPeer::SF_GUARD_USER_ID);
-		$criteria->addSelectColumn(MealOrderPeer::CREATED_AT);
-		$criteria->addSelectColumn(MealOrderPeer::UPDATED_AT);
+		$criteria->addSelectColumn(VotePeer::ID);
+		$criteria->addSelectColumn(VotePeer::PLACE_ID);
+		$criteria->addSelectColumn(VotePeer::SF_GUARD_USER_ID);
+		$criteria->addSelectColumn(VotePeer::MEAL_ID);
+		$criteria->addSelectColumn(VotePeer::CREATED_AT);
+		$criteria->addSelectColumn(VotePeer::UPDATED_AT);
 	}
 
 	/**
@@ -187,26 +187,26 @@ abstract class BaseMealOrderPeer {
 		// We need to set the primary table name, since in the case that there are no WHERE columns
 		// it will be impossible for the BasePeer::createSelectSql() method to determine which
 		// tables go into the FROM clause.
-		$criteria->setPrimaryTableName(MealOrderPeer::TABLE_NAME);
+		$criteria->setPrimaryTableName(VotePeer::TABLE_NAME);
 
 		if ($distinct && !in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
 			$criteria->setDistinct();
 		}
 
 		if (!$criteria->hasSelectClause()) {
-			MealOrderPeer::addSelectColumns($criteria);
+			VotePeer::addSelectColumns($criteria);
 		}
 
 		$criteria->clearOrderByColumns(); // ORDER BY won't ever affect the count
 		$criteria->setDbName(self::DATABASE_NAME); // Set the correct dbName
 
 		if ($con === null) {
-			$con = Propel::getConnection(MealOrderPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(VotePeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 		// symfony_behaviors behavior
 		foreach (sfMixer::getCallables(self::getMixerPreSelectHook(__FUNCTION__)) as $sf_hook)
 		{
-		  call_user_func($sf_hook, 'BaseMealOrderPeer', $criteria, $con);
+		  call_user_func($sf_hook, 'BaseVotePeer', $criteria, $con);
 		}
 		
 		// BasePeer returns a PDOStatement
@@ -225,7 +225,7 @@ abstract class BaseMealOrderPeer {
 	 *
 	 * @param      Criteria $criteria object used to create the SELECT statement.
 	 * @param      PropelPDO $con
-	 * @return     MealOrder
+	 * @return     Vote
 	 * @throws     PropelException Any exceptions caught during processing will be
 	 *		 rethrown wrapped into a PropelException.
 	 */
@@ -233,7 +233,7 @@ abstract class BaseMealOrderPeer {
 	{
 		$critcopy = clone $criteria;
 		$critcopy->setLimit(1);
-		$objects = MealOrderPeer::doSelect($critcopy, $con);
+		$objects = VotePeer::doSelect($critcopy, $con);
 		if ($objects) {
 			return $objects[0];
 		}
@@ -250,7 +250,7 @@ abstract class BaseMealOrderPeer {
 	 */
 	public static function doSelect(Criteria $criteria, PropelPDO $con = null)
 	{
-		return MealOrderPeer::populateObjects(MealOrderPeer::doSelectStmt($criteria, $con));
+		return VotePeer::populateObjects(VotePeer::doSelectStmt($criteria, $con));
 	}
 	/**
 	 * Prepares the Criteria object and uses the parent doSelect() method to execute a PDOStatement.
@@ -268,12 +268,12 @@ abstract class BaseMealOrderPeer {
 	public static function doSelectStmt(Criteria $criteria, PropelPDO $con = null)
 	{
 		if ($con === null) {
-			$con = Propel::getConnection(MealOrderPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(VotePeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 
 		if (!$criteria->hasSelectClause()) {
 			$criteria = clone $criteria;
-			MealOrderPeer::addSelectColumns($criteria);
+			VotePeer::addSelectColumns($criteria);
 		}
 
 		// Set the correct dbName
@@ -281,7 +281,7 @@ abstract class BaseMealOrderPeer {
 		// symfony_behaviors behavior
 		foreach (sfMixer::getCallables(self::getMixerPreSelectHook(__FUNCTION__)) as $sf_hook)
 		{
-		  call_user_func($sf_hook, 'BaseMealOrderPeer', $criteria, $con);
+		  call_user_func($sf_hook, 'BaseVotePeer', $criteria, $con);
 		}
 		
 
@@ -297,10 +297,10 @@ abstract class BaseMealOrderPeer {
 	 * to the cache in order to ensure that the same objects are always returned by doSelect*()
 	 * and retrieveByPK*() calls.
 	 *
-	 * @param      MealOrder $value A MealOrder object.
+	 * @param      Vote $value A Vote object.
 	 * @param      string $key (optional) key to use for instance map (for performance boost if key was already calculated externally).
 	 */
-	public static function addInstanceToPool(MealOrder $obj, $key = null)
+	public static function addInstanceToPool(Vote $obj, $key = null)
 	{
 		if (Propel::isInstancePoolingEnabled()) {
 			if ($key === null) {
@@ -318,18 +318,18 @@ abstract class BaseMealOrderPeer {
 	 * methods in your stub classes -- you may need to explicitly remove objects
 	 * from the cache in order to prevent returning objects that no longer exist.
 	 *
-	 * @param      mixed $value A MealOrder object or a primary key value.
+	 * @param      mixed $value A Vote object or a primary key value.
 	 */
 	public static function removeInstanceFromPool($value)
 	{
 		if (Propel::isInstancePoolingEnabled() && $value !== null) {
-			if (is_object($value) && $value instanceof MealOrder) {
+			if (is_object($value) && $value instanceof Vote) {
 				$key = (string) $value->getId();
 			} elseif (is_scalar($value)) {
 				// assume we've been passed a primary key
 				$key = (string) $value;
 			} else {
-				$e = new PropelException("Invalid value passed to removeInstanceFromPool().  Expected primary key or MealOrder object; got " . (is_object($value) ? get_class($value) . ' object.' : var_export($value,true)));
+				$e = new PropelException("Invalid value passed to removeInstanceFromPool().  Expected primary key or Vote object; got " . (is_object($value) ? get_class($value) . ' object.' : var_export($value,true)));
 				throw $e;
 			}
 
@@ -344,7 +344,7 @@ abstract class BaseMealOrderPeer {
 	 * a multi-column primary key, a serialize()d version of the primary key will be returned.
 	 *
 	 * @param      string $key The key (@see getPrimaryKeyHash()) for this instance.
-	 * @return     MealOrder Found object or NULL if 1) no instance exists for specified key or 2) instance pooling has been disabled.
+	 * @return     Vote Found object or NULL if 1) no instance exists for specified key or 2) instance pooling has been disabled.
 	 * @see        getPrimaryKeyHash()
 	 */
 	public static function getInstanceFromPool($key)
@@ -368,7 +368,7 @@ abstract class BaseMealOrderPeer {
 	}
 	
 	/**
-	 * Method to invalidate the instance pool of all tables related to meal_order
+	 * Method to invalidate the instance pool of all tables related to vote
 	 * by a foreign key with ON DELETE CASCADE
 	 */
 	public static function clearRelatedInstancePool()
@@ -406,11 +406,11 @@ abstract class BaseMealOrderPeer {
 		$results = array();
 	
 		// set the class once to avoid overhead in the loop
-		$cls = MealOrderPeer::getOMClass(false);
+		$cls = VotePeer::getOMClass(false);
 		// populate the object(s)
 		while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
-			$key = MealOrderPeer::getPrimaryKeyHashFromRow($row, 0);
-			if (null !== ($obj = MealOrderPeer::getInstanceFromPool($key))) {
+			$key = VotePeer::getPrimaryKeyHashFromRow($row, 0);
+			if (null !== ($obj = VotePeer::getInstanceFromPool($key))) {
 				// We no longer rehydrate the object, since this can cause data loss.
 				// See http://propel.phpdb.org/trac/ticket/509
 				// $obj->hydrate($row, 0, true); // rehydrate
@@ -419,7 +419,7 @@ abstract class BaseMealOrderPeer {
 				$obj = new $cls();
 				$obj->hydrate($row);
 				$results[] = $obj;
-				MealOrderPeer::addInstanceToPool($obj, $key);
+				VotePeer::addInstanceToPool($obj, $key);
 			} // if key exists
 		}
 		$stmt->closeCursor();
@@ -427,7 +427,7 @@ abstract class BaseMealOrderPeer {
 	}
 
 	/**
-	 * Returns the number of rows matching criteria, joining the related Meal table
+	 * Returns the number of rows matching criteria, joining the related Place table
 	 *
 	 * @param      Criteria $criteria
 	 * @param      boolean $distinct Whether to select only distinct columns; deprecated: use Criteria->setDistinct() instead.
@@ -435,7 +435,7 @@ abstract class BaseMealOrderPeer {
 	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
 	 * @return     int Number of matching rows.
 	 */
-	public static function doCountJoinMeal(Criteria $criteria, $distinct = false, PropelPDO $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	public static function doCountJoinPlace(Criteria $criteria, $distinct = false, PropelPDO $con = null, $join_behavior = Criteria::LEFT_JOIN)
 	{
 		// we're going to modify criteria, so copy it first
 		$criteria = clone $criteria;
@@ -443,14 +443,14 @@ abstract class BaseMealOrderPeer {
 		// We need to set the primary table name, since in the case that there are no WHERE columns
 		// it will be impossible for the BasePeer::createSelectSql() method to determine which
 		// tables go into the FROM clause.
-		$criteria->setPrimaryTableName(MealOrderPeer::TABLE_NAME);
+		$criteria->setPrimaryTableName(VotePeer::TABLE_NAME);
 
 		if ($distinct && !in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
 			$criteria->setDistinct();
 		}
 
 		if (!$criteria->hasSelectClause()) {
-			MealOrderPeer::addSelectColumns($criteria);
+			VotePeer::addSelectColumns($criteria);
 		}
 		
 		$criteria->clearOrderByColumns(); // ORDER BY won't ever affect the count
@@ -459,71 +459,15 @@ abstract class BaseMealOrderPeer {
 		$criteria->setDbName(self::DATABASE_NAME);
 
 		if ($con === null) {
-			$con = Propel::getConnection(MealOrderPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(VotePeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 
-		$criteria->addJoin(MealOrderPeer::MEAL_ID, MealPeer::ID, $join_behavior);
+		$criteria->addJoin(VotePeer::PLACE_ID, PlacePeer::ID, $join_behavior);
 
 		// symfony_behaviors behavior
 		foreach (sfMixer::getCallables(self::getMixerPreSelectHook(__FUNCTION__)) as $sf_hook)
 		{
-		  call_user_func($sf_hook, 'BaseMealOrderPeer', $criteria, $con);
-		}
-		
-		$stmt = BasePeer::doCount($criteria, $con);
-
-		if ($row = $stmt->fetch(PDO::FETCH_NUM)) {
-			$count = (int) $row[0];
-		} else {
-			$count = 0; // no rows returned; we infer that means 0 matches.
-		}
-		$stmt->closeCursor();
-		return $count;
-	}
-
-
-	/**
-	 * Returns the number of rows matching criteria, joining the related Item table
-	 *
-	 * @param      Criteria $criteria
-	 * @param      boolean $distinct Whether to select only distinct columns; deprecated: use Criteria->setDistinct() instead.
-	 * @param      PropelPDO $con
-	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
-	 * @return     int Number of matching rows.
-	 */
-	public static function doCountJoinItem(Criteria $criteria, $distinct = false, PropelPDO $con = null, $join_behavior = Criteria::LEFT_JOIN)
-	{
-		// we're going to modify criteria, so copy it first
-		$criteria = clone $criteria;
-
-		// We need to set the primary table name, since in the case that there are no WHERE columns
-		// it will be impossible for the BasePeer::createSelectSql() method to determine which
-		// tables go into the FROM clause.
-		$criteria->setPrimaryTableName(MealOrderPeer::TABLE_NAME);
-
-		if ($distinct && !in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
-			$criteria->setDistinct();
-		}
-
-		if (!$criteria->hasSelectClause()) {
-			MealOrderPeer::addSelectColumns($criteria);
-		}
-		
-		$criteria->clearOrderByColumns(); // ORDER BY won't ever affect the count
-		
-		// Set the correct dbName
-		$criteria->setDbName(self::DATABASE_NAME);
-
-		if ($con === null) {
-			$con = Propel::getConnection(MealOrderPeer::DATABASE_NAME, Propel::CONNECTION_READ);
-		}
-
-		$criteria->addJoin(MealOrderPeer::ITEM_ID, ItemPeer::ID, $join_behavior);
-
-		// symfony_behaviors behavior
-		foreach (sfMixer::getCallables(self::getMixerPreSelectHook(__FUNCTION__)) as $sf_hook)
-		{
-		  call_user_func($sf_hook, 'BaseMealOrderPeer', $criteria, $con);
+		  call_user_func($sf_hook, 'BaseVotePeer', $criteria, $con);
 		}
 		
 		$stmt = BasePeer::doCount($criteria, $con);
@@ -555,14 +499,14 @@ abstract class BaseMealOrderPeer {
 		// We need to set the primary table name, since in the case that there are no WHERE columns
 		// it will be impossible for the BasePeer::createSelectSql() method to determine which
 		// tables go into the FROM clause.
-		$criteria->setPrimaryTableName(MealOrderPeer::TABLE_NAME);
+		$criteria->setPrimaryTableName(VotePeer::TABLE_NAME);
 
 		if ($distinct && !in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
 			$criteria->setDistinct();
 		}
 
 		if (!$criteria->hasSelectClause()) {
-			MealOrderPeer::addSelectColumns($criteria);
+			VotePeer::addSelectColumns($criteria);
 		}
 		
 		$criteria->clearOrderByColumns(); // ORDER BY won't ever affect the count
@@ -571,15 +515,15 @@ abstract class BaseMealOrderPeer {
 		$criteria->setDbName(self::DATABASE_NAME);
 
 		if ($con === null) {
-			$con = Propel::getConnection(MealOrderPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(VotePeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 
-		$criteria->addJoin(MealOrderPeer::SF_GUARD_USER_ID, sfGuardUserPeer::ID, $join_behavior);
+		$criteria->addJoin(VotePeer::SF_GUARD_USER_ID, sfGuardUserPeer::ID, $join_behavior);
 
 		// symfony_behaviors behavior
 		foreach (sfMixer::getCallables(self::getMixerPreSelectHook(__FUNCTION__)) as $sf_hook)
 		{
-		  call_user_func($sf_hook, 'BaseMealOrderPeer', $criteria, $con);
+		  call_user_func($sf_hook, 'BaseVotePeer', $criteria, $con);
 		}
 		
 		$stmt = BasePeer::doCount($criteria, $con);
@@ -595,15 +539,71 @@ abstract class BaseMealOrderPeer {
 
 
 	/**
-	 * Selects a collection of MealOrder objects pre-filled with their Meal objects.
+	 * Returns the number of rows matching criteria, joining the related Meal table
+	 *
+	 * @param      Criteria $criteria
+	 * @param      boolean $distinct Whether to select only distinct columns; deprecated: use Criteria->setDistinct() instead.
+	 * @param      PropelPDO $con
+	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
+	 * @return     int Number of matching rows.
+	 */
+	public static function doCountJoinMeal(Criteria $criteria, $distinct = false, PropelPDO $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	{
+		// we're going to modify criteria, so copy it first
+		$criteria = clone $criteria;
+
+		// We need to set the primary table name, since in the case that there are no WHERE columns
+		// it will be impossible for the BasePeer::createSelectSql() method to determine which
+		// tables go into the FROM clause.
+		$criteria->setPrimaryTableName(VotePeer::TABLE_NAME);
+
+		if ($distinct && !in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
+			$criteria->setDistinct();
+		}
+
+		if (!$criteria->hasSelectClause()) {
+			VotePeer::addSelectColumns($criteria);
+		}
+		
+		$criteria->clearOrderByColumns(); // ORDER BY won't ever affect the count
+		
+		// Set the correct dbName
+		$criteria->setDbName(self::DATABASE_NAME);
+
+		if ($con === null) {
+			$con = Propel::getConnection(VotePeer::DATABASE_NAME, Propel::CONNECTION_READ);
+		}
+
+		$criteria->addJoin(VotePeer::MEAL_ID, MealPeer::ID, $join_behavior);
+
+		// symfony_behaviors behavior
+		foreach (sfMixer::getCallables(self::getMixerPreSelectHook(__FUNCTION__)) as $sf_hook)
+		{
+		  call_user_func($sf_hook, 'BaseVotePeer', $criteria, $con);
+		}
+		
+		$stmt = BasePeer::doCount($criteria, $con);
+
+		if ($row = $stmt->fetch(PDO::FETCH_NUM)) {
+			$count = (int) $row[0];
+		} else {
+			$count = 0; // no rows returned; we infer that means 0 matches.
+		}
+		$stmt->closeCursor();
+		return $count;
+	}
+
+
+	/**
+	 * Selects a collection of Vote objects pre-filled with their Place objects.
 	 * @param      Criteria  $criteria
 	 * @param      PropelPDO $con
 	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
-	 * @return     array Array of MealOrder objects.
+	 * @return     array Array of Vote objects.
 	 * @throws     PropelException Any exceptions caught during processing will be
 	 *		 rethrown wrapped into a PropelException.
 	 */
-	public static function doSelectJoinMeal(Criteria $criteria, $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	public static function doSelectJoinPlace(Criteria $criteria, $con = null, $join_behavior = Criteria::LEFT_JOIN)
 	{
 		$criteria = clone $criteria;
 
@@ -612,50 +612,50 @@ abstract class BaseMealOrderPeer {
 			$criteria->setDbName(self::DATABASE_NAME);
 		}
 
-		MealOrderPeer::addSelectColumns($criteria);
-		$startcol = (MealOrderPeer::NUM_COLUMNS - MealOrderPeer::NUM_LAZY_LOAD_COLUMNS);
-		MealPeer::addSelectColumns($criteria);
+		VotePeer::addSelectColumns($criteria);
+		$startcol = (VotePeer::NUM_COLUMNS - VotePeer::NUM_LAZY_LOAD_COLUMNS);
+		PlacePeer::addSelectColumns($criteria);
 
-		$criteria->addJoin(MealOrderPeer::MEAL_ID, MealPeer::ID, $join_behavior);
+		$criteria->addJoin(VotePeer::PLACE_ID, PlacePeer::ID, $join_behavior);
 
 		// symfony_behaviors behavior
 		foreach (sfMixer::getCallables(self::getMixerPreSelectHook(__FUNCTION__)) as $sf_hook)
 		{
-		  call_user_func($sf_hook, 'BaseMealOrderPeer', $criteria, $con);
+		  call_user_func($sf_hook, 'BaseVotePeer', $criteria, $con);
 		}
 		
 		$stmt = BasePeer::doSelect($criteria, $con);
 		$results = array();
 
 		while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
-			$key1 = MealOrderPeer::getPrimaryKeyHashFromRow($row, 0);
-			if (null !== ($obj1 = MealOrderPeer::getInstanceFromPool($key1))) {
+			$key1 = VotePeer::getPrimaryKeyHashFromRow($row, 0);
+			if (null !== ($obj1 = VotePeer::getInstanceFromPool($key1))) {
 				// We no longer rehydrate the object, since this can cause data loss.
 				// See http://propel.phpdb.org/trac/ticket/509
 				// $obj1->hydrate($row, 0, true); // rehydrate
 			} else {
 
-				$cls = MealOrderPeer::getOMClass(false);
+				$cls = VotePeer::getOMClass(false);
 
 				$obj1 = new $cls();
 				$obj1->hydrate($row);
-				MealOrderPeer::addInstanceToPool($obj1, $key1);
+				VotePeer::addInstanceToPool($obj1, $key1);
 			} // if $obj1 already loaded
 
-			$key2 = MealPeer::getPrimaryKeyHashFromRow($row, $startcol);
+			$key2 = PlacePeer::getPrimaryKeyHashFromRow($row, $startcol);
 			if ($key2 !== null) {
-				$obj2 = MealPeer::getInstanceFromPool($key2);
+				$obj2 = PlacePeer::getInstanceFromPool($key2);
 				if (!$obj2) {
 
-					$cls = MealPeer::getOMClass(false);
+					$cls = PlacePeer::getOMClass(false);
 
 					$obj2 = new $cls();
 					$obj2->hydrate($row, $startcol);
-					MealPeer::addInstanceToPool($obj2, $key2);
+					PlacePeer::addInstanceToPool($obj2, $key2);
 				} // if obj2 already loaded
 				
-				// Add the $obj1 (MealOrder) to $obj2 (Meal)
-				$obj2->addMealOrder($obj1);
+				// Add the $obj1 (Vote) to $obj2 (Place)
+				$obj2->addVote($obj1);
 
 			} // if joined row was not null
 
@@ -667,83 +667,11 @@ abstract class BaseMealOrderPeer {
 
 
 	/**
-	 * Selects a collection of MealOrder objects pre-filled with their Item objects.
+	 * Selects a collection of Vote objects pre-filled with their sfGuardUser objects.
 	 * @param      Criteria  $criteria
 	 * @param      PropelPDO $con
 	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
-	 * @return     array Array of MealOrder objects.
-	 * @throws     PropelException Any exceptions caught during processing will be
-	 *		 rethrown wrapped into a PropelException.
-	 */
-	public static function doSelectJoinItem(Criteria $criteria, $con = null, $join_behavior = Criteria::LEFT_JOIN)
-	{
-		$criteria = clone $criteria;
-
-		// Set the correct dbName if it has not been overridden
-		if ($criteria->getDbName() == Propel::getDefaultDB()) {
-			$criteria->setDbName(self::DATABASE_NAME);
-		}
-
-		MealOrderPeer::addSelectColumns($criteria);
-		$startcol = (MealOrderPeer::NUM_COLUMNS - MealOrderPeer::NUM_LAZY_LOAD_COLUMNS);
-		ItemPeer::addSelectColumns($criteria);
-
-		$criteria->addJoin(MealOrderPeer::ITEM_ID, ItemPeer::ID, $join_behavior);
-
-		// symfony_behaviors behavior
-		foreach (sfMixer::getCallables(self::getMixerPreSelectHook(__FUNCTION__)) as $sf_hook)
-		{
-		  call_user_func($sf_hook, 'BaseMealOrderPeer', $criteria, $con);
-		}
-		
-		$stmt = BasePeer::doSelect($criteria, $con);
-		$results = array();
-
-		while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
-			$key1 = MealOrderPeer::getPrimaryKeyHashFromRow($row, 0);
-			if (null !== ($obj1 = MealOrderPeer::getInstanceFromPool($key1))) {
-				// We no longer rehydrate the object, since this can cause data loss.
-				// See http://propel.phpdb.org/trac/ticket/509
-				// $obj1->hydrate($row, 0, true); // rehydrate
-			} else {
-
-				$cls = MealOrderPeer::getOMClass(false);
-
-				$obj1 = new $cls();
-				$obj1->hydrate($row);
-				MealOrderPeer::addInstanceToPool($obj1, $key1);
-			} // if $obj1 already loaded
-
-			$key2 = ItemPeer::getPrimaryKeyHashFromRow($row, $startcol);
-			if ($key2 !== null) {
-				$obj2 = ItemPeer::getInstanceFromPool($key2);
-				if (!$obj2) {
-
-					$cls = ItemPeer::getOMClass(false);
-
-					$obj2 = new $cls();
-					$obj2->hydrate($row, $startcol);
-					ItemPeer::addInstanceToPool($obj2, $key2);
-				} // if obj2 already loaded
-				
-				// Add the $obj1 (MealOrder) to $obj2 (Item)
-				$obj2->addMealOrder($obj1);
-
-			} // if joined row was not null
-
-			$results[] = $obj1;
-		}
-		$stmt->closeCursor();
-		return $results;
-	}
-
-
-	/**
-	 * Selects a collection of MealOrder objects pre-filled with their sfGuardUser objects.
-	 * @param      Criteria  $criteria
-	 * @param      PropelPDO $con
-	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
-	 * @return     array Array of MealOrder objects.
+	 * @return     array Array of Vote objects.
 	 * @throws     PropelException Any exceptions caught during processing will be
 	 *		 rethrown wrapped into a PropelException.
 	 */
@@ -756,34 +684,34 @@ abstract class BaseMealOrderPeer {
 			$criteria->setDbName(self::DATABASE_NAME);
 		}
 
-		MealOrderPeer::addSelectColumns($criteria);
-		$startcol = (MealOrderPeer::NUM_COLUMNS - MealOrderPeer::NUM_LAZY_LOAD_COLUMNS);
+		VotePeer::addSelectColumns($criteria);
+		$startcol = (VotePeer::NUM_COLUMNS - VotePeer::NUM_LAZY_LOAD_COLUMNS);
 		sfGuardUserPeer::addSelectColumns($criteria);
 
-		$criteria->addJoin(MealOrderPeer::SF_GUARD_USER_ID, sfGuardUserPeer::ID, $join_behavior);
+		$criteria->addJoin(VotePeer::SF_GUARD_USER_ID, sfGuardUserPeer::ID, $join_behavior);
 
 		// symfony_behaviors behavior
 		foreach (sfMixer::getCallables(self::getMixerPreSelectHook(__FUNCTION__)) as $sf_hook)
 		{
-		  call_user_func($sf_hook, 'BaseMealOrderPeer', $criteria, $con);
+		  call_user_func($sf_hook, 'BaseVotePeer', $criteria, $con);
 		}
 		
 		$stmt = BasePeer::doSelect($criteria, $con);
 		$results = array();
 
 		while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
-			$key1 = MealOrderPeer::getPrimaryKeyHashFromRow($row, 0);
-			if (null !== ($obj1 = MealOrderPeer::getInstanceFromPool($key1))) {
+			$key1 = VotePeer::getPrimaryKeyHashFromRow($row, 0);
+			if (null !== ($obj1 = VotePeer::getInstanceFromPool($key1))) {
 				// We no longer rehydrate the object, since this can cause data loss.
 				// See http://propel.phpdb.org/trac/ticket/509
 				// $obj1->hydrate($row, 0, true); // rehydrate
 			} else {
 
-				$cls = MealOrderPeer::getOMClass(false);
+				$cls = VotePeer::getOMClass(false);
 
 				$obj1 = new $cls();
 				$obj1->hydrate($row);
-				MealOrderPeer::addInstanceToPool($obj1, $key1);
+				VotePeer::addInstanceToPool($obj1, $key1);
 			} // if $obj1 already loaded
 
 			$key2 = sfGuardUserPeer::getPrimaryKeyHashFromRow($row, $startcol);
@@ -798,8 +726,80 @@ abstract class BaseMealOrderPeer {
 					sfGuardUserPeer::addInstanceToPool($obj2, $key2);
 				} // if obj2 already loaded
 				
-				// Add the $obj1 (MealOrder) to $obj2 (sfGuardUser)
-				$obj2->addMealOrder($obj1);
+				// Add the $obj1 (Vote) to $obj2 (sfGuardUser)
+				$obj2->addVote($obj1);
+
+			} // if joined row was not null
+
+			$results[] = $obj1;
+		}
+		$stmt->closeCursor();
+		return $results;
+	}
+
+
+	/**
+	 * Selects a collection of Vote objects pre-filled with their Meal objects.
+	 * @param      Criteria  $criteria
+	 * @param      PropelPDO $con
+	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
+	 * @return     array Array of Vote objects.
+	 * @throws     PropelException Any exceptions caught during processing will be
+	 *		 rethrown wrapped into a PropelException.
+	 */
+	public static function doSelectJoinMeal(Criteria $criteria, $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	{
+		$criteria = clone $criteria;
+
+		// Set the correct dbName if it has not been overridden
+		if ($criteria->getDbName() == Propel::getDefaultDB()) {
+			$criteria->setDbName(self::DATABASE_NAME);
+		}
+
+		VotePeer::addSelectColumns($criteria);
+		$startcol = (VotePeer::NUM_COLUMNS - VotePeer::NUM_LAZY_LOAD_COLUMNS);
+		MealPeer::addSelectColumns($criteria);
+
+		$criteria->addJoin(VotePeer::MEAL_ID, MealPeer::ID, $join_behavior);
+
+		// symfony_behaviors behavior
+		foreach (sfMixer::getCallables(self::getMixerPreSelectHook(__FUNCTION__)) as $sf_hook)
+		{
+		  call_user_func($sf_hook, 'BaseVotePeer', $criteria, $con);
+		}
+		
+		$stmt = BasePeer::doSelect($criteria, $con);
+		$results = array();
+
+		while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
+			$key1 = VotePeer::getPrimaryKeyHashFromRow($row, 0);
+			if (null !== ($obj1 = VotePeer::getInstanceFromPool($key1))) {
+				// We no longer rehydrate the object, since this can cause data loss.
+				// See http://propel.phpdb.org/trac/ticket/509
+				// $obj1->hydrate($row, 0, true); // rehydrate
+			} else {
+
+				$cls = VotePeer::getOMClass(false);
+
+				$obj1 = new $cls();
+				$obj1->hydrate($row);
+				VotePeer::addInstanceToPool($obj1, $key1);
+			} // if $obj1 already loaded
+
+			$key2 = MealPeer::getPrimaryKeyHashFromRow($row, $startcol);
+			if ($key2 !== null) {
+				$obj2 = MealPeer::getInstanceFromPool($key2);
+				if (!$obj2) {
+
+					$cls = MealPeer::getOMClass(false);
+
+					$obj2 = new $cls();
+					$obj2->hydrate($row, $startcol);
+					MealPeer::addInstanceToPool($obj2, $key2);
+				} // if obj2 already loaded
+				
+				// Add the $obj1 (Vote) to $obj2 (Meal)
+				$obj2->addVote($obj1);
 
 			} // if joined row was not null
 
@@ -827,14 +827,14 @@ abstract class BaseMealOrderPeer {
 		// We need to set the primary table name, since in the case that there are no WHERE columns
 		// it will be impossible for the BasePeer::createSelectSql() method to determine which
 		// tables go into the FROM clause.
-		$criteria->setPrimaryTableName(MealOrderPeer::TABLE_NAME);
+		$criteria->setPrimaryTableName(VotePeer::TABLE_NAME);
 
 		if ($distinct && !in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
 			$criteria->setDistinct();
 		}
 
 		if (!$criteria->hasSelectClause()) {
-			MealOrderPeer::addSelectColumns($criteria);
+			VotePeer::addSelectColumns($criteria);
 		}
 		
 		$criteria->clearOrderByColumns(); // ORDER BY won't ever affect the count
@@ -843,19 +843,19 @@ abstract class BaseMealOrderPeer {
 		$criteria->setDbName(self::DATABASE_NAME);
 
 		if ($con === null) {
-			$con = Propel::getConnection(MealOrderPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(VotePeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 
-		$criteria->addJoin(MealOrderPeer::MEAL_ID, MealPeer::ID, $join_behavior);
+		$criteria->addJoin(VotePeer::PLACE_ID, PlacePeer::ID, $join_behavior);
 
-		$criteria->addJoin(MealOrderPeer::ITEM_ID, ItemPeer::ID, $join_behavior);
+		$criteria->addJoin(VotePeer::SF_GUARD_USER_ID, sfGuardUserPeer::ID, $join_behavior);
 
-		$criteria->addJoin(MealOrderPeer::SF_GUARD_USER_ID, sfGuardUserPeer::ID, $join_behavior);
+		$criteria->addJoin(VotePeer::MEAL_ID, MealPeer::ID, $join_behavior);
 
 		// symfony_behaviors behavior
 		foreach (sfMixer::getCallables(self::getMixerPreSelectHook(__FUNCTION__)) as $sf_hook)
 		{
-		  call_user_func($sf_hook, 'BaseMealOrderPeer', $criteria, $con);
+		  call_user_func($sf_hook, 'BaseVotePeer', $criteria, $con);
 		}
 		
 		$stmt = BasePeer::doCount($criteria, $con);
@@ -870,12 +870,12 @@ abstract class BaseMealOrderPeer {
 	}
 
 	/**
-	 * Selects a collection of MealOrder objects pre-filled with all related objects.
+	 * Selects a collection of Vote objects pre-filled with all related objects.
 	 *
 	 * @param      Criteria  $criteria
 	 * @param      PropelPDO $con
 	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
-	 * @return     array Array of MealOrder objects.
+	 * @return     array Array of Vote objects.
 	 * @throws     PropelException Any exceptions caught during processing will be
 	 *		 rethrown wrapped into a PropelException.
 	 */
@@ -888,99 +888,99 @@ abstract class BaseMealOrderPeer {
 			$criteria->setDbName(self::DATABASE_NAME);
 		}
 
-		MealOrderPeer::addSelectColumns($criteria);
-		$startcol2 = (MealOrderPeer::NUM_COLUMNS - MealOrderPeer::NUM_LAZY_LOAD_COLUMNS);
+		VotePeer::addSelectColumns($criteria);
+		$startcol2 = (VotePeer::NUM_COLUMNS - VotePeer::NUM_LAZY_LOAD_COLUMNS);
 
-		MealPeer::addSelectColumns($criteria);
-		$startcol3 = $startcol2 + (MealPeer::NUM_COLUMNS - MealPeer::NUM_LAZY_LOAD_COLUMNS);
-
-		ItemPeer::addSelectColumns($criteria);
-		$startcol4 = $startcol3 + (ItemPeer::NUM_COLUMNS - ItemPeer::NUM_LAZY_LOAD_COLUMNS);
+		PlacePeer::addSelectColumns($criteria);
+		$startcol3 = $startcol2 + (PlacePeer::NUM_COLUMNS - PlacePeer::NUM_LAZY_LOAD_COLUMNS);
 
 		sfGuardUserPeer::addSelectColumns($criteria);
-		$startcol5 = $startcol4 + (sfGuardUserPeer::NUM_COLUMNS - sfGuardUserPeer::NUM_LAZY_LOAD_COLUMNS);
+		$startcol4 = $startcol3 + (sfGuardUserPeer::NUM_COLUMNS - sfGuardUserPeer::NUM_LAZY_LOAD_COLUMNS);
 
-		$criteria->addJoin(MealOrderPeer::MEAL_ID, MealPeer::ID, $join_behavior);
+		MealPeer::addSelectColumns($criteria);
+		$startcol5 = $startcol4 + (MealPeer::NUM_COLUMNS - MealPeer::NUM_LAZY_LOAD_COLUMNS);
 
-		$criteria->addJoin(MealOrderPeer::ITEM_ID, ItemPeer::ID, $join_behavior);
+		$criteria->addJoin(VotePeer::PLACE_ID, PlacePeer::ID, $join_behavior);
 
-		$criteria->addJoin(MealOrderPeer::SF_GUARD_USER_ID, sfGuardUserPeer::ID, $join_behavior);
+		$criteria->addJoin(VotePeer::SF_GUARD_USER_ID, sfGuardUserPeer::ID, $join_behavior);
+
+		$criteria->addJoin(VotePeer::MEAL_ID, MealPeer::ID, $join_behavior);
 
 		// symfony_behaviors behavior
 		foreach (sfMixer::getCallables(self::getMixerPreSelectHook(__FUNCTION__)) as $sf_hook)
 		{
-		  call_user_func($sf_hook, 'BaseMealOrderPeer', $criteria, $con);
+		  call_user_func($sf_hook, 'BaseVotePeer', $criteria, $con);
 		}
 		
 		$stmt = BasePeer::doSelect($criteria, $con);
 		$results = array();
 
 		while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
-			$key1 = MealOrderPeer::getPrimaryKeyHashFromRow($row, 0);
-			if (null !== ($obj1 = MealOrderPeer::getInstanceFromPool($key1))) {
+			$key1 = VotePeer::getPrimaryKeyHashFromRow($row, 0);
+			if (null !== ($obj1 = VotePeer::getInstanceFromPool($key1))) {
 				// We no longer rehydrate the object, since this can cause data loss.
 				// See http://propel.phpdb.org/trac/ticket/509
 				// $obj1->hydrate($row, 0, true); // rehydrate
 			} else {
-				$cls = MealOrderPeer::getOMClass(false);
+				$cls = VotePeer::getOMClass(false);
 
 				$obj1 = new $cls();
 				$obj1->hydrate($row);
-				MealOrderPeer::addInstanceToPool($obj1, $key1);
+				VotePeer::addInstanceToPool($obj1, $key1);
 			} // if obj1 already loaded
 
-			// Add objects for joined Meal rows
+			// Add objects for joined Place rows
 
-			$key2 = MealPeer::getPrimaryKeyHashFromRow($row, $startcol2);
+			$key2 = PlacePeer::getPrimaryKeyHashFromRow($row, $startcol2);
 			if ($key2 !== null) {
-				$obj2 = MealPeer::getInstanceFromPool($key2);
+				$obj2 = PlacePeer::getInstanceFromPool($key2);
 				if (!$obj2) {
 
-					$cls = MealPeer::getOMClass(false);
+					$cls = PlacePeer::getOMClass(false);
 
 					$obj2 = new $cls();
 					$obj2->hydrate($row, $startcol2);
-					MealPeer::addInstanceToPool($obj2, $key2);
+					PlacePeer::addInstanceToPool($obj2, $key2);
 				} // if obj2 loaded
 
-				// Add the $obj1 (MealOrder) to the collection in $obj2 (Meal)
-				$obj2->addMealOrder($obj1);
-			} // if joined row not null
-
-			// Add objects for joined Item rows
-
-			$key3 = ItemPeer::getPrimaryKeyHashFromRow($row, $startcol3);
-			if ($key3 !== null) {
-				$obj3 = ItemPeer::getInstanceFromPool($key3);
-				if (!$obj3) {
-
-					$cls = ItemPeer::getOMClass(false);
-
-					$obj3 = new $cls();
-					$obj3->hydrate($row, $startcol3);
-					ItemPeer::addInstanceToPool($obj3, $key3);
-				} // if obj3 loaded
-
-				// Add the $obj1 (MealOrder) to the collection in $obj3 (Item)
-				$obj3->addMealOrder($obj1);
+				// Add the $obj1 (Vote) to the collection in $obj2 (Place)
+				$obj2->addVote($obj1);
 			} // if joined row not null
 
 			// Add objects for joined sfGuardUser rows
 
-			$key4 = sfGuardUserPeer::getPrimaryKeyHashFromRow($row, $startcol4);
-			if ($key4 !== null) {
-				$obj4 = sfGuardUserPeer::getInstanceFromPool($key4);
-				if (!$obj4) {
+			$key3 = sfGuardUserPeer::getPrimaryKeyHashFromRow($row, $startcol3);
+			if ($key3 !== null) {
+				$obj3 = sfGuardUserPeer::getInstanceFromPool($key3);
+				if (!$obj3) {
 
 					$cls = sfGuardUserPeer::getOMClass(false);
 
+					$obj3 = new $cls();
+					$obj3->hydrate($row, $startcol3);
+					sfGuardUserPeer::addInstanceToPool($obj3, $key3);
+				} // if obj3 loaded
+
+				// Add the $obj1 (Vote) to the collection in $obj3 (sfGuardUser)
+				$obj3->addVote($obj1);
+			} // if joined row not null
+
+			// Add objects for joined Meal rows
+
+			$key4 = MealPeer::getPrimaryKeyHashFromRow($row, $startcol4);
+			if ($key4 !== null) {
+				$obj4 = MealPeer::getInstanceFromPool($key4);
+				if (!$obj4) {
+
+					$cls = MealPeer::getOMClass(false);
+
 					$obj4 = new $cls();
 					$obj4->hydrate($row, $startcol4);
-					sfGuardUserPeer::addInstanceToPool($obj4, $key4);
+					MealPeer::addInstanceToPool($obj4, $key4);
 				} // if obj4 loaded
 
-				// Add the $obj1 (MealOrder) to the collection in $obj4 (sfGuardUser)
-				$obj4->addMealOrder($obj1);
+				// Add the $obj1 (Vote) to the collection in $obj4 (Meal)
+				$obj4->addVote($obj1);
 			} // if joined row not null
 
 			$results[] = $obj1;
@@ -991,7 +991,7 @@ abstract class BaseMealOrderPeer {
 
 
 	/**
-	 * Returns the number of rows matching criteria, joining the related Meal table
+	 * Returns the number of rows matching criteria, joining the related Place table
 	 *
 	 * @param      Criteria $criteria
 	 * @param      boolean $distinct Whether to select only distinct columns; deprecated: use Criteria->setDistinct() instead.
@@ -999,7 +999,7 @@ abstract class BaseMealOrderPeer {
 	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
 	 * @return     int Number of matching rows.
 	 */
-	public static function doCountJoinAllExceptMeal(Criteria $criteria, $distinct = false, PropelPDO $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	public static function doCountJoinAllExceptPlace(Criteria $criteria, $distinct = false, PropelPDO $con = null, $join_behavior = Criteria::LEFT_JOIN)
 	{
 		// we're going to modify criteria, so copy it first
 		$criteria = clone $criteria;
@@ -1007,14 +1007,14 @@ abstract class BaseMealOrderPeer {
 		// We need to set the primary table name, since in the case that there are no WHERE columns
 		// it will be impossible for the BasePeer::createSelectSql() method to determine which
 		// tables go into the FROM clause.
-		$criteria->setPrimaryTableName(MealOrderPeer::TABLE_NAME);
+		$criteria->setPrimaryTableName(VotePeer::TABLE_NAME);
 		
 		if ($distinct && !in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
 			$criteria->setDistinct();
 		}
 
 		if (!$criteria->hasSelectClause()) {
-			MealOrderPeer::addSelectColumns($criteria);
+			VotePeer::addSelectColumns($criteria);
 		}
 		
 		$criteria->clearOrderByColumns(); // ORDER BY should not affect count
@@ -1023,75 +1023,17 @@ abstract class BaseMealOrderPeer {
 		$criteria->setDbName(self::DATABASE_NAME);
 
 		if ($con === null) {
-			$con = Propel::getConnection(MealOrderPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(VotePeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 	
-		$criteria->addJoin(MealOrderPeer::ITEM_ID, ItemPeer::ID, $join_behavior);
+		$criteria->addJoin(VotePeer::SF_GUARD_USER_ID, sfGuardUserPeer::ID, $join_behavior);
 
-		$criteria->addJoin(MealOrderPeer::SF_GUARD_USER_ID, sfGuardUserPeer::ID, $join_behavior);
+		$criteria->addJoin(VotePeer::MEAL_ID, MealPeer::ID, $join_behavior);
 
 		// symfony_behaviors behavior
 		foreach (sfMixer::getCallables(self::getMixerPreSelectHook(__FUNCTION__)) as $sf_hook)
 		{
-		  call_user_func($sf_hook, 'BaseMealOrderPeer', $criteria, $con);
-		}
-		
-		$stmt = BasePeer::doCount($criteria, $con);
-
-		if ($row = $stmt->fetch(PDO::FETCH_NUM)) {
-			$count = (int) $row[0];
-		} else {
-			$count = 0; // no rows returned; we infer that means 0 matches.
-		}
-		$stmt->closeCursor();
-		return $count;
-	}
-
-
-	/**
-	 * Returns the number of rows matching criteria, joining the related Item table
-	 *
-	 * @param      Criteria $criteria
-	 * @param      boolean $distinct Whether to select only distinct columns; deprecated: use Criteria->setDistinct() instead.
-	 * @param      PropelPDO $con
-	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
-	 * @return     int Number of matching rows.
-	 */
-	public static function doCountJoinAllExceptItem(Criteria $criteria, $distinct = false, PropelPDO $con = null, $join_behavior = Criteria::LEFT_JOIN)
-	{
-		// we're going to modify criteria, so copy it first
-		$criteria = clone $criteria;
-
-		// We need to set the primary table name, since in the case that there are no WHERE columns
-		// it will be impossible for the BasePeer::createSelectSql() method to determine which
-		// tables go into the FROM clause.
-		$criteria->setPrimaryTableName(MealOrderPeer::TABLE_NAME);
-		
-		if ($distinct && !in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
-			$criteria->setDistinct();
-		}
-
-		if (!$criteria->hasSelectClause()) {
-			MealOrderPeer::addSelectColumns($criteria);
-		}
-		
-		$criteria->clearOrderByColumns(); // ORDER BY should not affect count
-		
-		// Set the correct dbName
-		$criteria->setDbName(self::DATABASE_NAME);
-
-		if ($con === null) {
-			$con = Propel::getConnection(MealOrderPeer::DATABASE_NAME, Propel::CONNECTION_READ);
-		}
-	
-		$criteria->addJoin(MealOrderPeer::MEAL_ID, MealPeer::ID, $join_behavior);
-
-		$criteria->addJoin(MealOrderPeer::SF_GUARD_USER_ID, sfGuardUserPeer::ID, $join_behavior);
-
-		// symfony_behaviors behavior
-		foreach (sfMixer::getCallables(self::getMixerPreSelectHook(__FUNCTION__)) as $sf_hook)
-		{
-		  call_user_func($sf_hook, 'BaseMealOrderPeer', $criteria, $con);
+		  call_user_func($sf_hook, 'BaseVotePeer', $criteria, $con);
 		}
 		
 		$stmt = BasePeer::doCount($criteria, $con);
@@ -1123,14 +1065,14 @@ abstract class BaseMealOrderPeer {
 		// We need to set the primary table name, since in the case that there are no WHERE columns
 		// it will be impossible for the BasePeer::createSelectSql() method to determine which
 		// tables go into the FROM clause.
-		$criteria->setPrimaryTableName(MealOrderPeer::TABLE_NAME);
+		$criteria->setPrimaryTableName(VotePeer::TABLE_NAME);
 		
 		if ($distinct && !in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
 			$criteria->setDistinct();
 		}
 
 		if (!$criteria->hasSelectClause()) {
-			MealOrderPeer::addSelectColumns($criteria);
+			VotePeer::addSelectColumns($criteria);
 		}
 		
 		$criteria->clearOrderByColumns(); // ORDER BY should not affect count
@@ -1139,17 +1081,17 @@ abstract class BaseMealOrderPeer {
 		$criteria->setDbName(self::DATABASE_NAME);
 
 		if ($con === null) {
-			$con = Propel::getConnection(MealOrderPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(VotePeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 	
-		$criteria->addJoin(MealOrderPeer::MEAL_ID, MealPeer::ID, $join_behavior);
+		$criteria->addJoin(VotePeer::PLACE_ID, PlacePeer::ID, $join_behavior);
 
-		$criteria->addJoin(MealOrderPeer::ITEM_ID, ItemPeer::ID, $join_behavior);
+		$criteria->addJoin(VotePeer::MEAL_ID, MealPeer::ID, $join_behavior);
 
 		// symfony_behaviors behavior
 		foreach (sfMixer::getCallables(self::getMixerPreSelectHook(__FUNCTION__)) as $sf_hook)
 		{
-		  call_user_func($sf_hook, 'BaseMealOrderPeer', $criteria, $con);
+		  call_user_func($sf_hook, 'BaseVotePeer', $criteria, $con);
 		}
 		
 		$stmt = BasePeer::doCount($criteria, $con);
@@ -1165,119 +1107,74 @@ abstract class BaseMealOrderPeer {
 
 
 	/**
-	 * Selects a collection of MealOrder objects pre-filled with all related objects except Meal.
+	 * Returns the number of rows matching criteria, joining the related Meal table
 	 *
-	 * @param      Criteria  $criteria
+	 * @param      Criteria $criteria
+	 * @param      boolean $distinct Whether to select only distinct columns; deprecated: use Criteria->setDistinct() instead.
 	 * @param      PropelPDO $con
 	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
-	 * @return     array Array of MealOrder objects.
-	 * @throws     PropelException Any exceptions caught during processing will be
-	 *		 rethrown wrapped into a PropelException.
+	 * @return     int Number of matching rows.
 	 */
-	public static function doSelectJoinAllExceptMeal(Criteria $criteria, $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	public static function doCountJoinAllExceptMeal(Criteria $criteria, $distinct = false, PropelPDO $con = null, $join_behavior = Criteria::LEFT_JOIN)
 	{
+		// we're going to modify criteria, so copy it first
 		$criteria = clone $criteria;
 
-		// Set the correct dbName if it has not been overridden
-		// $criteria->getDbName() will return the same object if not set to another value
-		// so == check is okay and faster
-		if ($criteria->getDbName() == Propel::getDefaultDB()) {
-			$criteria->setDbName(self::DATABASE_NAME);
+		// We need to set the primary table name, since in the case that there are no WHERE columns
+		// it will be impossible for the BasePeer::createSelectSql() method to determine which
+		// tables go into the FROM clause.
+		$criteria->setPrimaryTableName(VotePeer::TABLE_NAME);
+		
+		if ($distinct && !in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
+			$criteria->setDistinct();
 		}
 
-		MealOrderPeer::addSelectColumns($criteria);
-		$startcol2 = (MealOrderPeer::NUM_COLUMNS - MealOrderPeer::NUM_LAZY_LOAD_COLUMNS);
+		if (!$criteria->hasSelectClause()) {
+			VotePeer::addSelectColumns($criteria);
+		}
+		
+		$criteria->clearOrderByColumns(); // ORDER BY should not affect count
+		
+		// Set the correct dbName
+		$criteria->setDbName(self::DATABASE_NAME);
 
-		ItemPeer::addSelectColumns($criteria);
-		$startcol3 = $startcol2 + (ItemPeer::NUM_COLUMNS - ItemPeer::NUM_LAZY_LOAD_COLUMNS);
+		if ($con === null) {
+			$con = Propel::getConnection(VotePeer::DATABASE_NAME, Propel::CONNECTION_READ);
+		}
+	
+		$criteria->addJoin(VotePeer::PLACE_ID, PlacePeer::ID, $join_behavior);
 
-		sfGuardUserPeer::addSelectColumns($criteria);
-		$startcol4 = $startcol3 + (sfGuardUserPeer::NUM_COLUMNS - sfGuardUserPeer::NUM_LAZY_LOAD_COLUMNS);
-
-		$criteria->addJoin(MealOrderPeer::ITEM_ID, ItemPeer::ID, $join_behavior);
-
-		$criteria->addJoin(MealOrderPeer::SF_GUARD_USER_ID, sfGuardUserPeer::ID, $join_behavior);
+		$criteria->addJoin(VotePeer::SF_GUARD_USER_ID, sfGuardUserPeer::ID, $join_behavior);
 
 		// symfony_behaviors behavior
 		foreach (sfMixer::getCallables(self::getMixerPreSelectHook(__FUNCTION__)) as $sf_hook)
 		{
-		  call_user_func($sf_hook, 'BaseMealOrderPeer', $criteria, $con);
+		  call_user_func($sf_hook, 'BaseVotePeer', $criteria, $con);
 		}
 		
+		$stmt = BasePeer::doCount($criteria, $con);
 
-		$stmt = BasePeer::doSelect($criteria, $con);
-		$results = array();
-
-		while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
-			$key1 = MealOrderPeer::getPrimaryKeyHashFromRow($row, 0);
-			if (null !== ($obj1 = MealOrderPeer::getInstanceFromPool($key1))) {
-				// We no longer rehydrate the object, since this can cause data loss.
-				// See http://propel.phpdb.org/trac/ticket/509
-				// $obj1->hydrate($row, 0, true); // rehydrate
-			} else {
-				$cls = MealOrderPeer::getOMClass(false);
-
-				$obj1 = new $cls();
-				$obj1->hydrate($row);
-				MealOrderPeer::addInstanceToPool($obj1, $key1);
-			} // if obj1 already loaded
-
-				// Add objects for joined Item rows
-
-				$key2 = ItemPeer::getPrimaryKeyHashFromRow($row, $startcol2);
-				if ($key2 !== null) {
-					$obj2 = ItemPeer::getInstanceFromPool($key2);
-					if (!$obj2) {
-	
-						$cls = ItemPeer::getOMClass(false);
-
-					$obj2 = new $cls();
-					$obj2->hydrate($row, $startcol2);
-					ItemPeer::addInstanceToPool($obj2, $key2);
-				} // if $obj2 already loaded
-
-				// Add the $obj1 (MealOrder) to the collection in $obj2 (Item)
-				$obj2->addMealOrder($obj1);
-
-			} // if joined row is not null
-
-				// Add objects for joined sfGuardUser rows
-
-				$key3 = sfGuardUserPeer::getPrimaryKeyHashFromRow($row, $startcol3);
-				if ($key3 !== null) {
-					$obj3 = sfGuardUserPeer::getInstanceFromPool($key3);
-					if (!$obj3) {
-	
-						$cls = sfGuardUserPeer::getOMClass(false);
-
-					$obj3 = new $cls();
-					$obj3->hydrate($row, $startcol3);
-					sfGuardUserPeer::addInstanceToPool($obj3, $key3);
-				} // if $obj3 already loaded
-
-				// Add the $obj1 (MealOrder) to the collection in $obj3 (sfGuardUser)
-				$obj3->addMealOrder($obj1);
-
-			} // if joined row is not null
-
-			$results[] = $obj1;
+		if ($row = $stmt->fetch(PDO::FETCH_NUM)) {
+			$count = (int) $row[0];
+		} else {
+			$count = 0; // no rows returned; we infer that means 0 matches.
 		}
 		$stmt->closeCursor();
-		return $results;
+		return $count;
 	}
 
 
 	/**
-	 * Selects a collection of MealOrder objects pre-filled with all related objects except Item.
+	 * Selects a collection of Vote objects pre-filled with all related objects except Place.
 	 *
 	 * @param      Criteria  $criteria
 	 * @param      PropelPDO $con
 	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
-	 * @return     array Array of MealOrder objects.
+	 * @return     array Array of Vote objects.
 	 * @throws     PropelException Any exceptions caught during processing will be
 	 *		 rethrown wrapped into a PropelException.
 	 */
-	public static function doSelectJoinAllExceptItem(Criteria $criteria, $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	public static function doSelectJoinAllExceptPlace(Criteria $criteria, $con = null, $join_behavior = Criteria::LEFT_JOIN)
 	{
 		$criteria = clone $criteria;
 
@@ -1288,23 +1185,23 @@ abstract class BaseMealOrderPeer {
 			$criteria->setDbName(self::DATABASE_NAME);
 		}
 
-		MealOrderPeer::addSelectColumns($criteria);
-		$startcol2 = (MealOrderPeer::NUM_COLUMNS - MealOrderPeer::NUM_LAZY_LOAD_COLUMNS);
-
-		MealPeer::addSelectColumns($criteria);
-		$startcol3 = $startcol2 + (MealPeer::NUM_COLUMNS - MealPeer::NUM_LAZY_LOAD_COLUMNS);
+		VotePeer::addSelectColumns($criteria);
+		$startcol2 = (VotePeer::NUM_COLUMNS - VotePeer::NUM_LAZY_LOAD_COLUMNS);
 
 		sfGuardUserPeer::addSelectColumns($criteria);
-		$startcol4 = $startcol3 + (sfGuardUserPeer::NUM_COLUMNS - sfGuardUserPeer::NUM_LAZY_LOAD_COLUMNS);
+		$startcol3 = $startcol2 + (sfGuardUserPeer::NUM_COLUMNS - sfGuardUserPeer::NUM_LAZY_LOAD_COLUMNS);
 
-		$criteria->addJoin(MealOrderPeer::MEAL_ID, MealPeer::ID, $join_behavior);
+		MealPeer::addSelectColumns($criteria);
+		$startcol4 = $startcol3 + (MealPeer::NUM_COLUMNS - MealPeer::NUM_LAZY_LOAD_COLUMNS);
 
-		$criteria->addJoin(MealOrderPeer::SF_GUARD_USER_ID, sfGuardUserPeer::ID, $join_behavior);
+		$criteria->addJoin(VotePeer::SF_GUARD_USER_ID, sfGuardUserPeer::ID, $join_behavior);
+
+		$criteria->addJoin(VotePeer::MEAL_ID, MealPeer::ID, $join_behavior);
 
 		// symfony_behaviors behavior
 		foreach (sfMixer::getCallables(self::getMixerPreSelectHook(__FUNCTION__)) as $sf_hook)
 		{
-		  call_user_func($sf_hook, 'BaseMealOrderPeer', $criteria, $con);
+		  call_user_func($sf_hook, 'BaseVotePeer', $criteria, $con);
 		}
 		
 
@@ -1312,54 +1209,54 @@ abstract class BaseMealOrderPeer {
 		$results = array();
 
 		while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
-			$key1 = MealOrderPeer::getPrimaryKeyHashFromRow($row, 0);
-			if (null !== ($obj1 = MealOrderPeer::getInstanceFromPool($key1))) {
+			$key1 = VotePeer::getPrimaryKeyHashFromRow($row, 0);
+			if (null !== ($obj1 = VotePeer::getInstanceFromPool($key1))) {
 				// We no longer rehydrate the object, since this can cause data loss.
 				// See http://propel.phpdb.org/trac/ticket/509
 				// $obj1->hydrate($row, 0, true); // rehydrate
 			} else {
-				$cls = MealOrderPeer::getOMClass(false);
+				$cls = VotePeer::getOMClass(false);
 
 				$obj1 = new $cls();
 				$obj1->hydrate($row);
-				MealOrderPeer::addInstanceToPool($obj1, $key1);
+				VotePeer::addInstanceToPool($obj1, $key1);
 			} // if obj1 already loaded
+
+				// Add objects for joined sfGuardUser rows
+
+				$key2 = sfGuardUserPeer::getPrimaryKeyHashFromRow($row, $startcol2);
+				if ($key2 !== null) {
+					$obj2 = sfGuardUserPeer::getInstanceFromPool($key2);
+					if (!$obj2) {
+	
+						$cls = sfGuardUserPeer::getOMClass(false);
+
+					$obj2 = new $cls();
+					$obj2->hydrate($row, $startcol2);
+					sfGuardUserPeer::addInstanceToPool($obj2, $key2);
+				} // if $obj2 already loaded
+
+				// Add the $obj1 (Vote) to the collection in $obj2 (sfGuardUser)
+				$obj2->addVote($obj1);
+
+			} // if joined row is not null
 
 				// Add objects for joined Meal rows
 
-				$key2 = MealPeer::getPrimaryKeyHashFromRow($row, $startcol2);
-				if ($key2 !== null) {
-					$obj2 = MealPeer::getInstanceFromPool($key2);
-					if (!$obj2) {
+				$key3 = MealPeer::getPrimaryKeyHashFromRow($row, $startcol3);
+				if ($key3 !== null) {
+					$obj3 = MealPeer::getInstanceFromPool($key3);
+					if (!$obj3) {
 	
 						$cls = MealPeer::getOMClass(false);
 
-					$obj2 = new $cls();
-					$obj2->hydrate($row, $startcol2);
-					MealPeer::addInstanceToPool($obj2, $key2);
-				} // if $obj2 already loaded
-
-				// Add the $obj1 (MealOrder) to the collection in $obj2 (Meal)
-				$obj2->addMealOrder($obj1);
-
-			} // if joined row is not null
-
-				// Add objects for joined sfGuardUser rows
-
-				$key3 = sfGuardUserPeer::getPrimaryKeyHashFromRow($row, $startcol3);
-				if ($key3 !== null) {
-					$obj3 = sfGuardUserPeer::getInstanceFromPool($key3);
-					if (!$obj3) {
-	
-						$cls = sfGuardUserPeer::getOMClass(false);
-
 					$obj3 = new $cls();
 					$obj3->hydrate($row, $startcol3);
-					sfGuardUserPeer::addInstanceToPool($obj3, $key3);
+					MealPeer::addInstanceToPool($obj3, $key3);
 				} // if $obj3 already loaded
 
-				// Add the $obj1 (MealOrder) to the collection in $obj3 (sfGuardUser)
-				$obj3->addMealOrder($obj1);
+				// Add the $obj1 (Vote) to the collection in $obj3 (Meal)
+				$obj3->addVote($obj1);
 
 			} // if joined row is not null
 
@@ -1371,12 +1268,12 @@ abstract class BaseMealOrderPeer {
 
 
 	/**
-	 * Selects a collection of MealOrder objects pre-filled with all related objects except sfGuardUser.
+	 * Selects a collection of Vote objects pre-filled with all related objects except sfGuardUser.
 	 *
 	 * @param      Criteria  $criteria
 	 * @param      PropelPDO $con
 	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
-	 * @return     array Array of MealOrder objects.
+	 * @return     array Array of Vote objects.
 	 * @throws     PropelException Any exceptions caught during processing will be
 	 *		 rethrown wrapped into a PropelException.
 	 */
@@ -1391,23 +1288,23 @@ abstract class BaseMealOrderPeer {
 			$criteria->setDbName(self::DATABASE_NAME);
 		}
 
-		MealOrderPeer::addSelectColumns($criteria);
-		$startcol2 = (MealOrderPeer::NUM_COLUMNS - MealOrderPeer::NUM_LAZY_LOAD_COLUMNS);
+		VotePeer::addSelectColumns($criteria);
+		$startcol2 = (VotePeer::NUM_COLUMNS - VotePeer::NUM_LAZY_LOAD_COLUMNS);
+
+		PlacePeer::addSelectColumns($criteria);
+		$startcol3 = $startcol2 + (PlacePeer::NUM_COLUMNS - PlacePeer::NUM_LAZY_LOAD_COLUMNS);
 
 		MealPeer::addSelectColumns($criteria);
-		$startcol3 = $startcol2 + (MealPeer::NUM_COLUMNS - MealPeer::NUM_LAZY_LOAD_COLUMNS);
+		$startcol4 = $startcol3 + (MealPeer::NUM_COLUMNS - MealPeer::NUM_LAZY_LOAD_COLUMNS);
 
-		ItemPeer::addSelectColumns($criteria);
-		$startcol4 = $startcol3 + (ItemPeer::NUM_COLUMNS - ItemPeer::NUM_LAZY_LOAD_COLUMNS);
+		$criteria->addJoin(VotePeer::PLACE_ID, PlacePeer::ID, $join_behavior);
 
-		$criteria->addJoin(MealOrderPeer::MEAL_ID, MealPeer::ID, $join_behavior);
-
-		$criteria->addJoin(MealOrderPeer::ITEM_ID, ItemPeer::ID, $join_behavior);
+		$criteria->addJoin(VotePeer::MEAL_ID, MealPeer::ID, $join_behavior);
 
 		// symfony_behaviors behavior
 		foreach (sfMixer::getCallables(self::getMixerPreSelectHook(__FUNCTION__)) as $sf_hook)
 		{
-		  call_user_func($sf_hook, 'BaseMealOrderPeer', $criteria, $con);
+		  call_user_func($sf_hook, 'BaseVotePeer', $criteria, $con);
 		}
 		
 
@@ -1415,54 +1312,157 @@ abstract class BaseMealOrderPeer {
 		$results = array();
 
 		while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
-			$key1 = MealOrderPeer::getPrimaryKeyHashFromRow($row, 0);
-			if (null !== ($obj1 = MealOrderPeer::getInstanceFromPool($key1))) {
+			$key1 = VotePeer::getPrimaryKeyHashFromRow($row, 0);
+			if (null !== ($obj1 = VotePeer::getInstanceFromPool($key1))) {
 				// We no longer rehydrate the object, since this can cause data loss.
 				// See http://propel.phpdb.org/trac/ticket/509
 				// $obj1->hydrate($row, 0, true); // rehydrate
 			} else {
-				$cls = MealOrderPeer::getOMClass(false);
+				$cls = VotePeer::getOMClass(false);
 
 				$obj1 = new $cls();
 				$obj1->hydrate($row);
-				MealOrderPeer::addInstanceToPool($obj1, $key1);
+				VotePeer::addInstanceToPool($obj1, $key1);
 			} // if obj1 already loaded
 
-				// Add objects for joined Meal rows
+				// Add objects for joined Place rows
 
-				$key2 = MealPeer::getPrimaryKeyHashFromRow($row, $startcol2);
+				$key2 = PlacePeer::getPrimaryKeyHashFromRow($row, $startcol2);
 				if ($key2 !== null) {
-					$obj2 = MealPeer::getInstanceFromPool($key2);
+					$obj2 = PlacePeer::getInstanceFromPool($key2);
 					if (!$obj2) {
 	
-						$cls = MealPeer::getOMClass(false);
+						$cls = PlacePeer::getOMClass(false);
 
 					$obj2 = new $cls();
 					$obj2->hydrate($row, $startcol2);
-					MealPeer::addInstanceToPool($obj2, $key2);
+					PlacePeer::addInstanceToPool($obj2, $key2);
 				} // if $obj2 already loaded
 
-				// Add the $obj1 (MealOrder) to the collection in $obj2 (Meal)
-				$obj2->addMealOrder($obj1);
+				// Add the $obj1 (Vote) to the collection in $obj2 (Place)
+				$obj2->addVote($obj1);
 
 			} // if joined row is not null
 
-				// Add objects for joined Item rows
+				// Add objects for joined Meal rows
 
-				$key3 = ItemPeer::getPrimaryKeyHashFromRow($row, $startcol3);
+				$key3 = MealPeer::getPrimaryKeyHashFromRow($row, $startcol3);
 				if ($key3 !== null) {
-					$obj3 = ItemPeer::getInstanceFromPool($key3);
+					$obj3 = MealPeer::getInstanceFromPool($key3);
 					if (!$obj3) {
 	
-						$cls = ItemPeer::getOMClass(false);
+						$cls = MealPeer::getOMClass(false);
 
 					$obj3 = new $cls();
 					$obj3->hydrate($row, $startcol3);
-					ItemPeer::addInstanceToPool($obj3, $key3);
+					MealPeer::addInstanceToPool($obj3, $key3);
 				} // if $obj3 already loaded
 
-				// Add the $obj1 (MealOrder) to the collection in $obj3 (Item)
-				$obj3->addMealOrder($obj1);
+				// Add the $obj1 (Vote) to the collection in $obj3 (Meal)
+				$obj3->addVote($obj1);
+
+			} // if joined row is not null
+
+			$results[] = $obj1;
+		}
+		$stmt->closeCursor();
+		return $results;
+	}
+
+
+	/**
+	 * Selects a collection of Vote objects pre-filled with all related objects except Meal.
+	 *
+	 * @param      Criteria  $criteria
+	 * @param      PropelPDO $con
+	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
+	 * @return     array Array of Vote objects.
+	 * @throws     PropelException Any exceptions caught during processing will be
+	 *		 rethrown wrapped into a PropelException.
+	 */
+	public static function doSelectJoinAllExceptMeal(Criteria $criteria, $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	{
+		$criteria = clone $criteria;
+
+		// Set the correct dbName if it has not been overridden
+		// $criteria->getDbName() will return the same object if not set to another value
+		// so == check is okay and faster
+		if ($criteria->getDbName() == Propel::getDefaultDB()) {
+			$criteria->setDbName(self::DATABASE_NAME);
+		}
+
+		VotePeer::addSelectColumns($criteria);
+		$startcol2 = (VotePeer::NUM_COLUMNS - VotePeer::NUM_LAZY_LOAD_COLUMNS);
+
+		PlacePeer::addSelectColumns($criteria);
+		$startcol3 = $startcol2 + (PlacePeer::NUM_COLUMNS - PlacePeer::NUM_LAZY_LOAD_COLUMNS);
+
+		sfGuardUserPeer::addSelectColumns($criteria);
+		$startcol4 = $startcol3 + (sfGuardUserPeer::NUM_COLUMNS - sfGuardUserPeer::NUM_LAZY_LOAD_COLUMNS);
+
+		$criteria->addJoin(VotePeer::PLACE_ID, PlacePeer::ID, $join_behavior);
+
+		$criteria->addJoin(VotePeer::SF_GUARD_USER_ID, sfGuardUserPeer::ID, $join_behavior);
+
+		// symfony_behaviors behavior
+		foreach (sfMixer::getCallables(self::getMixerPreSelectHook(__FUNCTION__)) as $sf_hook)
+		{
+		  call_user_func($sf_hook, 'BaseVotePeer', $criteria, $con);
+		}
+		
+
+		$stmt = BasePeer::doSelect($criteria, $con);
+		$results = array();
+
+		while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
+			$key1 = VotePeer::getPrimaryKeyHashFromRow($row, 0);
+			if (null !== ($obj1 = VotePeer::getInstanceFromPool($key1))) {
+				// We no longer rehydrate the object, since this can cause data loss.
+				// See http://propel.phpdb.org/trac/ticket/509
+				// $obj1->hydrate($row, 0, true); // rehydrate
+			} else {
+				$cls = VotePeer::getOMClass(false);
+
+				$obj1 = new $cls();
+				$obj1->hydrate($row);
+				VotePeer::addInstanceToPool($obj1, $key1);
+			} // if obj1 already loaded
+
+				// Add objects for joined Place rows
+
+				$key2 = PlacePeer::getPrimaryKeyHashFromRow($row, $startcol2);
+				if ($key2 !== null) {
+					$obj2 = PlacePeer::getInstanceFromPool($key2);
+					if (!$obj2) {
+	
+						$cls = PlacePeer::getOMClass(false);
+
+					$obj2 = new $cls();
+					$obj2->hydrate($row, $startcol2);
+					PlacePeer::addInstanceToPool($obj2, $key2);
+				} // if $obj2 already loaded
+
+				// Add the $obj1 (Vote) to the collection in $obj2 (Place)
+				$obj2->addVote($obj1);
+
+			} // if joined row is not null
+
+				// Add objects for joined sfGuardUser rows
+
+				$key3 = sfGuardUserPeer::getPrimaryKeyHashFromRow($row, $startcol3);
+				if ($key3 !== null) {
+					$obj3 = sfGuardUserPeer::getInstanceFromPool($key3);
+					if (!$obj3) {
+	
+						$cls = sfGuardUserPeer::getOMClass(false);
+
+					$obj3 = new $cls();
+					$obj3->hydrate($row, $startcol3);
+					sfGuardUserPeer::addInstanceToPool($obj3, $key3);
+				} // if $obj3 already loaded
+
+				// Add the $obj1 (Vote) to the collection in $obj3 (sfGuardUser)
+				$obj3->addVote($obj1);
 
 			} // if joined row is not null
 
@@ -1489,10 +1489,10 @@ abstract class BaseMealOrderPeer {
 	 */
 	public static function buildTableMap()
 	{
-	  $dbMap = Propel::getDatabaseMap(BaseMealOrderPeer::DATABASE_NAME);
-	  if (!$dbMap->hasTable(BaseMealOrderPeer::TABLE_NAME))
+	  $dbMap = Propel::getDatabaseMap(BaseVotePeer::DATABASE_NAME);
+	  if (!$dbMap->hasTable(BaseVotePeer::TABLE_NAME))
 	  {
-	    $dbMap->addTableObject(new MealOrderTableMap());
+	    $dbMap->addTableObject(new VoteTableMap());
 	  }
 	}
 
@@ -1509,13 +1509,13 @@ abstract class BaseMealOrderPeer {
 	 */
 	public static function getOMClass($withPrefix = true)
 	{
-		return $withPrefix ? MealOrderPeer::CLASS_DEFAULT : MealOrderPeer::OM_CLASS;
+		return $withPrefix ? VotePeer::CLASS_DEFAULT : VotePeer::OM_CLASS;
 	}
 
 	/**
-	 * Method perform an INSERT on the database, given a MealOrder or Criteria object.
+	 * Method perform an INSERT on the database, given a Vote or Criteria object.
 	 *
-	 * @param      mixed $values Criteria or MealOrder object containing data that is used to create the INSERT statement.
+	 * @param      mixed $values Criteria or Vote object containing data that is used to create the INSERT statement.
 	 * @param      PropelPDO $con the PropelPDO connection to use
 	 * @return     mixed The new primary key.
 	 * @throws     PropelException Any exceptions caught during processing will be
@@ -1524,26 +1524,26 @@ abstract class BaseMealOrderPeer {
 	public static function doInsert($values, PropelPDO $con = null)
 	{
     // symfony_behaviors behavior
-    foreach (sfMixer::getCallables('BaseMealOrderPeer:doInsert:pre') as $sf_hook)
+    foreach (sfMixer::getCallables('BaseVotePeer:doInsert:pre') as $sf_hook)
     {
-      if (false !== $sf_hook_retval = call_user_func($sf_hook, 'BaseMealOrderPeer', $values, $con))
+      if (false !== $sf_hook_retval = call_user_func($sf_hook, 'BaseVotePeer', $values, $con))
       {
         return $sf_hook_retval;
       }
     }
 
 		if ($con === null) {
-			$con = Propel::getConnection(MealOrderPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+			$con = Propel::getConnection(VotePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 
 		if ($values instanceof Criteria) {
 			$criteria = clone $values; // rename for clarity
 		} else {
-			$criteria = $values->buildCriteria(); // build Criteria from MealOrder object
+			$criteria = $values->buildCriteria(); // build Criteria from Vote object
 		}
 
-		if ($criteria->containsKey(MealOrderPeer::ID) && $criteria->keyContainsValue(MealOrderPeer::ID) ) {
-			throw new PropelException('Cannot insert a value for auto-increment primary key ('.MealOrderPeer::ID.')');
+		if ($criteria->containsKey(VotePeer::ID) && $criteria->keyContainsValue(VotePeer::ID) ) {
+			throw new PropelException('Cannot insert a value for auto-increment primary key ('.VotePeer::ID.')');
 		}
 
 
@@ -1562,18 +1562,18 @@ abstract class BaseMealOrderPeer {
 		}
 
     // symfony_behaviors behavior
-    foreach (sfMixer::getCallables('BaseMealOrderPeer:doInsert:post') as $sf_hook)
+    foreach (sfMixer::getCallables('BaseVotePeer:doInsert:post') as $sf_hook)
     {
-      call_user_func($sf_hook, 'BaseMealOrderPeer', $values, $con, $pk);
+      call_user_func($sf_hook, 'BaseVotePeer', $values, $con, $pk);
     }
 
 		return $pk;
 	}
 
 	/**
-	 * Method perform an UPDATE on the database, given a MealOrder or Criteria object.
+	 * Method perform an UPDATE on the database, given a Vote or Criteria object.
 	 *
-	 * @param      mixed $values Criteria or MealOrder object containing data that is used to create the UPDATE statement.
+	 * @param      mixed $values Criteria or Vote object containing data that is used to create the UPDATE statement.
 	 * @param      PropelPDO $con The connection to use (specify PropelPDO connection object to exert more control over transactions).
 	 * @return     int The number of affected rows (if supported by underlying database driver).
 	 * @throws     PropelException Any exceptions caught during processing will be
@@ -1582,16 +1582,16 @@ abstract class BaseMealOrderPeer {
 	public static function doUpdate($values, PropelPDO $con = null)
 	{
     // symfony_behaviors behavior
-    foreach (sfMixer::getCallables('BaseMealOrderPeer:doUpdate:pre') as $sf_hook)
+    foreach (sfMixer::getCallables('BaseVotePeer:doUpdate:pre') as $sf_hook)
     {
-      if (false !== $sf_hook_retval = call_user_func($sf_hook, 'BaseMealOrderPeer', $values, $con))
+      if (false !== $sf_hook_retval = call_user_func($sf_hook, 'BaseVotePeer', $values, $con))
       {
         return $sf_hook_retval;
       }
     }
 
 		if ($con === null) {
-			$con = Propel::getConnection(MealOrderPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+			$con = Propel::getConnection(VotePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 
 		$selectCriteria = new Criteria(self::DATABASE_NAME);
@@ -1599,10 +1599,10 @@ abstract class BaseMealOrderPeer {
 		if ($values instanceof Criteria) {
 			$criteria = clone $values; // rename for clarity
 
-			$comparison = $criteria->getComparison(MealOrderPeer::ID);
-			$selectCriteria->add(MealOrderPeer::ID, $criteria->remove(MealOrderPeer::ID), $comparison);
+			$comparison = $criteria->getComparison(VotePeer::ID);
+			$selectCriteria->add(VotePeer::ID, $criteria->remove(VotePeer::ID), $comparison);
 
-		} else { // $values is MealOrder object
+		} else { // $values is Vote object
 			$criteria = $values->buildCriteria(); // gets full criteria
 			$selectCriteria = $values->buildPkeyCriteria(); // gets criteria w/ primary key(s)
 		}
@@ -1613,35 +1613,35 @@ abstract class BaseMealOrderPeer {
 		$ret = BasePeer::doUpdate($selectCriteria, $criteria, $con);
 
     // symfony_behaviors behavior
-    foreach (sfMixer::getCallables('BaseMealOrderPeer:doUpdate:post') as $sf_hook)
+    foreach (sfMixer::getCallables('BaseVotePeer:doUpdate:post') as $sf_hook)
     {
-      call_user_func($sf_hook, 'BaseMealOrderPeer', $values, $con, $ret);
+      call_user_func($sf_hook, 'BaseVotePeer', $values, $con, $ret);
     }
 
     return $ret;
 	}
 
 	/**
-	 * Method to DELETE all rows from the meal_order table.
+	 * Method to DELETE all rows from the vote table.
 	 *
 	 * @return     int The number of affected rows (if supported by underlying database driver).
 	 */
 	public static function doDeleteAll($con = null)
 	{
 		if ($con === null) {
-			$con = Propel::getConnection(MealOrderPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+			$con = Propel::getConnection(VotePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 		$affectedRows = 0; // initialize var to track total num of affected rows
 		try {
 			// use transaction because $criteria could contain info
 			// for more than one table or we could emulating ON DELETE CASCADE, etc.
 			$con->beginTransaction();
-			$affectedRows += BasePeer::doDeleteAll(MealOrderPeer::TABLE_NAME, $con);
+			$affectedRows += BasePeer::doDeleteAll(VotePeer::TABLE_NAME, $con);
 			// Because this db requires some delete cascade/set null emulation, we have to
 			// clear the cached instance *after* the emulation has happened (since
 			// instances get re-added by the select statement contained therein).
-			MealOrderPeer::clearInstancePool();
-			MealOrderPeer::clearRelatedInstancePool();
+			VotePeer::clearInstancePool();
+			VotePeer::clearRelatedInstancePool();
 			$con->commit();
 			return $affectedRows;
 		} catch (PropelException $e) {
@@ -1651,9 +1651,9 @@ abstract class BaseMealOrderPeer {
 	}
 
 	/**
-	 * Method perform a DELETE on the database, given a MealOrder or Criteria object OR a primary key value.
+	 * Method perform a DELETE on the database, given a Vote or Criteria object OR a primary key value.
 	 *
-	 * @param      mixed $values Criteria or MealOrder object or primary key or array of primary keys
+	 * @param      mixed $values Criteria or Vote object or primary key or array of primary keys
 	 *              which is used to create the DELETE statement
 	 * @param      PropelPDO $con the connection to use
 	 * @return     int 	The number of affected rows (if supported by underlying database driver).  This includes CASCADE-related rows
@@ -1664,27 +1664,27 @@ abstract class BaseMealOrderPeer {
 	 public static function doDelete($values, PropelPDO $con = null)
 	 {
 		if ($con === null) {
-			$con = Propel::getConnection(MealOrderPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+			$con = Propel::getConnection(VotePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 
 		if ($values instanceof Criteria) {
 			// invalidate the cache for all objects of this type, since we have no
 			// way of knowing (without running a query) what objects should be invalidated
 			// from the cache based on this Criteria.
-			MealOrderPeer::clearInstancePool();
+			VotePeer::clearInstancePool();
 			// rename for clarity
 			$criteria = clone $values;
-		} elseif ($values instanceof MealOrder) { // it's a model object
+		} elseif ($values instanceof Vote) { // it's a model object
 			// invalidate the cache for this single object
-			MealOrderPeer::removeInstanceFromPool($values);
+			VotePeer::removeInstanceFromPool($values);
 			// create criteria based on pk values
 			$criteria = $values->buildPkeyCriteria();
 		} else { // it's a primary key, or an array of pks
 			$criteria = new Criteria(self::DATABASE_NAME);
-			$criteria->add(MealOrderPeer::ID, (array) $values, Criteria::IN);
+			$criteria->add(VotePeer::ID, (array) $values, Criteria::IN);
 			// invalidate the cache for this object(s)
 			foreach ((array) $values as $singleval) {
-				MealOrderPeer::removeInstanceFromPool($singleval);
+				VotePeer::removeInstanceFromPool($singleval);
 			}
 		}
 
@@ -1699,7 +1699,7 @@ abstract class BaseMealOrderPeer {
 			$con->beginTransaction();
 			
 			$affectedRows += BasePeer::doDelete($criteria, $con);
-			MealOrderPeer::clearRelatedInstancePool();
+			VotePeer::clearRelatedInstancePool();
 			$con->commit();
 			return $affectedRows;
 		} catch (PropelException $e) {
@@ -1709,24 +1709,24 @@ abstract class BaseMealOrderPeer {
 	}
 
 	/**
-	 * Validates all modified columns of given MealOrder object.
+	 * Validates all modified columns of given Vote object.
 	 * If parameter $columns is either a single column name or an array of column names
 	 * than only those columns are validated.
 	 *
 	 * NOTICE: This does not apply to primary or foreign keys for now.
 	 *
-	 * @param      MealOrder $obj The object to validate.
+	 * @param      Vote $obj The object to validate.
 	 * @param      mixed $cols Column name or array of column names.
 	 *
 	 * @return     mixed TRUE if all columns are valid or the error message of the first invalid column.
 	 */
-	public static function doValidate(MealOrder $obj, $cols = null)
+	public static function doValidate(Vote $obj, $cols = null)
 	{
 		$columns = array();
 
 		if ($cols) {
-			$dbMap = Propel::getDatabaseMap(MealOrderPeer::DATABASE_NAME);
-			$tableMap = $dbMap->getTable(MealOrderPeer::TABLE_NAME);
+			$dbMap = Propel::getDatabaseMap(VotePeer::DATABASE_NAME);
+			$tableMap = $dbMap->getTable(VotePeer::TABLE_NAME);
 
 			if (! is_array($cols)) {
 				$cols = array($cols);
@@ -1742,7 +1742,7 @@ abstract class BaseMealOrderPeer {
 
 		}
 
-		return BasePeer::doValidate(MealOrderPeer::DATABASE_NAME, MealOrderPeer::TABLE_NAME, $columns);
+		return BasePeer::doValidate(VotePeer::DATABASE_NAME, VotePeer::TABLE_NAME, $columns);
 	}
 
 	/**
@@ -1750,23 +1750,23 @@ abstract class BaseMealOrderPeer {
 	 *
 	 * @param      int $pk the primary key.
 	 * @param      PropelPDO $con the connection to use
-	 * @return     MealOrder
+	 * @return     Vote
 	 */
 	public static function retrieveByPK($pk, PropelPDO $con = null)
 	{
 
-		if (null !== ($obj = MealOrderPeer::getInstanceFromPool((string) $pk))) {
+		if (null !== ($obj = VotePeer::getInstanceFromPool((string) $pk))) {
 			return $obj;
 		}
 
 		if ($con === null) {
-			$con = Propel::getConnection(MealOrderPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(VotePeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 
-		$criteria = new Criteria(MealOrderPeer::DATABASE_NAME);
-		$criteria->add(MealOrderPeer::ID, $pk);
+		$criteria = new Criteria(VotePeer::DATABASE_NAME);
+		$criteria->add(VotePeer::ID, $pk);
 
-		$v = MealOrderPeer::doSelect($criteria, $con);
+		$v = VotePeer::doSelect($criteria, $con);
 
 		return !empty($v) > 0 ? $v[0] : null;
 	}
@@ -1782,16 +1782,16 @@ abstract class BaseMealOrderPeer {
 	public static function retrieveByPKs($pks, PropelPDO $con = null)
 	{
 		if ($con === null) {
-			$con = Propel::getConnection(MealOrderPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(VotePeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 
 		$objs = null;
 		if (empty($pks)) {
 			$objs = array();
 		} else {
-			$criteria = new Criteria(MealOrderPeer::DATABASE_NAME);
-			$criteria->add(MealOrderPeer::ID, $pks, Criteria::IN);
-			$objs = MealOrderPeer::doSelect($criteria, $con);
+			$criteria = new Criteria(VotePeer::DATABASE_NAME);
+			$criteria->add(VotePeer::ID, $pks, Criteria::IN);
+			$objs = VotePeer::doSelect($criteria, $con);
 		}
 		return $objs;
 	}
@@ -1823,15 +1823,15 @@ abstract class BaseMealOrderPeer {
 	{
 	  if (preg_match('/^do(Select|Count)(Join(All(Except)?)?|Stmt)?/', $method, $match))
 	  {
-	    return sprintf('BaseMealOrderPeer:%s:%1$s', 'Count' == $match[1] ? 'doCount' : $match[0]);
+	    return sprintf('BaseVotePeer:%s:%1$s', 'Count' == $match[1] ? 'doCount' : $match[0]);
 	  }
 	
 	  throw new LogicException(sprintf('Unrecognized function "%s"', $method));
 	}
 	
-} // BaseMealOrderPeer
+} // BaseVotePeer
 
 // This is the static code needed to register the TableMap for this table with the main Propel class.
 //
-BaseMealOrderPeer::buildTableMap();
+BaseVotePeer::buildTableMap();
 
