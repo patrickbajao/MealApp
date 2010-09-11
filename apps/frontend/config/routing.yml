@@ -8,6 +8,10 @@ homepage:
 
 # generic rules
 # please, remove them by adding more specific rules
+meals:
+  url:   /meals
+  param: { module: meal, action: index }
+
 show_menu:
   url:   /menu/:id
   param: { module: menu, action: show }

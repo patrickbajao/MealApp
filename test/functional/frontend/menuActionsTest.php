@@ -9,7 +9,7 @@ $browser = new sfTestFunctional(new sfBrowser());
  */
 
 $browser->info('1 - Order Page')->
-    get('/places')->
+    get('/meals')->
     with('response')->
     with('request')->begin()->
         click('Login', array('signin' => array('username' => 'tester', 'password' => 'p4ssw0rd!')))->
@@ -17,22 +17,20 @@ $browser->info('1 - Order Page')->
     with('response')->
         isRedirected()->
         followRedirect()->
+    info('1.1 - User clicks on the Order button')->
     with('request')->begin()->
-        click('Order', array(), array('position' => 1))-> //Order button will be clicked
+        click('Order', array(), array('position' => 1))-> //First Order button will be clicked
     end()->
-    with('response')->
-        isRedirected()->
-        followRedirect()->
-    info('1.1 - User picks a menu item')->
+    info('1.2 - User picks a menu item')->
     select('item[0]')-> //First checkbox will be selected
-    info('1.2 - User clicks on the Place Order button')->
+    info('1.3 - User clicks on the Place Order button')->
     with('request')->begin()->
         click('Place Order')->
     end()->
     with('response')->
         isRedirected()->
         followRedirect()->
-    info('1.2.1 - User successfully ordered and will be redirected to the Menu page with a success message')->
+    info('1.3.1 - User successfully ordered and will be redirected to the Menu page with a success message')->
     with('response')->begin()->
         checkElement('.info', '/Your order has been placed./i')->
     end();

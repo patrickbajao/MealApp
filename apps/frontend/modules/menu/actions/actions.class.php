@@ -30,7 +30,7 @@ class menuActions extends sfActions
                 }
                 if($success) {
                     $this->getUser()->setFlash('info', 'Your order has been placed.');
-                    $this->redirect('/menu/' . $meal_id);
+                    $this->redirect('menu/' . $meal_id);
                 }
             } else {
                 $this->getUser()->setFlash('info', 'Please order some food.');
