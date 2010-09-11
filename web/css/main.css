@@ -74,11 +74,30 @@ div#header {
             
             div#header ul#navbar li a:hover {
                 background-color: #9FCC4E;
+                background-image: url(../images/navbar-bg.gif);
+                background-repeat: no-repeat;
             }
 
 div#content {
     padding: 20px;
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ececec;
+    border-top: 1px solid #d5d5d5;
+    background-image: url(../images/content-bg.gif);
+    background-repeat: repeat-x;
 }
+
+    div#content > p.title {
+        font-size: 140%;
+        text-align: left;
+        background-color: #767676;
+        color: #ececec;
+        padding: 10px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
 
 div#login-form {
     width: 400px;
