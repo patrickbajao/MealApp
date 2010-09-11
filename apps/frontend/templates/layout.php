@@ -12,7 +12,7 @@
     <div id="wrapper">
         <div id="container">
             <div id="header">
-                <h1 id="logo"><a href="<?php echo url_for('@homepage') ?>" id="logo"><span>LunchApp</span></a></h1>
+                <h1 id="logo"><a href="<?php echo url_for('@homepage') ?>"><span>LunchApp</span></a></h1>
                 <?php if($sf_user->isAuthenticated()): ?>
                 <ul id="navbar">
                     <li><a href="<?php echo url_for('@homepage') ?>">Home</a></li>
