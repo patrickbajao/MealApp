@@ -1,0 +1,3 @@
+signinSuccess:
+  stylesheets: [login.css, -main.css]
+  layout:      login
