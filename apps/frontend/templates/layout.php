@@ -1,14 +1,31 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-  <head>
+<head>
     <?php include_http_metas() ?>
     <?php include_metas() ?>
     <?php include_title() ?>
     <link rel="shortcut icon" href="/favicon.ico" />
     <?php include_stylesheets() ?>
     <?php include_javascripts() ?>
-  </head>
-  <body>
-    <?php echo $sf_content ?>
-  </body>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="container">
+            <div id="header">
+                <a href="<?php echo url_for('homepage') ?>" id="logo"><img src="<?php echo url_for('/images/lunch-app-logo.gif') ?>" /></a>
+                <?php if($sf_user->isAuthenticated()): ?>
+                <ul id="navbar">
+                    <li><a href="<?php echo url_for('homepage') ?>">Home</a></li>
+                    <li><a href="<?php echo url_for('') ?>">Places</a></li>
+                    <li><a href="<?php echo url_for('meals') ?>">Meals</a></li>
+                    <li><a href="<?php echo url_for('sf_guard_signout') ?>">Logout</a></li>
+                </ul>
+                <?php endif; ?>
+            </div>
+            <div id="content">
+                <?php echo $sf_content ?>
+            </div>
+        </div>
+    </div>
+</body>
 </html>
