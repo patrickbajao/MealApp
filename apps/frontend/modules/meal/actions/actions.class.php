@@ -19,4 +19,9 @@ class mealActions extends sfActions
         $this->meals = MealPeer::doSelect(new Criteria());
     }
     
+    public function executeVote(sfWebRequest $request) {
+        $meal_id = $request->getParameter('meal_id');
+        
+    }
+    
 }
