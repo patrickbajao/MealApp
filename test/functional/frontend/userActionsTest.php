@@ -4,6 +4,9 @@ include(dirname(__FILE__).'/../../bootstrap/functional.php');
 
 $browser = new sfTestFunctional(new sfBrowser());
 
+$loader = new sfPropelData();
+$loader->loadData(sfConfig::get('sf_test_dir').'/fixtures');
+
 /**
  * Feature 1: As a user, I can login to my account
  */
