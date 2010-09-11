@@ -22,15 +22,18 @@ CREATE TABLE `meal_order`
 	INDEX `meal_order_FI_1` (`meal_id`),
 	CONSTRAINT `meal_order_FK_1`
 		FOREIGN KEY (`meal_id`)
-		REFERENCES `meal` (`id`),
+		REFERENCES `meal` (`id`)
+		ON DELETE CASCADE,
 	INDEX `meal_order_FI_2` (`item_id`),
 	CONSTRAINT `meal_order_FK_2`
 		FOREIGN KEY (`item_id`)
-		REFERENCES `item` (`id`),
+		REFERENCES `item` (`id`)
+		ON DELETE CASCADE,
 	INDEX `meal_order_FI_3` (`sf_guard_user_id`),
 	CONSTRAINT `meal_order_FK_3`
 		FOREIGN KEY (`sf_guard_user_id`)
 		REFERENCES `sf_guard_user` (`id`)
+		ON DELETE CASCADE
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------
@@ -52,6 +55,7 @@ CREATE TABLE `meal`
 	CONSTRAINT `meal_FK_1`
 		FOREIGN KEY (`place_id`)
 		REFERENCES `place` (`id`)
+		ON DELETE CASCADE
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------
@@ -73,6 +77,7 @@ CREATE TABLE `item`
 	CONSTRAINT `item_FK_1`
 		FOREIGN KEY (`menu_id`)
 		REFERENCES `menu` (`id`)
+		ON DELETE CASCADE
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------
@@ -109,6 +114,7 @@ CREATE TABLE `menu`
 	CONSTRAINT `menu_FK_1`
 		FOREIGN KEY (`place_id`)
 		REFERENCES `place` (`id`)
+		ON DELETE CASCADE
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------
@@ -130,15 +136,18 @@ CREATE TABLE `vote`
 	INDEX `vote_FI_1` (`place_id`),
 	CONSTRAINT `vote_FK_1`
 		FOREIGN KEY (`place_id`)
-		REFERENCES `place` (`id`),
+		REFERENCES `place` (`id`)
+		ON DELETE CASCADE,
 	INDEX `vote_FI_2` (`sf_guard_user_id`),
 	CONSTRAINT `vote_FK_2`
 		FOREIGN KEY (`sf_guard_user_id`)
-		REFERENCES `sf_guard_user` (`id`),
+		REFERENCES `sf_guard_user` (`id`)
+		ON DELETE CASCADE,
 	INDEX `vote_FI_3` (`meal_id`),
 	CONSTRAINT `vote_FK_3`
 		FOREIGN KEY (`meal_id`)
 		REFERENCES `meal` (`id`)
+		ON DELETE CASCADE
 )Type=InnoDB;
 
 # This restores the fkey checks, after having unset them earlier
