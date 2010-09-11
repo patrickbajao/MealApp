@@ -12,18 +12,19 @@
     <div id="wrapper">
         <div id="container">
             <div id="header">
-                <a href="<?php echo url_for('homepage') ?>" id="logo"><img src="<?php echo url_for('/images/lunch-app-logo-beta.gif') ?>" /></a>
+                <a href="<?php echo url_for('@homepage') ?>" id="logo"><img src="<?php echo url_for('/images/lunch-app-logo-beta.gif') ?>" /></a>
                 <?php if($sf_user->isAuthenticated()): ?>
                 <ul id="navbar">
-                    <li><a href="<?php echo url_for('homepage') ?>">Home</a></li>
+                    <li><a href="<?php echo url_for('@homepage') ?>">Home</a></li>
                     <li><a href="<?php echo url_for('') ?>">Places</a></li>
-                    <li><a href="<?php echo url_for('meals') ?>">Meals</a></li>
-                    <li><a href="<?php echo url_for('sf_guard_signout') ?>">Logout</a></li>
+                    <li><a href="<?php echo url_for('@meals') ?>">Meals</a></li>
+                    <li><a href="<?php echo url_for('@sf_guard_signout') ?>">Logout</a></li>
                 </ul>
                 <?php endif; ?>
             </div>
             <div id="content">
                 <?php echo $sf_content ?>
+                <div class="clear"></div>
             </div>
         </div>
     </div>
