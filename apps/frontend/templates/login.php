@@ -12,7 +12,7 @@
     <div id="wrapper">
         <div id="container">
             <div id="header">
-                <h1 id="logo"><a href="<?php echo url_for('@homepage') ?>"><span>LunchApp</span></a></h1>
+                <h1 id="logo"><?php echo link_to('<span>LunchApp</span>', '@homepage') ?></h1>
             </div>
             <div id="content">
                 <?php echo $sf_content ?>

@@ -102,7 +102,7 @@ div#content {
     background-repeat: repeat-x;
 }
 
-    div#content > p.title {
+    div#content > div.title {
         font-size: 140%;
         text-align: left;
         background-color: #767676;
@@ -177,11 +177,14 @@ div#meal-list {}
             border-left: 4px solid #82ad2f;
         }
         
-            div#meal-list ul li h1 {
+            div#meal-list ul li span.counter {
                 color: #ffffff;
                 float: left;
                 padding-right: 10px;
                 padding-bottom: 10px;
+                font-size: 200%;
+                font-weight: bold;
+                display: block;
             }
             
                 div#meal-list ul li div.meal-info {
@@ -189,23 +192,32 @@ div#meal-list {}
                     width: 225px;
                 }
             
-                    div#meal-list ul li div.meal-info span {
+                    div#meal-list ul li div.meal-info dt,
+                    div#meal-list ul li div.meal-info dd {
                         display: block;
                         padding: 5px;
                     }
                     
-                    div#meal-list ul li div.meal-info span.links a {
-                        text-decoration: none;
-                        text-transform: uppercase;
-                        font-size: 85%;
-                        color: #000000;
-                        padding: 5px;
+                    div#meal-list ul li div.meal-info dt { float: left; font-weight: bold; }
+                    
+                    div#meal-list ul li div.meal-info span.links {
+                        padding-top: 5px;
                         float: left;
-                        margin-right: 10px;
-                        font-weight: bold;
-                        background-color: #82AD2F;
+                        display: block;
                     }
                     
-                    div#meal-list ul li div.meal-info span.links a:hover {
-                        background-color: #ececec;
-                    }
+                        div#meal-list ul li div.meal-info span.links a {
+                            text-decoration: none;
+                            text-transform: uppercase;
+                            font-size: 85%;
+                            color: #000000;
+                            padding: 5px;
+                            margin-right: 10px;
+                            font-weight: bold;
+                            background-color: #82AD2F;
+                            float: left;
+                        }
+                        
+                        div#meal-list ul li div.meal-info span.links a:hover {
+                            background-color: #ececec;
+                        }

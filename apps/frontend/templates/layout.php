@@ -12,13 +12,13 @@
     <div id="wrapper">
         <div id="container">
             <div id="header">
-                <h1 id="logo"><a href="<?php echo url_for('@homepage') ?>"><span>LunchApp</span></a></h1>
+                <h1 id="logo"><?php echo link_to('<span>LunchApp</span>', '@homepage') ?></h1>
                 <?php if($sf_user->isAuthenticated()): ?>
                 <ul id="navbar">
-                    <li><a href="<?php echo url_for('@homepage') ?>">Home</a></li>
-                    <li><a href="<?php echo url_for('') ?>">Places</a></li>
-                    <li><a href="<?php echo url_for('@meals') ?>">Meals</a></li>
-                    <li><a href="<?php echo url_for('@sf_guard_signout') ?>">Logout</a></li>
+                    <li><?php echo link_to('Home', '@homepage') ?></li>
+                    <li><?php echo link_to('Places', '@homepage') ?></li>
+                    <li><?php echo link_to('Meals', '@meals') ?></li>
+                    <li><?php echo link_to('Logout', '@sf_guard_signout') ?></li>
                 </ul>
                 <?php endif; ?>
             </div>
