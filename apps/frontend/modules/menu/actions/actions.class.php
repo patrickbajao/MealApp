@@ -37,7 +37,7 @@ class menuActions extends sfActions
             }
         }
         // Get the menu and its items and set the values for the view
-        $this->menu  = MenuPeer::getPlaceMenu(MealPeer::getMealPlaceId($meal_id));
+        $this->menu  = MenuPeer::getPlaceMenu($meal_id);
         $this->items = $this->menu->getMenuItems();
     }
 }
