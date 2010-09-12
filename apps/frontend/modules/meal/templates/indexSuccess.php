@@ -1,6 +1,9 @@
 <?php use_helper('Meal') ?>
 <div class="title">Meals</div>
 <div id="meal-list">
+    <?php if($sf_user->hasFlash('info')): ?>
+        <p class="info"><?php echo $sf_user->getFlash('info') ?></p>
+    <?php endif; ?>
     <ul>
     <?php $ctr = 1; ?>
     <?php foreach($meals as $meal): ?>
@@ -16,12 +19,7 @@
                         <dd><?php echo date('Y M j g:i', strtotime($meal->getCreatedAt())) ?></dd>
                 </dl>
                 <span class="links">
-                    <?php if(is_null($meal->getPlace())): ?>
-                        <?php echo link_to('Vote', 'vote/' . $meal->getId()) ?>
-                    <?php else: ?>
-                        <?php echo link_to('View Menu', 'menu/' . $meal->getPlaceId()) ?>
-                        <?php echo link_to('Order', 'order/' . $meal->getId()) ?>
-                    <?php endif; ?>
+                    <?php echo meal_links($meal, $sf_user->getGuardUser()->getId()) ?>
                 </span>
             </div>
         </li>

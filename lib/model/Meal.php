@@ -16,6 +16,11 @@
  *
  * @package    lib.model
  */
-class Meal extends BaseMeal {
-
+class Meal extends BaseMeal
+{
+    
+    public function userHasVoted($user_id) {
+        return VotePeer::checkIfUserHasVoted($this->getId(), $user_id);
+    }
+    
 } // Meal

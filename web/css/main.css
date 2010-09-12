@@ -111,6 +111,16 @@ div#content {
         font-weight: bold;
         margin-bottom: 20px;
     }
+    
+    div#content p.info {
+        text-align: left;
+        background-color: #C3D9FF;
+        color: #223b58;
+        padding: 10px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        border: 1px solid #a3b9de;
+    }
 
 div#login-form {
     width: 400px;

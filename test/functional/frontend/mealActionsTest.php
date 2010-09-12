@@ -25,7 +25,7 @@ $browser->info('1 - Vote Page')->
         click('Vote', array(), array('position' => 1))-> //First Vote button will be clicked
     end()->
     info('1.2 - User chooses a place from the list')->
-    select('place', array('position' => 1))-> //First radiobutton will be selected
+    select('vote[place_id]', array('position' => 1))-> //First radiobutton will be selected
     info('1.3 - User clicks on the Place Vote button')->
     with('request')->begin()->
         click('Place Vote')->

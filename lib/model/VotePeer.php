@@ -16,6 +16,23 @@
  *
  * @package    lib.model
  */
-class VotePeer extends BaseVotePeer {
+class VotePeer extends BaseVotePeer
+{
 
+    public static function checkIfUserHasVoted($meal_id, $user_id) {
+        $vote = self::getVote($meal_id, $user_id);
+        if(!empty($vote)) {
+            return true;
+        }
+        return false;
+    }
+    
+    public static function getVote($meal_id, $user_id) {
+        $c = new Criteria();
+        $c->add(self::MEAL_ID, $meal_id, Criteria::EQUAL);
+        $c->add(self::SF_GUARD_USER_ID, $user_id, Criteria::EQUAL);
+        $vote = self::doSelectOne($c);
+        return $vote;
+    }
+    
 } // VotePeer

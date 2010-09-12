@@ -8,10 +8,14 @@ homepage:
 
 # generic rules
 # please, remove them by adding more specific rules
+vote_change:
+  url:   /vote/change/:meal_id
+  param: { module: meal, action: change_vote }
+
 vote:
   url:   /vote/:meal_id
   param: { module: meal, action: vote }
-
+  
 meals:
   url:   /meals
   param: { module: meal, action: index }

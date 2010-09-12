@@ -17,5 +17,9 @@
  * @package    lib.model
  */
 class Place extends BasePlace {
-
+    
+    public function __toString() {
+            return $this->getName();
+    }
+    
 } // Place
