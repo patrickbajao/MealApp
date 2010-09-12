@@ -1,8 +1,8 @@
+<div class="title">Order</div>
 <?php if($sf_user->hasFlash('info')): ?>
     <p class="info"><?php echo $sf_user->getFlash('info') ?></p>
 <?php endif; ?>
-<div id="menu">
-<form action="" method="post">
+<form method="post" id="meal-order">
     <ul id="menu-list">
     <?php $ctr = 0 ?>
     <?php foreach($items as $item): ?>
@@ -13,6 +13,7 @@
     <?php $ctr++ ?>
     <?php endforeach; ?>
     </ul>
-    <input type="submit" value="Place Order" />
+    <div class="buttons">
+        <input type="submit" value="Place Order" />
+    </div>
 </form>
-</div>

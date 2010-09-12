@@ -231,3 +231,51 @@ div#meal-list {}
                         div#meal-list ul li div.meal-info span.links a:hover {
                             background-color: #ececec;
                         }
+
+form#meal-order { display: block; }
+
+    form#meal-order ul{
+        list-style: none;
+        display: block;
+    }
+    
+        form#meal-order ul li {
+            display: block;
+            width: 400px;
+            height: 30px;
+            line-height: 30px;
+            padding: 10px;
+            border: 1px solid #d5d5d5;
+            margin-bottom: 5px;
+            background-image: url(../images/choice-bg.gif);
+            background-repeat: no-repeat;
+            font-weight: bold;
+        }
+        
+    form#meal-order div.buttons {
+        padding-top: 20px;
+    }
+        
+form#place-vote { display: block; }
+
+    form#place-vote ul.radio_list{
+        list-style: none;
+        display: block;
+    }
+    
+        form#place-vote ul.radio_list li {
+            display: block;
+            width: 400px;
+            height: 30px;
+            line-height: 30px;
+            padding: 10px;
+            border: 1px solid #d5d5d5;
+            margin-bottom: 5px;
+            background-image: url(../images/choice-bg.gif);
+            background-repeat: no-repeat;
+            font-weight: bold;
+        }
+    
+    form#place-vote div.buttons {
+        padding-top: 20px;
+    }
