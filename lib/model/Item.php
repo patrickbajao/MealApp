@@ -16,6 +16,11 @@
  *
  * @package    lib.model
  */
-class Item extends BaseItem {
+class Item extends BaseItem
+{
+
+    public function __toString() {
+        return $this->getName();
+    }
 
 } // Item
