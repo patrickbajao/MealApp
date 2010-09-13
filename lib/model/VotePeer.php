@@ -19,14 +19,6 @@
 class VotePeer extends BaseVotePeer
 {
 
-    public static function checkIfUserHasVoted($meal_id, $user_id) {
-        $vote = self::getVote($meal_id, $user_id);
-        if(!empty($vote)) {
-            return true;
-        }
-        return false;
-    }
-    
     public static function getVote($meal_id, $user_id) {
         $c = new Criteria();
         $c->add(self::MEAL_ID, $meal_id, Criteria::EQUAL);

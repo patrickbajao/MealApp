@@ -1,0 +1,116 @@
+html { background-color: #ffffff; }
+
+body, div, p, h1, h2, h3, h4, h5, ul, ol, li, form, label, span, img, a, blockquote {
+    margin: 0;
+    padding: 0;
+}
+
+h1 { font-size: 200%; }
+
+h2 { font-size: 180%; }
+
+h3 { font-size: 160%; }
+
+h4 { font-size: 140%; }
+
+h5 { font-size: 120%; }
+
+a img { border: 0 none; }
+
+table { border-collapse: collapse; }
+
+.clear { clear: both; }
+
+body {
+    font-family: arial, helvetica, sans-serif;
+    font-size: 14px;
+    color: #292929;
+    background-image: url(../images/bg.gif);
+    background-repeat: repeat-x;
+    padding: 0;
+}
+
+div#container {
+    width: 980px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+div#header {
+    padding: 20px;
+    height: 100px;
+}
+
+    div#header h1#logo {
+        width: 200px;
+        height: 100px;
+        float: left;
+        background-image: url(../images/lunch-app-logo-beta.gif);
+        background-repeat: no-repeat;
+    }
+    
+        div#header h1#logo a {
+            display: block;
+            width: 200px;
+            height: 100px;
+        }
+        
+            div#header h1#logo a span {
+                display: none;
+            }
+
+    div#header ul#navbar {
+        display: block;
+        height: 40px;
+        list-style: none;
+        width: 400px;
+        float: right;
+        padding-top: 30px;
+    }
+    
+        div#header ul#navbar li {
+            display: block;
+            width: 100px;
+            float: left;
+            height: 40px;
+            text-align: center;
+        }
+        
+            div#header ul#navbar li a {
+                display: block;
+                text-decoration: none;
+                color: #292929;
+                width: 100px;
+                height: 40px;
+                line-height: 40px;
+                text-transform: uppercase;
+                font-size: 85%;
+                font-weight: bold;
+            }
+            
+            div#header ul#navbar li a:hover {
+                background-color: #9FCC4E;
+                background-image: url(../images/navbar-bg.gif);
+                background-repeat: no-repeat;
+            }
+
+div#content {
+    padding: 20px;
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ececec;
+    border-top: 1px solid #d5d5d5;
+    background-image: url(../images/content-bg.gif);
+    background-repeat: repeat-x;
+}
+
+    div#content > div.title {
+        font-size: 140%;
+        text-align: left;
+        background-color: #767676;
+        color: #ececec;
+        padding: 10px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }

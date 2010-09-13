@@ -22,8 +22,9 @@ class mealActions extends sfActions
     public function executeVote(sfWebRequest $request) {
         $user_id = $this->getUser()->getGuardUser()->getId();
         $meal_id  = $request->getParameter('meal_id');
+        $meal = MealPeer::getMeal($meal_id);
         $vote = null;
-        if(VotePeer::checkIfUserHasVoted($meal_id, $user_id)) {
+        if($meal->userHasVoted($user_id)) {
             $this->getUser()->setFlash('info', 'You have already voted for this meal. You are now about to change your vote.');
             $vote = VotePeer::getVote($meal_id, $user_id);
         } else {

@@ -20,7 +20,11 @@ class Meal extends BaseMeal
 {
     
     public function userHasVoted($user_id) {
-        return VotePeer::checkIfUserHasVoted($this->getId(), $user_id);
+        $vote = VotePeer::getVote($this->getId(), $user_id);
+        if(!empty($vote)) {
+            return true;
+        }
+        return false;
     }
     
 } // Meal

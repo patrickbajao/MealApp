@@ -18,10 +18,15 @@
  */
 class MealPeer extends BaseMealPeer {
     
-    public static function getMealPlaceId($meal_id) {
+    public static function getMeal($meal_id) {
         $c = new Criteria();
         $c->add(self::ID, $meal_id, Criteria::EQUAL);
         $meal = self::doSelectOne($c);
+        return $meal;
+    }
+    
+    public static function getMealPlaceId($meal_id) {
+        $meal = self::getMeal($meal_id);
         return $meal->getPlaceId();
     }
     
