@@ -1,12 +1,12 @@
 generator:
   class: sfPropelGenerator
   param:
-    model_class:           Place
+    model_class:           place
     theme:                 admin
     non_verbose_templates: true
     with_show:             false
-    singular:              Place
-    plural:                Places
+    singular:              place
+    plural:                places
     route_prefix:          place
     with_propel_route:     1
     actions_base_class:    sfActions

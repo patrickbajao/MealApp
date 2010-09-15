@@ -1,7 +1,7 @@
 place:
   class: sfPropelRouteCollection
   options:
-    model:                Place
+    model:                place
     module:               place
     prefix_path:          /place
     column:               id
