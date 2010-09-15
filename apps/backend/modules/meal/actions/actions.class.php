@@ -13,19 +13,4 @@ require_once dirname(__FILE__).'/../lib/mealGeneratorHelper.class.php';
  */
 class mealActions extends autoMealActions
 {
-
-    public function executeStopVote(sfRequest $request) {
-    
-    }
-
-    public function executeStopOrder(sfRequest $request) {
-    
-    }
-    
-    public function executeViewVotes(sfRequest $request) {
-    }
-    
-    public function executeViewOrders(sfRequest $request) {
-    }
-    
 }

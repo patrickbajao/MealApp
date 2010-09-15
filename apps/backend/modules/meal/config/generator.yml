@@ -19,10 +19,6 @@ generator:
         object_actions:
           _edit:        ~
           _delete:      ~
-          stopvote:     { label: Stop Voting, action: stopVote }
-          stoporder:     { label: Stop Ordering, action: stopOrder }
-          viewvotes:     { label: View Votes, action: viewVotes }
-          vieworders:     { label: View Orders, action: viewOrders }
         batch_actions:
           _delete: ~
         actions:
