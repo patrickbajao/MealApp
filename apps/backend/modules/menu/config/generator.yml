@@ -1,0 +1,21 @@
+generator:
+  class: sfPropelGenerator
+  param:
+    model_class:           menu
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              menu
+    plural:                menus
+    route_prefix:          menu
+    with_propel_route:     1
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:    ~
+      filter:  ~
+      form:    ~
+      edit:    ~
+      new:     ~
