@@ -5,10 +5,9 @@
         <p class="info"><?php echo $sf_user->getFlash('info') ?></p>
     <?php endif; ?>
     <ul>
-    <?php $ctr = 1; ?>
     <?php foreach($meals as $meal): ?>
         <li class="meal">
-            <span class="counter"><?php echo $ctr ?></span>
+            <span class="counter"><?php echo $meal->getId() ?></span>
             <div class="meal-info">
                 <dl>
                     <dt>Place: </dt>
@@ -19,11 +18,10 @@
                         <dd><?php echo date('Y M j g:i', strtotime($meal->getCreatedAt())) ?></dd>
                 </dl>
                 <span class="links">
-                    <?php echo meal_links($meal, $sf_user->getGuardUser()->getId()) ?>
+                    <?php echo meal_links($meal, $sf_user->getGuardUser()) ?>
                 </span>
             </div>
         </li>
-        <?php $ctr++; ?>
     <?php endforeach; ?>
     </ul>
 </div>

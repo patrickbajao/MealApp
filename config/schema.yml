@@ -10,6 +10,8 @@ propel:
     id:               ~
     place_id:         { type: integer, foreignTable: place, foreignReference: id, onDelete: cascade }
     type:             { type: varchar(9), required: true }
+    voting_stopped:   { type: tinyint, default: 0 }
+    ordering_stopped: { type: tinyint, default: 0 }
     created_at:       ~
     updated_at:       ~
   item:

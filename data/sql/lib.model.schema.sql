@@ -48,6 +48,8 @@ CREATE TABLE `meal`
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`place_id` INTEGER,
 	`type` VARCHAR(9)  NOT NULL,
+	`voting_stopped` TINYINT default 0,
+	`ordering_stopped` TINYINT default 0,
 	`created_at` DATETIME,
 	`updated_at` DATETIME,
 	PRIMARY KEY (`id`),

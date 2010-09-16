@@ -8,6 +8,22 @@ homepage:
 
 # generic rules
 # please, remove them by adding more specific rules
+stop_vote:
+  url:   /stopVotes/:meal_id
+  param: { module: meal, action: stopVotes }
+
+stop_order:
+  url:   /stopOrders/:meal_id
+  param: { module: meal, action: stopOrders }
+
+start_vote:
+  url:   /startVotes/:meal_id
+  param: { module: meal, action: startVotes }
+
+start_order:
+  url:   /startOrders/:meal_id
+  param: { module: meal, action: startOrders }
+  
 vote_change:
   url:   /vote/change/:meal_id
   param: { module: meal, action: change_vote }

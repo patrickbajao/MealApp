@@ -27,4 +27,25 @@ class Meal extends BaseMeal
         return false;
     }
     
+    public function isVotingStopped() {
+        if(1 == $this->getVotingStopped()) {
+            return true;
+        }
+        return false;
+    }
+    
+    public function isOrderingStopped() {
+        if(1 == $this->getOrderingStopped()) {
+            return true;
+        }
+        return false;
+    }
+    
+    public function getVoteCount() {
+        $c = new Criteria();
+        $c->add(VotePeer::MEAL_ID, $this->getId());
+        $vote_count = VotePeer::doCount($c);
+        return $vote_count;
+    }
+    
 } // Meal

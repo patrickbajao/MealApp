@@ -43,6 +43,25 @@ class mealActions extends sfActions
         }
     }
     
+    public function executeStopVotes(sfWebRequest $request) {
+        $meal_id  = $request->getParameter('meal_id');
+        $meal = MealPeer::getMeal($meal_id);
+        if(!$meal->isVotingStopped()) {
+            $meal->setVotingStopped(1);
+        }
+        $this->getUser()->setFlash('info', 'Voting has stopped for meal ' . $meal_id);
+        $this->redirect('@meals');
+    }
+    
+    public function executeStopOrders(sfWebRequest $request) {
+    }
+    
+    public function executeStartVotes(sfWebRequest $request) {
+    }
+    
+    public function executeStartOrders(sfWebRequest $request) {
+    }
+    
     protected function processForm(sfWebRequest $request, sfForm $form) {
         $form->bind($request->getParameter($form->getName()));
         if ($form->isValid()) {
