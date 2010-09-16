@@ -1,3 +1,12 @@
+meal:
+  class: sfPropelRouteCollection
+  options:
+    model:                meal
+    module:               meal
+    prefix_path:          /meal
+    column:               id
+    with_wildcard_routes: true
+
 item:
   class: sfPropelRouteCollection
   options:
