@@ -1,3 +1,12 @@
+item:
+  class: sfPropelRouteCollection
+  options:
+    model:                item
+    module:               item
+    prefix_path:          /item
+    column:               id
+    with_wildcard_routes: true
+
 menu:
   class: sfPropelRouteCollection
   options:

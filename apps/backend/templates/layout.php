@@ -18,6 +18,7 @@
                     <li><?php echo link_to('Home', '@homepage') ?></li>
                     <li><?php echo link_to('Places', '@place') ?></li>
                     <li><?php echo link_to('Menus', '@menu') ?></li>
+                    <li><?php echo link_to('Items', '@item') ?></li>
                     <li><?php echo link_to('Users', '@sf_guard_user') ?></li>
                     <li><?php echo link_to('Logout', '@sf_guard_signout') ?></li>
                 </ul>

@@ -18,6 +18,10 @@
  */
 class Menu extends BaseMenu {
     
+    public function __toString() {
+        return $this->getPlace()->getName();
+    }
+    
     public function getMenuItems() {
         $c = new Criteria();
         $c->add(ItemPeer::MENU_ID, $this->getId(), Criteria::EQUAL);
