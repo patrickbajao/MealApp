@@ -114,3 +114,7 @@ div#content {
         font-weight: bold;
         margin-bottom: 20px;
     }
+    
+    div#content ul.sf_admin_td_actions a {
+        display: block;
+    }
