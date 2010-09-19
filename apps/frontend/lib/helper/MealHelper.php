@@ -15,10 +15,12 @@ function meal_links($meal, $user) {
             }
         }
     } else {
-        $links .= link_to('View Menu', 'menu/' . $meal->getPlaceId());
-        $links .= link_to('Order', 'order/' . $meal->getId());
+        $order_link = $meal->userHasOrdered($user->getId()) ? 'Change Order' : 'Order' ;
+        $links .= link_to($order_link, 'order/' . $meal->getId());
         if($user->getIsSuperAdmin()) {
-            $links .= link_to('Stop Orders', 'stopOrders/' . $meal->getId());
+            if($meal->getOrderCount() > 0 && !$meal->isOrderingStopped()) {
+                $links .= link_to('Stop Orders', 'stopOrders/' . $meal->getId());
+            }
         }
     }
     return $links;

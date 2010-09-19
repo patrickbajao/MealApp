@@ -16,6 +16,22 @@
  *
  * @package    lib.model
  */
-class MealOrderPeer extends BaseMealOrderPeer {
+class MealOrderPeer extends BaseMealOrderPeer
+{
+    
+    public static function getOrder($meal_id, $user_id) {
+        $c = new Criteria();
+        $c->add(self::MEAL_ID, $meal_id, Criteria::EQUAL);
+        $c->add(self::SF_GUARD_USER_ID, $user_id, Criteria::EQUAL);
+        $order = self::doSelectOne($c);
+        return $order;
+    }
+    
+    public static function getOrderCount($meal_id) {
+        $c = new Criteria();
+        $c->add(self::MEAL_ID, $meal_id);
+        $order_count = self::doCount($c);
+        return $order_count;
+    }
 
 } // MealOrderPeer

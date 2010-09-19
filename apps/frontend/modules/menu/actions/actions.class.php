@@ -16,6 +16,11 @@ class menuActions extends sfActions
     public function executeOrder(sfWebRequest $request) {
         $meal_id  = $request->getParameter('meal');
         $items    = $request->getPostParameter('item');
+        $meal = MealPeer::getMeal($meal_id);
+        if($meal->isOrderingStopped()) {
+            $this->getUser()->setFlash('info', 'Ordering for meal ' . $meal_id . ' has already been stopped.');
+            $this->redirect('@meals');
+        }
         if('POST' == $request->getMethod()) {
             if(!empty($items)) {
                 $success = false;
@@ -30,7 +35,7 @@ class menuActions extends sfActions
                 }
                 if($success) {
                     $this->getUser()->setFlash('info', 'Your order has been placed.');
-                    $this->redirect('menu/' . $meal_id);
+                    $this->redirect('@meals');
                 }
             } else {
                 $this->getUser()->setFlash('info', 'Please order some food.');

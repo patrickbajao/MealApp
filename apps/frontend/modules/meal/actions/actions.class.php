@@ -23,6 +23,10 @@ class mealActions extends sfActions
         $user_id = $this->getUser()->getGuardUser()->getId();
         $meal_id  = $request->getParameter('meal_id');
         $meal = MealPeer::getMeal($meal_id);
+        if($meal->isVotingStopped()) {
+            $this->getUser()->setFlash('info', 'Voting for meal ' . $meal_id . ' has already been stopped.');
+            $this->redirect('@meals');
+        }
         $vote = null;
         if($meal->userHasVoted($user_id)) {
             $this->getUser()->setFlash('info', 'You have already voted for this meal. You are now about to change your vote.');
@@ -47,13 +51,31 @@ class mealActions extends sfActions
         $meal_id  = $request->getParameter('meal_id');
         $meal = MealPeer::getMeal($meal_id);
         if(!$meal->isVotingStopped()) {
+            $meal->setPlaceId($meal->getMostVotedPlace()->getId());
             $meal->setVotingStopped(1);
+            if($meal->save()) {
+                $this->getUser()->setFlash('info', 'Voting has stopped for meal ' . $meal_id . '.');
+                $this->redirect('@meals');
+            }
+        } else {
+            $this->getUser()->setFlash('info', 'Voting for meal ' . $meal_id . ' has already been stopped.');
+            $this->redirect('@meals');
         }
-        $this->getUser()->setFlash('info', 'Voting has stopped for meal ' . $meal_id);
-        $this->redirect('@meals');
     }
     
     public function executeStopOrders(sfWebRequest $request) {
+        $meal_id  = $request->getParameter('meal_id');
+        $meal = MealPeer::getMeal($meal_id);
+        if(!$meal->isOrderingStopped()) {
+            $meal->setOrderingStopped(1);
+            if($meal->save()) {
+                $this->getUser()->setFlash('info', 'Ordering has stopped for meal ' . $meal_id . '.');
+                $this->redirect('@meals');
+            }
+        } else {
+            $this->getUser()->setFlash('info', 'Ordering for meal ' . $meal_id . ' has already been stopped.');
+            $this->redirect('@meals');
+        }
     }
     
     public function executeStartVotes(sfWebRequest $request) {

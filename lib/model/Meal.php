@@ -27,6 +27,14 @@ class Meal extends BaseMeal
         return false;
     }
     
+    public function userHasOrdered($user_id) {
+        $order = MealOrderPeer::getOrder($this->getId(), $user_id);
+        if(!empty($order)) {
+            return true;
+        }
+        return false;
+    }
+    
     public function isVotingStopped() {
         if(1 == $this->getVotingStopped()) {
             return true;
@@ -42,10 +50,15 @@ class Meal extends BaseMeal
     }
     
     public function getVoteCount() {
-        $c = new Criteria();
-        $c->add(VotePeer::MEAL_ID, $this->getId());
-        $vote_count = VotePeer::doCount($c);
-        return $vote_count;
+        return VotePeer::getVoteCount($this->getId());
+    }
+    
+    public function getOrderCount() {
+        return MealOrderPeer::getOrderCount($this->getId());
+    }
+    
+    public function getMostVotedPlace() {
+        return VotePeer::getMostVotedPlace($this->getId());
     }
     
 } // Meal

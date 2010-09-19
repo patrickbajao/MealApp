@@ -27,4 +27,35 @@ class VotePeer extends BaseVotePeer
         return $vote;
     }
     
+    public static function getVoteCount($meal_id) {
+        $c = new Criteria();
+        $c->add(self::MEAL_ID, $meal_id);
+        $vote_count = self::doCount($c);
+        return $vote_count;
+    }
+    
+    public static function getMostVotedPlace($meal_id) {
+        $connection = Propel::getConnection();
+        $query = 'SELECT %s as place_id, COUNT(%s) AS votes FROM %s WHERE %s = %s GROUP BY %s';
+        $query = sprintf($query,
+            self::PLACE_ID, self::PLACE_ID, self::TABLE_NAME, self::MEAL_ID, $meal_id, self::PLACE_ID
+        );
+        $statement = $connection->prepare($query);
+        $statement->execute();
+        $results = array();
+        while ($resultset = $statement->fetch(PDO::FETCH_OBJ)) {
+            $results[] = array('place_id' => $resultset->place_id, 'votes' => $resultset->votes);
+        }
+        $most_voted_place = null;
+        $votes = 0;
+        foreach($results as $result) {
+            if($result['votes'] > $votes) {
+                $most_voted_place = $result['place_id'];
+                $votes = $result['votes'];
+            }
+        }
+        $place = PlacePeer::retrieveByPk($most_voted_place);
+        return $place;
+    }
+    
 } // VotePeer
