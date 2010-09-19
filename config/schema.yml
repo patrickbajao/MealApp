@@ -16,7 +16,7 @@ propel:
     updated_at:       ~
   item:
     id:               ~
-    menu_id:          { type: integer, foreignTable: menu, foreignReference: id, required: true, onDelete: cascade }
+    place_id:         { type: integer, foreignTable: place, foreignReference: id, required: true, onDelete: cascade }
     name:             { type: varchar(150), required: true }
     description:      { type: longvarchar }
     price:            { type: float, required: true }
@@ -25,11 +25,6 @@ propel:
     name:             { type: varchar(150), required: true }
     description:      { type: longvarchar }
     contact:          { type: varchar(15) }
-  menu:
-    id:               ~
-    place_id:         { type: integer, foreignTable: place, foreignReference: id, required: true, onDelete: cascade }
-    created_at:       ~
-    updated_at:       ~
   vote:
     id:               ~
     place_id:         { type: integer, foreignTable: place, foreignReference: id, required: true, onDelete: cascade }

@@ -70,15 +70,15 @@ DROP TABLE IF EXISTS `item`;
 CREATE TABLE `item`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`menu_id` INTEGER  NOT NULL,
+	`place_id` INTEGER  NOT NULL,
 	`name` VARCHAR(150)  NOT NULL,
 	`description` TEXT,
 	`price` FLOAT  NOT NULL,
 	PRIMARY KEY (`id`),
-	INDEX `item_FI_1` (`menu_id`),
+	INDEX `item_FI_1` (`place_id`),
 	CONSTRAINT `item_FK_1`
-		FOREIGN KEY (`menu_id`)
-		REFERENCES `menu` (`id`)
+		FOREIGN KEY (`place_id`)
+		REFERENCES `place` (`id`)
 		ON DELETE CASCADE
 )Type=InnoDB;
 
@@ -96,27 +96,6 @@ CREATE TABLE `place`
 	`description` TEXT,
 	`contact` VARCHAR(15),
 	PRIMARY KEY (`id`)
-)Type=InnoDB;
-
-#-----------------------------------------------------------------------------
-#-- menu
-#-----------------------------------------------------------------------------
-
-DROP TABLE IF EXISTS `menu`;
-
-
-CREATE TABLE `menu`
-(
-	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`place_id` INTEGER  NOT NULL,
-	`created_at` DATETIME,
-	`updated_at` DATETIME,
-	PRIMARY KEY (`id`),
-	INDEX `menu_FI_1` (`place_id`),
-	CONSTRAINT `menu_FK_1`
-		FOREIGN KEY (`place_id`)
-		REFERENCES `place` (`id`)
-		ON DELETE CASCADE
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------
