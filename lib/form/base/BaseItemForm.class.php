@@ -15,7 +15,7 @@ abstract class BaseItemForm extends BaseFormPropel
   {
     $this->setWidgets(array(
       'id'          => new sfWidgetFormInputHidden(),
-      'menu_id'     => new sfWidgetFormPropelChoice(array('model' => 'Menu', 'add_empty' => false)),
+      'place_id'    => new sfWidgetFormPropelChoice(array('model' => 'Place', 'add_empty' => false)),
       'name'        => new sfWidgetFormInputText(),
       'description' => new sfWidgetFormTextarea(),
       'price'       => new sfWidgetFormInputText(),
@@ -23,7 +23,7 @@ abstract class BaseItemForm extends BaseFormPropel
 
     $this->setValidators(array(
       'id'          => new sfValidatorChoice(array('choices' => array($this->getObject()->getId()), 'empty_value' => $this->getObject()->getId(), 'required' => false)),
-      'menu_id'     => new sfValidatorPropelChoice(array('model' => 'Menu', 'column' => 'id')),
+      'place_id'    => new sfValidatorPropelChoice(array('model' => 'Place', 'column' => 'id')),
       'name'        => new sfValidatorString(array('max_length' => 150)),
       'description' => new sfValidatorString(array('required' => false)),
       'price'       => new sfValidatorNumber(),

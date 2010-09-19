@@ -1,35 +1,33 @@
 <?php
 
 /**
- * Meal filter form base class.
+ * Vote filter form base class.
  *
  * @package    MealApp
  * @subpackage filter
  * @author     Your name here
  */
-abstract class BaseMealFormFilter extends BaseFormFilterPropel
+abstract class BaseVoteFormFilter extends BaseFormFilterPropel
 {
   public function setup()
   {
     $this->setWidgets(array(
       'place_id'         => new sfWidgetFormPropelChoice(array('model' => 'Place', 'add_empty' => true)),
-      'type'             => new sfWidgetFormFilterInput(array('with_empty' => false)),
-      'voting_stopped'   => new sfWidgetFormFilterInput(),
-      'ordering_stopped' => new sfWidgetFormFilterInput(),
+      'sf_guard_user_id' => new sfWidgetFormPropelChoice(array('model' => 'sfGuardUser', 'add_empty' => true)),
+      'meal_id'          => new sfWidgetFormPropelChoice(array('model' => 'Meal', 'add_empty' => true)),
       'created_at'       => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate())),
       'updated_at'       => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate())),
     ));
 
     $this->setValidators(array(
       'place_id'         => new sfValidatorPropelChoice(array('required' => false, 'model' => 'Place', 'column' => 'id')),
-      'type'             => new sfValidatorPass(array('required' => false)),
-      'voting_stopped'   => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
-      'ordering_stopped' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'sf_guard_user_id' => new sfValidatorPropelChoice(array('required' => false, 'model' => 'sfGuardUser', 'column' => 'id')),
+      'meal_id'          => new sfValidatorPropelChoice(array('required' => false, 'model' => 'Meal', 'column' => 'id')),
       'created_at'       => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDate(array('required' => false)))),
       'updated_at'       => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDate(array('required' => false)))),
     ));
 
-    $this->widgetSchema->setNameFormat('meal_filters[%s]');
+    $this->widgetSchema->setNameFormat('vote_filters[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
@@ -38,7 +36,7 @@ abstract class BaseMealFormFilter extends BaseFormFilterPropel
 
   public function getModelName()
   {
-    return 'Meal';
+    return 'Vote';
   }
 
   public function getFields()
@@ -46,9 +44,8 @@ abstract class BaseMealFormFilter extends BaseFormFilterPropel
     return array(
       'id'               => 'Number',
       'place_id'         => 'ForeignKey',
-      'type'             => 'Text',
-      'voting_stopped'   => 'Number',
-      'ordering_stopped' => 'Number',
+      'sf_guard_user_id' => 'ForeignKey',
+      'meal_id'          => 'ForeignKey',
       'created_at'       => 'Date',
       'updated_at'       => 'Date',
     );

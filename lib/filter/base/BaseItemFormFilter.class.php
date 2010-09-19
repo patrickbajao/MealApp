@@ -12,14 +12,14 @@ abstract class BaseItemFormFilter extends BaseFormFilterPropel
   public function setup()
   {
     $this->setWidgets(array(
-      'menu_id'     => new sfWidgetFormPropelChoice(array('model' => 'Menu', 'add_empty' => true)),
+      'place_id'    => new sfWidgetFormPropelChoice(array('model' => 'Place', 'add_empty' => true)),
       'name'        => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'description' => new sfWidgetFormFilterInput(),
       'price'       => new sfWidgetFormFilterInput(array('with_empty' => false)),
     ));
 
     $this->setValidators(array(
-      'menu_id'     => new sfValidatorPropelChoice(array('required' => false, 'model' => 'Menu', 'column' => 'id')),
+      'place_id'    => new sfValidatorPropelChoice(array('required' => false, 'model' => 'Place', 'column' => 'id')),
       'name'        => new sfValidatorPass(array('required' => false)),
       'description' => new sfValidatorPass(array('required' => false)),
       'price'       => new sfValidatorSchemaFilter('text', new sfValidatorNumber(array('required' => false))),
@@ -41,7 +41,7 @@ abstract class BaseItemFormFilter extends BaseFormFilterPropel
   {
     return array(
       'id'          => 'Number',
-      'menu_id'     => 'ForeignKey',
+      'place_id'    => 'ForeignKey',
       'name'        => 'Text',
       'description' => 'Text',
       'price'       => 'Number',
