@@ -16,15 +16,6 @@ item:
     column:               id
     with_wildcard_routes: true
 
-menu:
-  class: sfPropelRouteCollection
-  options:
-    model:                menu
-    module:               menu
-    prefix_path:          /menu
-    column:               id
-    with_wildcard_routes: true
-
 place:
   class: sfPropelRouteCollection
   options:
