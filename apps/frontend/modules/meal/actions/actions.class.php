@@ -19,6 +19,42 @@ class mealActions extends sfActions
         $this->meals = MealPeer::doSelect(new Criteria());
     }
     
+    public function executeOrder(sfWebRequest $request) {
+        $user_id = $this->getUser()->getGuardUser()->getId();
+        $meal_id  = $request->getParameter('meal_id');
+        $meal = MealPeer::getMeal($meal_id);
+        if($meal->isOrderingStopped()) {
+            $this->getUser()->setFlash('info', 'Ordering for meal ' . $meal_id . ' has already been stopped.');
+            $this->redirect('@meals');
+        }
+        
+        // Add criteria to the form so that it will only display items of the meal's chosen place
+        $c = new Criteria();
+        $c->add(ItemPeer::PLACE_ID, MealPeer::getMealPlaceId($meal_id));
+        $this->form = new MealOrderForm(null, array('criteria' => $c));
+        
+        $old_order = null;
+        $delete_old_order = false;
+        if($meal->userHasOrdered($user_id)) {
+            $this->getUser()->setFlash('info', 'You have already ordered for this meal. You are now about to change your order.');
+            $old_order = $meal->getUserOrder($user_id);
+            $this->form->bind($old_order);
+            $delete_old_order = true;
+        }
+        
+        $items = $request->getPostParameter('meal_order[item_id]');
+        if('POST' == $request->getMethod()) {
+            if(!empty($items)) {
+                if(MealOrderPeer::saveOrder($meal_id, $user_id, $items, $delete_old_order, $old_order)) {
+                    $this->getUser()->setFlash('info', 'Your order has been placed.');
+                    $this->redirect('@meals');
+                }
+            } else {
+                $this->getUser()->setFlash('info', 'Please order some food.');
+            }
+        }
+    }
+    
     public function executeVote(sfWebRequest $request) {
         $user_id = $this->getUser()->getGuardUser()->getId();
         $meal_id  = $request->getParameter('meal_id');

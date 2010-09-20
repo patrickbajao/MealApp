@@ -27,11 +27,42 @@ class MealOrderPeer extends BaseMealOrderPeer
         return $order;
     }
     
+    public static function getOrders($meal_id, $user_id) {
+        $c = new Criteria();
+        $c->add(self::MEAL_ID, $meal_id, Criteria::EQUAL);
+        $c->add(self::SF_GUARD_USER_ID, $user_id, Criteria::EQUAL);
+        $order = self::doSelect($c);
+        return $order;
+    }
+    
     public static function getOrderCount($meal_id) {
         $c = new Criteria();
         $c->add(self::MEAL_ID, $meal_id);
         $order_count = self::doCount($c);
         return $order_count;
     }
-
+    
+    public static function saveOrder($meal_id, $user_id, $items, $delete_old_order = false, $old_order = null) {
+        $success = false;
+        foreach($items as $item_id) {
+            $order = new MealOrder();
+            $order->setMealId($meal_id);
+            $order->setItemId($item_id);
+            $order->setSfGuardUserId($user_id);
+            if($order->save()) {
+                $success = true;
+            }
+        }
+        if($success) {
+            if($delete_old_order) {
+                foreach($old_order['item_id'] as $id => $item_id) {
+                    $meal_order = self::retrieveByPk($id);
+                    $meal_order->delete();
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+    
 } // MealOrderPeer

@@ -235,12 +235,12 @@ div#meal-list {}
 
 form#meal-order { display: block; }
 
-    form#meal-order ul{
+    form#meal-order ul.checkbox_list {
         list-style: none;
         display: block;
     }
     
-        form#meal-order ul li {
+        form#meal-order ul.checkbox_list li {
             display: block;
             width: 400px;
             height: 30px;

@@ -41,8 +41,8 @@ show_menu:
   param: { module: menu, action: show }
 
 order_menu:
-  url:   /order/:meal
-  param: { module: menu, action: order }
+  url:   /order/:meal_id
+  param: { module: meal, action: order }
 
 default_index:
   url:   /:module

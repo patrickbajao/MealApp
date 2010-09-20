@@ -61,4 +61,13 @@ class Meal extends BaseMeal
         return VotePeer::getMostVotedPlace($this->getId());
     }
     
+    public function getUserOrder($user_id) {
+        $orders = MealOrderPeer::getOrders($this->getId(), $user_id);
+        $user_order = array();
+        foreach($orders as $order) {
+            $user_order['item_id'][$order->getId()] = $order->getItemId();
+        }
+        return $user_order;
+    }
+    
 } // Meal

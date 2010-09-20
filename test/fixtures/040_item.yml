@@ -1,9 +1,9 @@
 Item:
   item_jollibee_yum:
-    menu_id: menu_jollibee
+    place_id: jollibee
     name:    Yum
     price:   50.00
   item_jollibee_bsteak:
-    menu_id: menu_jollibee
+    place_id: jollibee
     name:    Burger Steak
     price:   50.00
