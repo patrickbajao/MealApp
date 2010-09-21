@@ -24,6 +24,7 @@ generator:
         actions:
           _new: ~
         sort:  id
+        display: [name, description, contact]
       filter:  ~
       form:    ~
       edit:    ~

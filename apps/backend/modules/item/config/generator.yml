@@ -14,7 +14,17 @@ generator:
     config:
       actions: ~
       fields:  ~
-      list:    ~
+      list:
+        title: List of Items
+        object_actions:
+          _edit:        ~
+          _delete:      ~
+        batch_actions:
+          _delete: ~
+        actions:
+          _new: ~
+        sort:  id
+        display: [place_id, name, description, price]
       filter:  ~
       form:    ~
       edit:    ~
