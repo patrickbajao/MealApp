@@ -23,8 +23,17 @@ class mealActions extends sfActions
         $user_id = $this->getUser()->getGuardUser()->getId();
         $meal_id  = $request->getParameter('meal_id');
         $meal = MealPeer::getMeal($meal_id);
+        
+        // Check if ordering for a meal is stopped, then redirect it Meals page
         if($meal->isOrderingStopped()) {
             $this->getUser()->setFlash('info', 'Ordering for meal ' . $meal_id . ' has already been stopped.');
+            $this->redirect('@meals');
+        }
+        
+        // Check if a meal has no chosen place, then redirect it Meals page
+        $place_id = $meal->getPlaceId();
+        if(empty($place_id)) {
+            $this->getUser()->setFlash('info', 'You can\'t place an order for that meal. It has no chosen place yet.');
             $this->redirect('@meals');
         }
         
