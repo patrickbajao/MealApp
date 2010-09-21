@@ -25,3 +25,19 @@ function meal_links($meal, $user) {
     }
     return $links;
 }
+
+function place_contact($place) {
+    $contact = $place->getContact();
+    if(empty($contact)) {
+        $contact = 'N/A';
+    }
+    return $contact;
+}
+
+function place_description($place) {
+    $desc = $place->getContact();
+    if(empty($desc)) {
+        $desc = 'N/A';
+    }
+    return $desc;
+}

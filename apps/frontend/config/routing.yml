@@ -8,6 +8,14 @@ homepage:
 
 # generic rules
 # please, remove them by adding more specific rules
+places:
+  url:   /places
+  param: { module: place, action: index }
+
+show_place:
+  url:   /place/:place_id
+  param: { module: place, action: show }
+
 stop_vote:
   url:   /stopVotes/:meal_id
   param: { module: meal, action: stopVotes }

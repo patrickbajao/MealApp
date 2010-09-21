@@ -16,7 +16,7 @@
                 <?php if($sf_user->isAuthenticated()): ?>
                 <ul id="navbar">
                     <li><?php echo link_to('Home', '@homepage') ?></li>
-                    <li><?php echo link_to('Places', '@homepage') ?></li>
+                    <li><?php echo link_to('Places', '@places') ?></li>
                     <li><?php echo link_to('Meals', '@meals') ?></li>
                     <li><?php echo link_to('Logout', '@sf_guard_signout') ?></li>
                 </ul>
