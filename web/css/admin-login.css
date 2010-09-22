@@ -1,0 +1,105 @@
+body, div, p, h1, h2, h3, h4, h5, ul, ol, li, table, thead, tbody, tr, th, td, form, label, span, img, a, blockquote {
+    margin: 0;
+    padding: 0;
+}
+
+h1 { font-size: 200%; }
+
+h2 { font-size: 180%; }
+
+h3 { font-size: 160%; }
+
+h4 { font-size: 140%; }
+
+h5 { font-size: 120%; }
+
+a img { border: 0 none; }
+
+table { border-collapse: collapse; }
+
+body {
+    font-family: arial, helvetica, sans-serif;
+    font-size: 14px;
+    color: #292929;
+    background-image: url(../images/bg.gif);
+    background-repeat: repeat-x;
+}
+
+div#container {
+    width: 980px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+div#header {
+    padding: 20px;
+    height: 100px;
+}
+
+    div#header h1#logo {
+        width: 200px;
+        height: 100px;
+        margin-left: auto;
+        margin-right: auto;
+        background-image: url(../images/lunch-app-logo-beta.gif);
+        background-repeat: no-repeat;
+    }
+    
+        div#header h1#logo a {
+            display: block;
+            width: 200px;
+            height: 100px;
+        }
+        
+            div#header h1#logo a span {
+                display: none;
+            }
+
+div#content {
+    padding: 20px;
+}
+
+div#login-form {
+    width: 400px;
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+    
+    div#login-form h2.title {
+        text-align: right;
+        padding-bottom: 10px;
+    }
+    
+    div#login-form form {
+        padding: 20px;
+        background-color: #ececec;
+        border-bottom: 2px solid #d5d5d5;
+        border-top: 2px solid #d5d5d5;
+    }
+    
+        div#login-form form div {
+            padding-bottom: 10px;
+        }
+            
+            div#login-form form input {
+                font-size: 20px;
+            }
+            
+            div#login-form form div label {
+                display: block;
+                padding-bottom: 5px;
+            }
+            
+            div#login-form form div input {
+                width: 350px;
+            }
+        
+        div#login-form form p.error {
+            font-size: 14px;
+            padding: 10px;
+            border: 1px solid #FF1A00;
+            background-color: #ffa56d;
+            color: #970000;
+            margin-bottom: 20px;
+        }

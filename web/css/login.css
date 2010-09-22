@@ -60,7 +60,7 @@ div#content {
 }
 
 div#login-form {
-    width: 400px;
+    width: 820px;
     font-size: 20px;
     margin-left: auto;
     margin-right: auto;
@@ -76,6 +76,13 @@ div#login-form {
         background-color: #ececec;
         border-bottom: 2px solid #d5d5d5;
         border-top: 2px solid #d5d5d5;
+        float: left;
+        margin-right: 20px;
+        width: 360px;
+    }
+    
+    div#login-form form#openid {
+        margin: 0;
     }
     
         div#login-form form div {

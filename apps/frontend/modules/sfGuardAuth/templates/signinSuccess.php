@@ -15,4 +15,14 @@
         <?php echo $form['_csrf_token']->render() ?>
         <input type="submit" value="Login" />
     </form>
+    <form action="<?php echo url_for('@openid_signin') ?>" method="post" id="openid">
+        <?php if($sf_user->hasFlash('error')): ?>
+            <p class="error"><?php echo $sf_user->getFlash('error') ?></p>
+        <?php endif; ?>
+        <div>
+            <label for="openid">OpenID</label>
+            <input type="text" name="openid" />
+        </div>
+        <input type="submit" value="Login OpenID" />
+    </form>
 </div>

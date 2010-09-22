@@ -70,3 +70,15 @@ sf_guard_signout:
 sf_guard_password:
   url:   /request_password
   param: { module: sfGuardAuth, action: password }
+
+openid_signin:
+  url:   /openidAuth/signin
+  param: { module: openidAuth, action: signin }
+  
+openid_finishauth:
+  url:   /openidAuth/finish
+  param: { module: openidAuth, action: finish }
+  
+openid_error:
+  url:   /openidAuth/openidError
+  param: { module: authModule, action: openidError }
