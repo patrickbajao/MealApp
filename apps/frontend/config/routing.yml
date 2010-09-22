@@ -8,6 +8,10 @@ homepage:
 
 # generic rules
 # please, remove them by adding more specific rules
+register:
+  url:   /register
+  param: { module: sfGuardAuth, action: register }
+
 openid_signin:
   url:   /openidAuth/signin
   param: { module: openidAuth, action: signin }

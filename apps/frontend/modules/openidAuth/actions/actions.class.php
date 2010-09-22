@@ -15,6 +15,7 @@ class openidAuthActions extends BasesfPHPOpenIDAuthActions
         $this->getUser()->setAttribute('openid_real_back_url', $this->getRequest()->getReferer());
         $getRedirectedHtmlResult = $this->getRedirectHtml($request->getPostParameter('openid'));
         if(!empty($getRedirectedHtmlResult['url']) && !$request->isXmlHttpRequest()) {
+            $this->getUser()->setAttribute('openid_username', $request->getPostParameter('openid'));
             $this->redirect($getRedirectedHtmlResult['url']);
         }
     }
@@ -24,15 +25,22 @@ class openidAuthActions extends BasesfPHPOpenIDAuthActions
         $this->getUser()->setFlash('error', $error);
         $this->redirect('@sf_guard_signin');
     }
-
+      
     public function openIDCallback($openid_validation_result) {
-        $this->getUser()->setAuthenticated(true);
-        sfContext::getInstance()->getResponse()->setCookie('known_openid_identity', $openid_validation_result['identity']);
-        $back = $this->getUser()->getAttribute('openid_real_back_url');
-        $this->getUser()->getAttributeHolder()->remove('openid_real_back_url');
-        if (empty($back))
-            $back = '@homepage';
-        $this->redirect($back);
-    }
+        $user = SfGuardUserPeer::retrieveByUsername($this->getUser()->getAttribute('openid_username'));
+        if(empty($user)) {
+            $this->redirect('@register');
+        } else {
+            $this->getUser()->signin($user, false);
+            sfContext::getInstance()->getResponse()->setCookie('known_openid_identity', $openid_validation_result['identity']);
+            $back = $this->getUser()->getAttribute('openid_real_back_url');
+            $this->getUser()->getAttributeHolder()->remove('openid_real_back_url');
+            if(empty($back)) {
+                $back = '@homepage';
+            }
+            $this->redirect($back);
+        }
         
+    }
+    
 }

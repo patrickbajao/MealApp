@@ -13,3 +13,10 @@ SfGuardUser:
     password: p4ssw0rd!
     is_active: 1
     is_super_admin: 1
+  earlbajao_gmail:
+    username: earl.bajao@gmail.com
+    algorithm: sha1
+    salt: b354178f137e3fc831098d5578610707
+    password: p4ssw0rd!
+    is_active: 1
+    is_super_admin: 0

@@ -1,4 +1,4 @@
-body, div, p, h1, h2, h3, h4, h5, ul, ol, li, table, thead, tbody, tr, th, td, form, label, span, img, a, blockquote {
+body, div, p, h1, h2, h3, h4, h5, ul, ol, li, dl, dt, dd, table, thead, tbody, tr, th, td, form, label, span, img, a, blockquote {
     margin: 0;
     padding: 0;
 }
