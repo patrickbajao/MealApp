@@ -13,14 +13,15 @@ class openidAuthActions extends BasesfPHPOpenIDAuthActions
 
     public function executeSignin(sfWebRequest $request) {
         $getRedirectedHtmlResult = $this->getRedirectHtml($request->getPostParameter('openid'));
-        if(!empty($getRedirectedHtmlResult['url'])) {
+        if(!empty($getRedirectedHtmlResult['url']) && !$request->isXmlHttpRequest()) {
             $this->redirect($getRedirectedHtmlResult['url']);
         }
     }
 
     public function executeOpenidError() {
-        $error = $this->getRequest()->getErrors();
+        $error = $this->getUser()->getFlash('openid_error');
         $this->getUser()->setFlash('error', $error);
+        $this->redirect('@sf_guard_signin');
     }
 
     public function openIDCallback($openid_validation_result) {
