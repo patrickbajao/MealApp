@@ -12,6 +12,7 @@ class openidAuthActions extends BasesfPHPOpenIDAuthActions
 {
 
     public function executeSignin(sfWebRequest $request) {
+        $this->getUser()->setAttribute('openid_real_back_url', $this->getRequest()->getReferer());
         $getRedirectedHtmlResult = $this->getRedirectHtml($request->getPostParameter('openid'));
         if(!empty($getRedirectedHtmlResult['url']) && !$request->isXmlHttpRequest()) {
             $this->redirect($getRedirectedHtmlResult['url']);
@@ -27,8 +28,11 @@ class openidAuthActions extends BasesfPHPOpenIDAuthActions
     public function openIDCallback($openid_validation_result) {
         $this->getUser()->setAuthenticated(true);
         sfContext::getInstance()->getResponse()->setCookie('known_openid_identity', $openid_validation_result['identity']);
-        $back = '@homepage';
+        $back = $this->getUser()->getAttribute('openid_real_back_url');
+        $this->getUser()->getAttributeHolder()->remove('openid_real_back_url');
+        if (empty($back))
+            $back = '@homepage';
         $this->redirect($back);
     }
-    
+        
 }
