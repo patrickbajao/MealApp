@@ -112,6 +112,17 @@ div#content {
         margin-bottom: 20px;
     }
     
+    div#content > div.subtitle {
+        font-size: 140%;
+        text-align: left;
+        background-color: #FF7400;
+        color: #ffffff;
+        padding: 10px;
+        font-weight: bold;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    
     div#content p.info {
         text-align: left;
         background-color: #C3D9FF;

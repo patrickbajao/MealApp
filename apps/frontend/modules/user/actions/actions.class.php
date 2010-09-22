@@ -17,6 +17,7 @@ class userActions extends sfActions
      */
     public function executeIndex(sfWebRequest $request) {
         $this->username = $this->getUser()->getGuardUser()->getUsername();
+        $this->meals = MealPeer::doSelect(new Criteria());
     }
     
 }
