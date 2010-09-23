@@ -18,7 +18,7 @@
                 </div>
                 <?php endif; ?>
                 <h1 id="logo"><?php echo link_to('<span>LunchApp</span>', '@homepage') ?></h1>
-                <?php if($sf_user->isAuthenticated()): ?>
+                <?php if($sf_user->isAuthenticated() && $sf_user->getGuardUser()->getIsSuperAdmin()): ?>
                 <ul id="navbar">
                     <li><?php echo link_to('Home', '@homepage') ?></li>
                     <li><?php echo link_to('Places', '@place') ?></li>
