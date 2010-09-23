@@ -14,7 +14,9 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
         $this->getUser()->setAttribute('openid_username', '');
         $this->form = new sfGuardUserForm($user);
         if('POST' == $request->getMethod()) {
-            if($this->processForm($request, $this->form)) {
+            $registered_user = $this->processForm($request, $this->form);
+            if(!empty($registered_user)) {
+                $this->getUser()->signin($registered_user);
                 $this->getUser()->setFlash('info', 'You have been successfully registered!');
                 $this->redirect('@registered');
             }
@@ -26,12 +28,12 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
     }
     
     protected function processForm(sfWebRequest $request, sfForm $form) {
+        $user = null;
         $form->bind($request->getParameter($form->getName()));
         if ($form->isValid()) {
             $user = $form->save();
-            return true;
         }
-        return false;
+        return $user;
     }
 
 }
