@@ -18,6 +18,8 @@ class openidAuthActions extends BasesfPHPOpenIDAuthActions
             $this->getUser()->setAttribute('openid_username', $request->getPostParameter('openid'));
             $this->redirect($getRedirectedHtmlResult['url']);
         }
+        $this->getUser()->setFlash('error', 'Please enter a correct OpenID.');
+        $this->redirect('@sf_guard_signin');
     }
 
     public function executeOpenidError() {
