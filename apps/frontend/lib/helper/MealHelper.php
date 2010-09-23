@@ -16,7 +16,11 @@ function meal_links($meal, $user) {
         }
     } else {
         $order_link = $meal->userHasOrdered($user->getId()) ? 'Change Order' : 'Order' ;
-        $links .= link_to($order_link, 'order/' . $meal->getId());
+        if(!$meal->isOrderingStopped()) {
+            $links .= link_to($order_link, 'order/' . $meal->getId());
+        } else {
+            $links .= link_to('View Orders', 'orders/' . $meal->getId());
+        }
         if($user->getIsSuperAdmin()) {
             if($meal->getOrderCount() > 0 && !$meal->isOrderingStopped()) {
                 $links .= link_to('Stop Orders', 'stopOrders/' . $meal->getId());
