@@ -92,6 +92,23 @@ class mealActions extends sfActions
         }
     }
     
+    public function executeViewOrders(sfWebRequest $request) {
+        $meal_id  = $request->getParameter('meal_id');
+        $this->meal = MealPeer::getMeal($meal_id);
+        $orders = array();
+        foreach($this->meal->getMealOrders() as $order) {
+            $orders['orders'][$order->getSfGuardUserId()]['user'] = $order->getSfGuardUser();
+            $orders['orders'][$order->getSfGuardUserId()]['items'][] = $order->getItem();
+            $orders['all'][$order->getItem()->getId()]['name'] = $order->getItem()->getName();
+            if(isset($orders['all'][$order->getItem()->getId()]['count'])) {
+                $orders['all'][$order->getItem()->getId()]['count'] += 1;
+            } else {
+                $orders['all'][$order->getItem()->getId()]['count'] = 1;
+            }
+        }
+        $this->orders = $orders;
+    }
+    
     public function executeStopVotes(sfWebRequest $request) {
         $meal_id  = $request->getParameter('meal_id');
         $meal = MealPeer::getMeal($meal_id);
