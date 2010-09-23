@@ -513,4 +513,12 @@ form#register {
                 color: #FF1A00;
             }
         
+        form#register span.required {
+            font-weight: bold;
+            float: left;
+            color: #FF1A00;
+            margin-right: 3px;
+            font-size: 140%;
+        }
+        
         

@@ -2,15 +2,18 @@
 <form method="post" id="register">
     <div class="credentials">
         <div>
+            <span class="required">*</span>
             <?php echo $form['username']->renderLabel() ?>
             <?php echo $form['username']->render() ?>
         </div>
         <div>
+            <span class="required">*</span>
             <?php echo $form['password']->renderLabel() ?>
             <?php echo $form['password']->render() ?>
             <?php echo $form['password']->renderError() ?>
         </div>
         <div>
+            <span class="required">*</span>
             <?php echo $form['password_again']->renderLabel() ?>
             <?php echo $form['password_again']->render() ?>
             <?php echo $form['password_again']->renderError() ?>
@@ -18,11 +21,13 @@
     </div>
     <div class="profile">
         <div>
+            <span class="required">*</span>
             <?php echo $form['first_name']->renderLabel() ?>
             <?php echo $form['first_name']->render() ?>
             <?php echo $form['first_name']->renderError() ?>
         </div>
         <div>
+            <span class="required">*</span>
             <?php echo $form['last_name']->renderLabel() ?>
             <?php echo $form['last_name']->render() ?>
             <?php echo $form['last_name']->renderError() ?>
