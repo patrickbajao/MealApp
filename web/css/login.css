@@ -149,7 +149,7 @@ div#login-form {
                 padding-top: 10px;
             }
             
-            div#login-form form div#what-is-openid ul li { float: left; display: block; width: 140px; height: 65px; margin-left: 25px; }
+            div#login-form form div#what-is-openid ul li { float: left; display: block; width: 140px; height: 65px; margin-left: 25px; border: 1px solid #d5d5d5; }
             
                 div#login-form form div#what-is-openid ul li a { width: 120px; height: 45px; display: block; background-position: center center; background-color: #ffffff; padding: 10px; }
                 
