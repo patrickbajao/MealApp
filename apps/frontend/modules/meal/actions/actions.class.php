@@ -109,6 +109,27 @@ class mealActions extends sfActions
         $this->orders = $orders;
     }
     
+    public function executeViewVotes(sfWebRequest $request) {
+        $meal_id  = $request->getParameter('meal_id');
+        $this->meal = MealPeer::getMeal($meal_id);
+        $votes = array();
+        $meal_votes = $this->meal->getVotes();
+        if(!empty($meal_votes)) {
+            foreach($this->meal->getVotes() as $vote) {
+                $votes[$vote->getPlaceId()]['place'] = $vote->getPlace()->getName();
+                if(isset( $votes[$vote->getPlaceId()]['votes'])) {
+                     $votes[$vote->getPlaceId()]['votes'] += 1;
+                } else {
+                     $votes[$vote->getPlaceId()]['votes'] = 1;
+                }
+            }
+        } else {
+            $this->getUser()->setFlash('info', 'There are no votes for meal ' . $meal_id . '.');
+            $this->redirect('@meals');
+        }
+        $this->votes = $votes;
+    }
+    
     public function executeStopVotes(sfWebRequest $request) {
         $meal_id  = $request->getParameter('meal_id');
         $meal = MealPeer::getMeal($meal_id);

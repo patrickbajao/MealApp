@@ -8,7 +8,14 @@ function meal_links($meal, $user) {
     $links = null;
     if(is_null($meal->getPlace())) {
         $vote_link = $meal->userHasVoted($user->getId()) ? 'Change Vote' : 'Vote' ;
-        $links .= link_to($vote_link, 'vote/' . $meal->getId());
+        if(!$meal->isVotingStopped()) {
+            $links .= link_to($vote_link, 'vote/' . $meal->getId());
+        }
+        
+        if($meal->getVoteCount() > 0) {
+            $links .= link_to('View Votes', 'votes/' . $meal->getId());
+        }
+        
         if($user->getIsSuperAdmin()) {
             if($meal->getVoteCount() > 0 && !$meal->isVotingStopped()) {
                 $links .= link_to('Stop Votes', 'stopVotes/' . $meal->getId());
@@ -18,9 +25,12 @@ function meal_links($meal, $user) {
         $order_link = $meal->userHasOrdered($user->getId()) ? 'Change Order' : 'Order' ;
         if(!$meal->isOrderingStopped()) {
             $links .= link_to($order_link, 'order/' . $meal->getId());
-        } else {
+        }
+        
+        if($meal->getOrderCount() > 0) {
             $links .= link_to('View Orders', 'orders/' . $meal->getId());
         }
+        
         if($user->getIsSuperAdmin()) {
             if($meal->getOrderCount() > 0 && !$meal->isOrderingStopped()) {
                 $links .= link_to('Stop Orders', 'stopOrders/' . $meal->getId());
