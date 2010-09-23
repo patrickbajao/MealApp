@@ -479,3 +479,38 @@ div#all-votes {}
         list-style: none;
         padding: 10px;
     }
+
+form#register {
+    padding: 10px;
+}
+
+    form#register > div.credentials {
+        margin-bottom: 20px;
+    }
+    
+    form#register div > div {
+        margin-bottom: 10px;
+    }
+    
+        form#register div > div label {
+            display: block;
+            font-size: 140%;
+            margin-bottom: 5pxx
+        }
+        
+        form#register input,
+        form#register div > div select {
+            font-size: 140%;
+        }
+        
+        form#register ul.error_list {
+            list-style: none;
+            padding: 5px;
+            padding-left: 0;
+        }
+        
+            form#register ul.error_list > li {
+                color: #FF1A00;
+            }
+        
+        

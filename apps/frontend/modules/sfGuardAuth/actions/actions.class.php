@@ -13,6 +13,9 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
         }
         $this->getUser()->setAttribute('openid_username', '');
         $this->form = new sfGuardUserForm($user);
+        $this->form->getValidator('password')->setOption('required', true);
+        $this->form->getValidator('first_name')->setOption('required', true);
+        $this->form->getValidator('last_name')->setOption('required', true);
         if('POST' == $request->getMethod()) {
             $registered_user = $this->processForm($request, $this->form);
             if(!empty($registered_user)) {
