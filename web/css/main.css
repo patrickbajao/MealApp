@@ -36,6 +36,7 @@ div#container {
 div#header {
     padding: 20px;
     height: 150px;
+    padding-top: 0;
 }
     
     div#header div#user-info {
