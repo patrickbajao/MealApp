@@ -8,6 +8,14 @@ homepage:
 
 # generic rules
 # please, remove them by adding more specific rules
+register:
+  url:   /register
+  param: { module: sfGuardAuth, action: register }
+
+registered:
+  url:   /registered
+  param: { module: sfGuardAuth, action: registered }
+  
 openid_signin:
   url:   /openidAuth/signin
   param: { module: openidAuth, action: signin }
@@ -28,14 +36,6 @@ show_place:
   url:   /place/:place_id
   param: { module: place, action: show }
 
-view_orders:
-  url:   /orders/:meal_id
-  param: { module: meal, action: viewOrders }
-
-view_votes:
-  url:   /votes/:meal_id
-  param: { module: meal, action: viewVotes }
-  
 stop_vote:
   url:   /stopVotes/:meal_id
   param: { module: meal, action: stopVotes }
