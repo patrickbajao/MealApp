@@ -223,7 +223,7 @@ div#meal-list {}
             div#meal-list ul li span.counter {
                 color: #ffffff;
                 float: left;
-                padding-right: 10px;
+                padding-right: 5px;
                 padding-bottom: 10px;
                 font-size: 200%;
                 font-weight: bold;
@@ -232,7 +232,7 @@ div#meal-list {}
             
                 div#meal-list ul li div.meal-info {
                     float: left;
-                    width: 210px;
+                    width: 215px;
                 }
             
                     div#meal-list ul li div.meal-info dt,
