@@ -4,7 +4,7 @@
 <ul>
 <?php foreach($orders['orders'] as $order): ?>
     <li>
-        <span class="user"><strong><?php echo $order['user']->getUsername() ?></strong> ordered for:</span>
+        <span class="user"><strong><?php echo $order['user']->getProfile()->getFirstName() ?> <?php echo $order['user']->getProfile()->getLastName() ?></strong> ordered for:</span>
         <ul>
         <?php foreach($order['items'] as $item): ?>
             <li><?php echo $item->getName() ?></li>
