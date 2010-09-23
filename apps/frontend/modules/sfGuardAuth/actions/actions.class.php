@@ -6,6 +6,9 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
 {
 
     public function executeRegister(sfWebRequest $request) {
+        if($this->getUser()->isAuthenticated()) {
+            $this->redirect('@homepage');
+        }
         $user = new sfGuardUser();
         $openid_username = $this->getUser()->getAttribute('openid_username');
         if(!empty($openid_username)) {
