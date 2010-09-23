@@ -22,10 +22,10 @@
             </p>
             <ul>
                 <li>
-                    <?php echo link_to('<span>Google</span>', 'http://www.google.com', array('id' => 'google-link')) ?>
+                    <?php echo link_to('<span>Google</span>', 'http://www.google.com', array('id' => 'google-link', 'target' => '_new')) ?>
                 </li>
                 <li>
-                    <?php echo link_to('<span>Yahoo!</span>', 'http://www.yahoo.com', array('id' => 'yahoo-link')) ?>
+                    <?php echo link_to('<span>Yahoo!</span>', 'http://www.yahoo.com', array('id' => 'yahoo-link', 'target' => '_new')) ?>
                 </li>
             </ul>
         </div>
