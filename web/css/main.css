@@ -35,9 +35,29 @@ div#container {
 
 div#header {
     padding: 20px;
-    height: 100px;
+    height: 150px;
 }
-
+    
+    div#header div#user-info {
+        border-bottom: 1px dotted #2e425d;
+        text-align: right;
+        padding: 5px;
+        height: 20px;
+        line-height: 20px;
+        font-size: 90%;
+        margin-bottom: 20px;
+    }
+    
+        div#header div#user-info a {
+            text-decoration: none;
+            font-weight: bold;
+            color: #000000;
+        }
+        
+        div#header div#user-info a:hover {
+            text-decoration: underline;
+        }
+    
     div#header h1#logo {
         width: 200px;
         height: 100px;
@@ -60,7 +80,7 @@ div#header {
         display: block;
         height: 40px;
         list-style: none;
-        width: 400px;
+        width: 300px;
         float: right;
         padding-top: 30px;
     }
