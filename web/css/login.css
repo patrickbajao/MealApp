@@ -29,6 +29,7 @@ div#container {
     width: 980px;
     margin-right: auto;
     margin-left: auto;
+    padding-bottom: 40px;
 }
 
 div#header {
@@ -129,7 +130,7 @@ div#login-form {
         
         div#login-form form div#what-is-openid {
             font-size: 14px;
-            margin-top: 20px;
+            margin-top: 40px;
         }
         
             div#login-form form div#what-is-openid > div.title {
@@ -148,9 +149,9 @@ div#login-form {
                 padding-top: 10px;
             }
             
-            div#login-form form div#what-is-openid ul li { float: left; display: block; width: 120px; height: 45px; margin-left: 40px; background-color: #ffffff; }
+            div#login-form form div#what-is-openid ul li { float: left; display: block; width: 140px; height: 65px; margin-left: 25px; }
             
-                div#login-form form div#what-is-openid ul li a { width: 120px; height: 45px; display: block; background-position: center center; }
+                div#login-form form div#what-is-openid ul li a { width: 120px; height: 45px; display: block; background-position: center center; background-color: #ffffff; padding: 10px; }
                 
                     div#login-form form div#what-is-openid ul li a#google-link { background-image: url(../images/google.png); background-repeat: no-repeat; }
                     
