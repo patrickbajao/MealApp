@@ -65,7 +65,23 @@ div#login-form {
     margin-left: auto;
     margin-right: auto;
 }
-    
+
+    div#login-form p.notes {
+        margin-bottom: 20px;
+        font-size: 14px;
+        line-height: 20px;
+    }
+        
+        div#login-form p.notes a {
+            text-decoration: none;
+            font-weight: bold;
+            color: #008C00;
+        }
+        
+        div#login-form p.notes a:hover {
+            text-decoration: underline;
+        }
+        
     div#login-form h2.title {
         text-align: right;
         padding-bottom: 10px;

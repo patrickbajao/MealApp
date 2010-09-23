@@ -4,6 +4,9 @@
         <?php if($form->hasErrors()): ?>
             <p class="error">Please enter your correct username and password.</p>
         <?php endif; ?>
+        <p class="notes">
+            Login using your LunchApp account. Don't have an account yet? <?php echo link_to('Register now!', '@register') ?>
+        </p>
         <div>
             <?php echo $form['username']->renderLabel() ?>
             <?php echo $form['username']->render() ?>
@@ -19,6 +22,9 @@
         <?php if($sf_user->hasFlash('error')): ?>
             <p class="error"><?php echo $sf_user->getFlash('error') ?></p>
         <?php endif; ?>
+        <p class="notes">
+            Login using your OpenID account then register it as an LunchApp account!
+        </p>
         <div>
             <label for="openid">OpenID</label>
             <input type="text" name="openid" />
