@@ -12,6 +12,10 @@ register:
   url:   /register
   param: { module: sfGuardAuth, action: register }
 
+registered:
+  url:   /registered
+  param: { module: sfGuardAuth, action: registered }
+  
 openid_signin:
   url:   /openidAuth/signin
   param: { module: openidAuth, action: signin }
