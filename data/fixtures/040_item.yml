@@ -7,3 +7,11 @@ Item:
     place_id: jollibee
     name:     Burger Steak
     price:    50.00
+  item_mcdo_burgermcdo:
+    place_id: mcdo
+    name:     Burger McDo
+    price:    50.00
+  item_mcdo_bigmac:
+    place_id: mcdo
+    name:     Big Mac
+    price:    100.00
