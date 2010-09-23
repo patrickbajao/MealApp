@@ -20,3 +20,16 @@ SfGuardUser:
     password: p4ssw0rd!
     is_active: 1
     is_super_admin: 0
+SfGuardUserProfile:
+  tester_profile:
+    user_id:    tester
+    first_name: Tester
+    last_name:  Account
+  patrick_profile:
+    user_id:    patrick
+    first_name: Patrick
+    last_name:  Bajao
+  earlbajao_gmail_profile:
+    user_id:    earlbajao_gmail
+    first_name: Earl
+    last_name:  Bajao
