@@ -1,0 +1,13 @@
+Item:
+  item_jollibee_yum:
+    place_id: jollibee
+    name:     Yum!
+    price:    28.00
+  item_jollibee_bsteak:
+    place_id: jollibee
+    name:     1 pc. Burger Steak
+    price:    37.00
+  item_jollibee_regular_fries:
+    place_id: jollibee
+    name:     Jolly Crispy Fries Regular
+    price:    28.00

@@ -1,4 +1,4 @@
-set :application, "lunches"
+set :application, "lunchapp"
 set :repository, "git@github.com:devpips/Lunches.git"
 
 default_run_options[:pty] = true
@@ -107,7 +107,7 @@ namespace (:sf) do
     Migrate database information
   DESC
   task :dbmigrate do
-    run "cd #{current_path} && ./symfony doctrine:migrate --application=frontend --env=#{stage}"
+    run "cd #{current_path} && ./symfony propel:migrate frontend"
     run "cd #{current_path} && ./symfony project:enable #{stage}"
   end
 end
