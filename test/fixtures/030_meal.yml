@@ -2,5 +2,3 @@ Meal:
   meal_jollibee:
     place_id: jollibee
     type:     lunch
-  meal_unknown:
-    type: lunch
