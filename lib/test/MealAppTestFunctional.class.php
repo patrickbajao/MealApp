@@ -10,7 +10,7 @@ class MealAppTestFunctional extends sfTestFunctional
     }
 
     public function login($username, $password) {
-        return $this->post('/sfGuardAuth/signin', array('signin' => array('username' => $username, 'password' => $password)));
+        return $this->post('/sfGuardAuth/signin', array('signin' => array('username' => $username, 'password' => $password, 'remember' => false)));
     }
     
 }
