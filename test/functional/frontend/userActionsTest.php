@@ -2,26 +2,19 @@
 
 include(dirname(__FILE__).'/../../bootstrap/functional.php');
 
-$browser = new sfTestFunctional(new sfBrowser());
+$browser = new MealAppTestFunctional(new sfBrowser());
 
-$loader = new sfPropelData();
-$loader->loadData(sfConfig::get('sf_test_dir').'/fixtures');
+$browser->loadData();
 
 /**
  * Feature 1: As a user, I can login to my account
  */
 
-$browser->info('1 - User Login')->
-    info('1.1 - User enters his correct username and password then clicks the Login button')->
+$browser->
+    info('1 - User Login')->
+    login('mealapp.test@gmail.com', 'p4ssw0rd!')->
     get('/')->
-    with('response')->
-    with('request')->begin()->
-        click('Login', array('signin' => array('username' => 'tester', 'password' => 'p4ssw0rd!')))->
-    end()->
-    with('response')->
-        isRedirected()->
-        followRedirect()->
-    info('1.1.1 - Application redirects user to his home page')->
     with('response')->begin()->
         checkElement('#welcome', true)->
-    end();
+    end()
+;

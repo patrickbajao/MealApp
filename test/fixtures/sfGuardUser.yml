@@ -6,8 +6,8 @@ SfGuardUser:
     password: p4ssw0rd!
     is_active: 1
     is_super_admin: 1
-  earlbajao_gmail:
-    username: earl.bajao@gmail.com
+  mealapp_test:
+    username: mealapp.test@gmail.com
     algorithm: sha1
     salt: 9f5e530ddd1084dfa385eb05cca87cfa
     password: p4ssw0rd!
@@ -18,7 +18,7 @@ SfGuardUserProfile:
     user_id:    admin
     first_name: Admin
     last_name:  Account
-  earlbajao_gmail_profile:
-    user_id:    earlbajao_gmail
-    first_name: Earl Patrick
-    last_name:  Bajao
+  mealapp_test_profile:
+    user_id:    mealapp_test
+    first_name: Meal App
+    last_name:  Test
