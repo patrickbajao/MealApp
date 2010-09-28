@@ -12,7 +12,7 @@ propel:
     type:             { type: varchar(9), required: true }
     voting_stopped:   { type: tinyint, default: 0 }
     ordering_stopped: { type: tinyint, default: 0 }
-    schedule_at:      { type: timestamp, required: true }
+    scheduled_at:     { type: timestamp, required: true }
     created_at:       ~
     updated_at:       ~
   item:

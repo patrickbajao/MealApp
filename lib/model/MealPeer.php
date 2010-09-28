@@ -30,4 +30,12 @@ class MealPeer extends BaseMealPeer {
         return $meal->getPlaceId();
     }
     
+    public static function getScheduledMeals() {
+        $c = new Criteria();
+        $c->add(self::SCHEDULED_AT, date('Y-m-d') . ' 23:59:59', Criteria::LESS_EQUAL);
+        $c->addAnd(self::SCHEDULED_AT, date('Y-m-d') . ' 00:00:00', Criteria::GREATER_EQUAL);
+        $meals = self::doSelect($c);
+        return $meals;
+    }
+    
 } // MealPeer

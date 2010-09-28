@@ -16,6 +16,7 @@ abstract class BaseMealFormFilter extends BaseFormFilterPropel
       'type'             => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'voting_stopped'   => new sfWidgetFormFilterInput(),
       'ordering_stopped' => new sfWidgetFormFilterInput(),
+      'scheduled_at'     => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
       'created_at'       => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate())),
       'updated_at'       => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate())),
     ));
@@ -25,6 +26,7 @@ abstract class BaseMealFormFilter extends BaseFormFilterPropel
       'type'             => new sfValidatorPass(array('required' => false)),
       'voting_stopped'   => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'ordering_stopped' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'scheduled_at'     => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDate(array('required' => false)))),
       'created_at'       => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDate(array('required' => false)))),
       'updated_at'       => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDate(array('required' => false)))),
     ));
@@ -49,6 +51,7 @@ abstract class BaseMealFormFilter extends BaseFormFilterPropel
       'type'             => 'Text',
       'voting_stopped'   => 'Number',
       'ordering_stopped' => 'Number',
+      'scheduled_at'     => 'Date',
       'created_at'       => 'Date',
       'updated_at'       => 'Date',
     );

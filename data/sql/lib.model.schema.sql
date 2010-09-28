@@ -50,6 +50,7 @@ CREATE TABLE `meal`
 	`type` VARCHAR(9)  NOT NULL,
 	`voting_stopped` TINYINT default 0,
 	`ordering_stopped` TINYINT default 0,
+	`scheduled_at` DATETIME  NOT NULL,
 	`created_at` DATETIME,
 	`updated_at` DATETIME,
 	PRIMARY KEY (`id`),

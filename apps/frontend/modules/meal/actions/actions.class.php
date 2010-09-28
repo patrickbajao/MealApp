@@ -16,7 +16,7 @@ class mealActions extends sfActions
      * @param sfRequest $request A request object
      */
     public function executeIndex(sfWebRequest $request) {
-        $this->meals = MealPeer::doSelect(new Criteria());
+        $this->meals = MealPeer::getScheduledMeals();
     }
     
     public function executeOrder(sfWebRequest $request) {

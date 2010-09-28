@@ -19,6 +19,7 @@ abstract class BaseMealForm extends BaseFormPropel
       'type'             => new sfWidgetFormInputText(),
       'voting_stopped'   => new sfWidgetFormInputText(),
       'ordering_stopped' => new sfWidgetFormInputText(),
+      'scheduled_at'     => new sfWidgetFormDateTime(),
       'created_at'       => new sfWidgetFormDateTime(),
       'updated_at'       => new sfWidgetFormDateTime(),
     ));
@@ -29,6 +30,7 @@ abstract class BaseMealForm extends BaseFormPropel
       'type'             => new sfValidatorString(array('max_length' => 9)),
       'voting_stopped'   => new sfValidatorInteger(array('min' => -128, 'max' => 127, 'required' => false)),
       'ordering_stopped' => new sfValidatorInteger(array('min' => -128, 'max' => 127, 'required' => false)),
+      'scheduled_at'     => new sfValidatorDateTime(),
       'created_at'       => new sfValidatorDateTime(array('required' => false)),
       'updated_at'       => new sfValidatorDateTime(array('required' => false)),
     ));
