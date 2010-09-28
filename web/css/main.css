@@ -320,6 +320,8 @@ div#meal-list {}
         div#meal-list div.legend dl dt,
         div#meal-list div.legend dl dd {
             float: left;
+            height: 40px;
+            line-height: 40px;
         }
             
             div#meal-list div.legend dl dt {
@@ -329,6 +331,18 @@ div#meal-list {}
             
             div#meal-list div.legend dl dd {
                 margin-right: 20px;
+            }
+            
+            div#meal-list div.legend dl dd.breakfast {
+                border: 1px solid #9fcc4e;
+            }
+            
+            div#meal-list div.legend dl dd.lunch {
+                border: 1px solid #ffcb65;
+            }
+            
+            div#meal-list div.legend dl dd.dinner {
+                border: 1px solid #5c7394;
             }
                 
 div#place-list {}

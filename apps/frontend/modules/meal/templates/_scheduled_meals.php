@@ -3,11 +3,11 @@
     <span>Legend: </span>
     <dl>
         <dt>Breakfast</dt>
-            <dd><?php echo image_tag('meal-bfast-icon.gif') ?></dd>
+            <dd class="breakfast"><?php echo image_tag('meal-bfast-icon.gif') ?></dd>
         <dt>Lunch</dt>
-            <dd><?php echo image_tag('meal-lunch-icon.gif') ?></dd>
+            <dd class="lunch"><?php echo image_tag('meal-lunch-icon.gif') ?></dd>
         <dt>Dinner</dt>
-            <dd><?php echo image_tag('meal-dinner-icon.gif') ?></dd>
+            <dd class="dinner"><?php echo image_tag('meal-dinner-icon.gif') ?></dd>
 </div>
 <ul>
     <div class="date"><?php echo date('F j, Y') ?></div>
