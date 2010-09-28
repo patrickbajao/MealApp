@@ -358,8 +358,8 @@ div.other-meals {
 }
     
     div.other-meals a {
-        padding-left: 5px;
-        padding-right: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
         text-decoration: none;
         font-weight: bold;
     }

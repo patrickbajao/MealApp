@@ -15,6 +15,11 @@ class mealActions extends sfActions
         $this->meals = MealPeer::getScheduledMeals();
     }
     
+    public function executeList(sfWebRequest $request) {
+        $tense = $request->getParameter('tense');
+        $this->meals = MealPeer::getMealsByTense($tense);
+    }
+    
     public function executeOrder(sfWebRequest $request) {
         $user_id = $this->getUser()->getGuardUser()->getId();
         $meal_id  = $request->getParameter('meal_id');
