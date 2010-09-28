@@ -344,7 +344,47 @@ div#meal-list {}
             div#meal-list div.legend dl dd.dinner {
                 border: 1px solid #5c7394;
             }
-                
+
+div.other-meals {
+    clear: both;
+    float: left;
+    margin-top: 20px;
+    display: block;
+    width: 880px;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+    
+    div.other-meals a {
+        padding-left: 5px;
+        padding-right: 5px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    
+    div.other-meals a.past {
+        float: left;
+        color: #ececec;
+        background-color: #4b4b4b;
+    }
+    
+    
+    div.other-meals a.past:hover {
+        background-color: #727272;
+    }
+    
+    div.other-meals a.future {
+        float: right;
+        color: #ececec;
+        background-color: #68940E;
+    }
+    
+    div.other-meals a.future:hover {
+        background-color: #8db93b;
+    }
+            
 div#place-list {}
 
     div#place-list ul {

@@ -67,6 +67,10 @@ vote_change:
 vote:
   url:   /vote/:meal_id
   param: { module: meal, action: vote }
+
+meal_list:
+  url:   /list/:tense
+  param: { module: meal, action: list }
   
 meals:
   url:   /meals
