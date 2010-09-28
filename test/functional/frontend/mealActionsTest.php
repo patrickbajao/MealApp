@@ -23,13 +23,13 @@ $browser->info('1 - Order Page')->
     login('mealapp.test@gmail.com', 'p4ssw0rd!')->
     get('/order/' . $meal->getId())->
     
-    info('1.3 - User clicks on the Place Order button')->
+    info('1.2 - User clicks on the Place Order button')->
     click('Place Order', array('meal_order' => array('item_id' => array($item->getId()))))->
     with('response')->
         isRedirected()->
         followRedirect()->
         
-    info('1.3.1 - User successfully ordered and will be redirected to the Meals page with a success message')->
+    info('1.3 - User successfully ordered and will be redirected to the Meals page with a success message')->
     with('response')->begin()->
         checkElement('.info', '/Your order has been placed./i')->
     end();
@@ -49,13 +49,13 @@ $browser->info('2 - Vote Page')->
     login('mealapp.test@gmail.com', 'p4ssw0rd!')->
     get('/vote/' . $meal->getId())->
     
-    info('2.3 - User clicks on the Place Vote button')->
+    info('2.1 - User clicks on the Place Vote button')->
     click('Place Vote', array('vote' => array('place_id' => $place->getId())))->
     with('response')->
         isRedirected()->
         followRedirect()->
         
-    info('2.3.1 - User successfully voted and will be redirected to the Meals page with a success message')->
+    info('2.2 - User successfully voted and will be redirected to the Meals page with a success message')->
     with('response')->begin()->
         checkElement('.info', '/Your vote has been placed./i')->
     end();
@@ -67,7 +67,9 @@ $browser->info('2 - Vote Page')->
 $browser->info('3 - Meals Page')->
     login('mealapp.test@gmail.com', 'p4ssw0rd!')->
     get('/meals')->
+    info('3.1 - User will be able to see meals listed by schedule')->
     with('response')->begin()->
         checkElement('div.title', '/Meals/i')->
-        checkElement('div#scheduled-meal div.date', '/' . date('Y M j') . '/i')->
+        checkElement('div#scheduled-meal', true)->
+        checkElement('div.date', true)->
     end();

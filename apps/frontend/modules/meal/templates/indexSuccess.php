@@ -4,5 +4,5 @@
     <?php if($sf_user->hasFlash('info')): ?>
         <p class="info"><?php echo $sf_user->getFlash('info') ?></p>
     <?php endif; ?>
-    <?php include_partial('meal/list', array('meals' => $meals, 'user' => $sf_user->getGuardUser())) ?>
+    <?php include_partial('meal/scheduled_meals', array('meals' => $meals, 'user' => $sf_user->getGuardUser())) ?>
 </div>

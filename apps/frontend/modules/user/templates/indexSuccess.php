@@ -5,5 +5,5 @@
 <h1 id="welcome">Welcome <?php echo $user->getProfile()->getFirstName()?> <?php echo $user->getProfile()->getLastName()?>!</h1>
 <div class="subtitle">Meals!</div>
 <div id="meal-list">
-<?php include_partial('meal/list', array('meals' => $meals, 'user' => $sf_user->getGuardUser())) ?>
+<?php include_partial('meal/scheduled_meals', array('meals' => $meals, 'user' => $sf_user->getGuardUser())) ?>
 </div>

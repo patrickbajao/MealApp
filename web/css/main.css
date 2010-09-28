@@ -201,71 +201,136 @@ div#login-form {
         }
 
 div#meal-list {}
-
+    
+    div#meal-list div.date {
+        text-align: left;
+        color: #4b4b4b;
+        font-weight: bold;
+        font-size: 120%;
+        text-align: right;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #d5d5d5;
+        margin-bottom: 10px;
+    }
+    
     div#meal-list ul {
         list-style: none;
         float: left;
         display: block;
+        width: 878px;
+        padding: 10px;
+        background-color: #ffffff;
+        border: 1px solid #d5d5d5;
     }
     
         div#meal-list ul li {
             display: block;
-            float: left;
-            width: 256px;
-            margin: 10px;
-            margin-top: 0;
-            margin-bottom: 20px;
-            padding: 10px;
-            background-color: #9FCC4E;
-            border-left: 4px solid #82ad2f;
+            height: 40px;
+            line-height: 40px;
+            background-color: #ffffff;
+            padding-right: 10px;
+            margin-bottom: 5px;
         }
         
-            div#meal-list ul li span.counter {
-                color: #ffffff;
+        div#meal-list ul li.breakfast {
+            border: 1px solid #9fcc4e;
+            background-image: url(../images/meal-bfast-bg.gif);
+            background-repeat: repeat-x;
+            color: #68940e;
+        }
+        
+        div#meal-list ul li.lunch {
+            border: 1px solid #ffcb65;
+            background-image: url(../images/meal-lunch-bg.gif);
+            background-repeat: repeat-x;
+            color: #bd8f2a;
+        }
+        
+        div#meal-list ul li.dinner {
+            border: 1px solid #5c7394;
+            background-image: url(../images/meal-dinner-bg.gif);
+            background-repeat: repeat-x;
+            color: #465c7c;
+        }
+            
+            div#meal-list ul li div.icon {
+                height: 40px;
+                width: 40px;
                 float: left;
-                padding-right: 5px;
-                padding-bottom: 10px;
-                font-size: 200%;
-                font-weight: bold;
+                margin-right: 10px;
+            }
+            
+            div#meal-list ul li dl,
+            div#meal-list ul li dl dt,
+            div#meal-list ul li dl dd {
+                float: left;
+                height: 40px;
+                line-height: 40px;
+                display: block;
+            }
+                
+                div#meal-list ul li dl dt {
+                    margin-right: 5px;
+                }
+                
+                div#meal-list ul li dl dd {
+                    margin-right: 20px;
+                }
+            
+            div#meal-list ul li span.info {
+                float: left;
+                height: 40px;
+                line-height: 40px;
+                display: block;
+                margin-right: 20px;
+            }
+            
+            div#meal-list ul li span.links {
+                float: right;
+                height: 40px;
+                line-height: 40px;
                 display: block;
             }
             
-                div#meal-list ul li div.meal-info {
-                    float: left;
-                    width: 215px;
+                div#meal-list ul li span.links a {
+                    padding: 5px;
+                    text-decoration: none;
+                    color: #000000;
+                    font-weight: bold;
                 }
-            
-                    div#meal-list ul li div.meal-info dt,
-                    div#meal-list ul li div.meal-info dd {
-                        display: block;
-                        padding: 5px;
-                    }
-                    
-                    div#meal-list ul li div.meal-info dt { float: left; font-weight: bold; }
-                    
-                    div#meal-list ul li div.meal-info span.links {
-                        padding-top: 5px;
-                        float: left;
-                        display: block;
-                    }
-                    
-                        div#meal-list ul li div.meal-info span.links a {
-                            text-decoration: none;
-                            text-transform: uppercase;
-                            font-size: 85%;
-                            color: #000000;
-                            padding: 5px;
-                            margin-right: 10px;
-                            margin-bottom: 5px;
-                            font-weight: bold;
-                            background-color: #82AD2F;
-                            float: left;
-                        }
-                        
-                        div#meal-list ul li div.meal-info span.links a:hover {
-                            background-color: #ececec;
-                        }
+                
+                div#meal-list ul li span.links a:hover {
+                    text-decoration: underline;
+                }
 
+    div#meal-list div.legend {
+        height: 40px;
+        line-height: 40px;
+        margin-bottom: 20px;
+        float: left;
+    }
+    
+        div#meal-list div.legend span {
+            font-weight: bold;
+            float: left;
+            margin-right: 10px;
+        }
+        
+        div#meal-list div.legend dl,
+        div#meal-list div.legend dl dt,
+        div#meal-list div.legend dl dd {
+            float: left;
+        }
+            
+            div#meal-list div.legend dl dt {
+                margin-right: 5px;
+                font-weight: bold;
+            }
+            
+            div#meal-list div.legend dl dd {
+                margin-right: 20px;
+            }
+                
 div#place-list {}
 
     div#place-list ul {
