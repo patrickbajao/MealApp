@@ -1,4 +1,9 @@
 Meal:
   meal_jollibee:
-    place_id: jollibee
-    type:     lunch
+    place_id:         jollibee
+    type:             lunch
+    voting_stopped:   1
+  meal_unknown:
+    type:             dinner
+    voting_stopped:   0
+    ordering_stopped: 0

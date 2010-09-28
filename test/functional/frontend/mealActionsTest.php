@@ -10,18 +10,21 @@ $browser->loadData();
  * Feature 1: As a user, I can pick a menu item from the place chosen to eat
  */
 
+$c = new Criteria();
+$c->add(MealPeer::VOTING_STOPPED, 1);
+$c->add(MealPeer::ORDERING_STOPPED, 0);
+$meal  = MealPeer::doSelectOne($c);
+
+$c2 = new Criteria();
+$c2->add(ItemPeer::PLACE_ID, $meal->getPlaceId());
+$item = ItemPeer::doSelectOne($c2);
+
 $browser->info('1 - Order Page')->
     login('mealapp.test@gmail.com', 'p4ssw0rd!')->
-    get('/meals')->
-    
-    info('1.1 - User clicks on the Order button')->
-    click('Order', array(), array('position' => 1))-> //First Order button will be clicked
-    
-    info('1.2 - User picks a menu item')->
-    select('meal_order[item_id][]')-> //First checkbox will be selected
+    get('/order/' . $meal->getId())->
     
     info('1.3 - User clicks on the Place Order button')->
-    click('Place Order')->
+    click('Place Order', array('meal_order' => array('item_id' => array($item->getId()))))->
     with('response')->
         isRedirected()->
         followRedirect()->
@@ -35,18 +38,19 @@ $browser->info('1 - Order Page')->
  * Feature 2: As a user, I can vote on where to eat
  */
 
+$c3 = new Criteria();
+$c3->add(MealPeer::VOTING_STOPPED, 0);
+$c3->add(MealPeer::ORDERING_STOPPED, 0);
+$meal  = MealPeer::doSelectOne($c3);
+
+$place = PlacePeer::doSelectOne(new Criteria());
+
 $browser->info('2 - Vote Page')->
     login('mealapp.test@gmail.com', 'p4ssw0rd!')->
-    get('/meals')->
-    
-    info('2.1 - User clicks on the Vote link')->
-    click('Vote', array(), array('position' => 1))-> //First Vote button will be clicked
-    
-    info('2.2 - User chooses a place from the list')->
-    select('vote[place_id]', array('position' => 1))-> //First radiobutton will be selected
+    get('/vote/' . $meal->getId())->
     
     info('2.3 - User clicks on the Place Vote button')->
-    click('Place Vote')->
+    click('Place Vote', array('vote' => array('place_id' => $place->getId())))->
     with('response')->
         isRedirected()->
         followRedirect()->
