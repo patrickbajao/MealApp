@@ -123,15 +123,13 @@ div#content {
     margin-right: auto;
     background-color: #ececec;
     border-top: 1px solid #d5d5d5;
-    background-image: url(../images/content-bg.gif);
-    background-repeat: repeat-x;
 }
 
     div#content > div.title {
         font-size: 140%;
         text-align: left;
         background-color: #767676;
-        color: #ececec;
+        color: #ffffff;
         padding: 10px;
         font-weight: bold;
         margin-bottom: 20px;
