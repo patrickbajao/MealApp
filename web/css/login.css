@@ -34,6 +34,7 @@ div#container {
 
 div#header {
     padding: 20px;
+    padding-bottom: 0;
     height: 100px;
 }
 
@@ -42,7 +43,7 @@ div#header {
         height: 100px;
         margin-left: auto;
         margin-right: auto;
-        background-image: url(../images/lunch-app-logo-beta.gif);
+        background-image: url(../images/eatpips-login-logo.gif);
         background-repeat: no-repeat;
     }
     
@@ -58,6 +59,7 @@ div#header {
 
 div#content {
     padding: 20px;
+    padding-top: 0;
 }
 
 div#login-form {

@@ -12,6 +12,7 @@
     <div id="wrapper">
         <div id="container">
             <div id="header">
+                <h1 id="logo"><?php echo link_to('<span>LunchApp</span>', '@homepage') ?></h1>
                 <div id="user-info">
                     <?php if($sf_user->isAuthenticated()): ?>
                         <span class="username">You are logged in as <strong><?php echo $sf_user->getGuardUser()->getUsername() ?></strong></span>&nbsp;|&nbsp;<?php echo link_to('Logout', '@sf_guard_signout') ?>
@@ -19,7 +20,6 @@
                         <?php echo link_to('Login', '@sf_guard_signin') ?>&nbsp;|&nbsp;<?php echo link_to('Register', '@register') ?>
                     <?php endif; ?>
                 </div>
-                <h1 id="logo"><?php echo link_to('<span>LunchApp</span>', '@homepage') ?></h1>
                 <?php if($sf_user->isAuthenticated()): ?>
                 <ul id="navbar">
                     <li><?php echo link_to('Home', '@homepage') ?></li>

@@ -12,12 +12,12 @@
     <div id="wrapper">
         <div id="container">
             <div id="header">
+                <h1 id="logo"><?php echo link_to('<span>LunchApp</span>', '@homepage') ?></h1>
                 <?php if($sf_user->isAuthenticated()): ?>
                 <div id="user-info">
                     <span class="username">You are logged in as <strong><?php echo $sf_user->getGuardUser()->getUsername() ?></strong></span>&nbsp;|&nbsp;<?php echo link_to('Logout', '@sf_guard_signout') ?>
                 </div>
                 <?php endif; ?>
-                <h1 id="logo"><?php echo link_to('<span>LunchApp</span>', '@homepage') ?></h1>
                 <?php if($sf_user->isAuthenticated() && $sf_user->getGuardUser()->getIsSuperAdmin()): ?>
                 <ul id="navbar">
                     <li><?php echo link_to('Home', '@homepage') ?></li>

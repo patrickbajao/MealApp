@@ -27,6 +27,8 @@ body {
     background-repeat: repeat-x;
 }
 
+div#wrapper { background-image: url(../images/wrapper-bg.gif); background-repeat: repeat-x; }
+
 div#container {
     width: 980px;
     margin-right: auto;
@@ -36,24 +38,24 @@ div#container {
 
 div#header {
     padding: 20px;
-    height: 150px;
+    height: 100px;
     padding-top: 0;
 }
     
     div#header div#user-info {
-        border-bottom: 1px dotted #2e425d;
         text-align: right;
         padding: 5px;
-        height: 20px;
-        line-height: 20px;
+        height: 30px;
+        line-height: 30px;
         font-size: 90%;
         margin-bottom: 20px;
+        color: #9b9b9b;
     }
     
         div#header div#user-info a {
             text-decoration: none;
             font-weight: bold;
-            color: #000000;
+            color: #ffffff;
         }
         
         div#header div#user-info a:hover {
@@ -64,7 +66,7 @@ div#header {
         width: 200px;
         height: 100px;
         float: left;
-        background-image: url(../images/lunch-app-logo-beta.gif);
+        background-image: url(../images/eatpips-logo.gif);
         background-repeat: no-repeat;
     }
     
@@ -84,7 +86,7 @@ div#header {
         list-style: none;
         width: 300px;
         float: right;
-        padding-top: 30px;
+        background-color: #ececec;
     }
     
         div#header ul#navbar li {
@@ -111,6 +113,7 @@ div#header {
                 background-color: #9FCC4E;
                 background-image: url(../images/navbar-bg.gif);
                 background-repeat: no-repeat;
+                color: #292929;
             }
 
 div#content {
