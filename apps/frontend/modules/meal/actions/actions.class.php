@@ -23,8 +23,6 @@ class mealActions extends sfActions
         $this->week = $week;
         $this->sunday = $sunday;
         $this->saturday = $saturday;
-        $this->prev = MealPeer::getMealsByWeek($week - 1);
-        $this->next = MealPeer::getMealsByWeek($week + 1);
     }
     
     public function executeOrder(sfWebRequest $request) {
