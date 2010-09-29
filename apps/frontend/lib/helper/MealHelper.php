@@ -1,5 +1,9 @@
 <?php
 
+function meal_date($date, $days) {
+    return date('F j, Y', strtotime('+' . $days . ' days', strtotime($date)));
+}
+
 function meal_place($meal, $msg = 'None') {
     return (!is_null($meal->getPlace())) ? $meal->getPlace()->getName() : $msg;
 }

@@ -120,15 +120,13 @@ div#content {
     margin-right: auto;
     background-color: #ececec;
     border-top: 1px solid #d5d5d5;
-    background-image: url(../images/content-bg.gif);
-    background-repeat: repeat-x;
 }
 
     div#content > div.title {
         font-size: 140%;
         text-align: left;
         background-color: #767676;
-        color: #ececec;
+        color: #ffffff;
         padding: 10px;
         font-weight: bold;
         margin-bottom: 20px;
@@ -202,34 +200,37 @@ div#login-form {
 
 div#meal-list {}
     
-    div#meal-list div.date {
-        text-align: left;
-        color: #4b4b4b;
-        font-weight: bold;
-        font-size: 120%;
-        text-align: right;
-        padding-bottom: 10px;
-        padding-top: 40px;
-        border-bottom: 1px solid #d5d5d5;
-        margin-bottom: 10px;
-    }
-    
-    div#meal-list div.date.first {
+    div#meal-list span.date.first {
         padding-top: 10px;
     }
     
-    div#meal-list ul {
+    div#meal-list ul li.day{
         list-style: none;
-        float: left;
         display: block;
         width: 878px;
         padding: 10px;
-        padding-top: 0;
         background-color: #ffffff;
         border: 1px solid #d5d5d5;
+        margin-bottom: 10px;
     }
+       
+        div#meal-list ul li.day span.date {
+            text-align: left;
+            color: #4b4b4b;
+            font-weight: bold;
+            font-size: 120%;
+            text-align: right;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #d5d5d5;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        div#meal-list ul li.day.current span.date {
+            color: #FF1A00;
+        }
     
-        div#meal-list ul li {
+        div#meal-list ul li.day ul.meals li {
             display: block;
             height: 40px;
             line-height: 40px;
@@ -238,82 +239,74 @@ div#meal-list {}
             margin-bottom: 5px;
         }
         
-        div#meal-list ul li.no-meal {
+        div#meal-list ul li.day ul.meals li.no-meal {
             padding: 0;
-            text-align: center;
+            padding-left: 10px;
             font-weight: bold;
             margin: 0;
             border: 1px dashed #d5d5d5;
         }
         
-        div#meal-list ul li.breakfast {
+        div#meal-list ul li.day ul.meals li.breakfast {
             border: 1px solid #9fcc4e;
             background-image: url(../images/meal-bfast-bg.gif);
             background-repeat: repeat-x;
             color: #68940e;
         }
         
-        div#meal-list ul li.lunch {
+        div#meal-list ul li.day ul.meals li.lunch {
             border: 1px solid #ffcb65;
             background-image: url(../images/meal-lunch-bg.gif);
             background-repeat: repeat-x;
             color: #bd8f2a;
         }
         
-        div#meal-list ul li.dinner {
+        div#meal-list ul li.day ul.meals li.dinner {
             border: 1px solid #A3B9DE;
             background-image: url(../images/meal-dinner-bg.gif);
             background-repeat: repeat-x;
             color: #677d9f;
         }
             
-            div#meal-list ul li div.icon {
+            div#meal-list ul li.day ul.meals li div.icon {
                 height: 40px;
                 width: 40px;
                 float: left;
                 margin-right: 10px;
             }
             
-            div#meal-list ul li dl,
-            div#meal-list ul li dl dt,
-            div#meal-list ul li dl dd {
+            div#meal-list ul li.day ul.meals li dl,
+            div#meal-list ul li.day ul.meals li dl dt,
+            div#meal-list ul li.day ul.meals li dl dd {
                 float: left;
                 height: 40px;
                 line-height: 40px;
                 display: block;
             }
                 
-                div#meal-list ul li dl dt {
+                div#meal-list ul li.day ul.meals li dl dt {
                     margin-right: 5px;
                 }
                 
-                div#meal-list ul li dl dd {
+                div#meal-list ul li.day ul.meals li dl dd {
                     margin-right: 20px;
                 }
             
-            div#meal-list ul li span.info {
-                float: left;
-                height: 40px;
-                line-height: 40px;
-                display: block;
-                margin-right: 20px;
-            }
-            
-            div#meal-list ul li span.links {
+            div#meal-list ul li.day ul.meals li span.links {
                 float: right;
                 height: 40px;
                 line-height: 40px;
                 display: block;
             }
             
-                div#meal-list ul li span.links a {
+                div#meal-list ul li.day ul.meals li span.links a {
                     padding: 5px;
                     text-decoration: none;
                     color: #000000;
                     font-weight: bold;
                 }
                 
-                div#meal-list ul li span.links a:hover {
+                div#meal-list ul li.day ul.meals li span.links a:hover {
                     text-decoration: underline;
                 }
 
@@ -321,7 +314,6 @@ div#meal-list {}
         height: 40px;
         line-height: 40px;
         margin-bottom: 20px;
-        float: left;
     }
     
         div#meal-list div.legend span {
@@ -389,7 +381,7 @@ div.week-nav {
     }
     
     div.week-nav a.next {
-        color: #ececec;
+        color: #bfeb6b;
         background-color: #68940E;
     }
     
