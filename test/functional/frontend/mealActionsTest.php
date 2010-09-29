@@ -70,6 +70,6 @@ $browser->info('3 - Meals Page')->
     info('3.1 - User will be able to see meals listed by schedule')->
     with('response')->begin()->
         checkElement('div.title', '/Meals/i')->
-        checkElement('div.date', true)->
+        checkElement('span.date', true)->
         checkElement('div.legend', true)->
     end();
