@@ -4,9 +4,10 @@
     <?php if($sf_user->hasFlash('info')): ?>
         <p class="info"><?php echo $sf_user->getFlash('info') ?></p>
     <?php endif; ?>
-    <?php include_partial('meal/scheduled_meals', array('meals' => $meals, 'user' => $sf_user->getGuardUser())) ?>
+    <?php include_partial('meal/list', array('meals' => $meals, 'sunday' => $sunday, 'user' => $sf_user->getGuardUser())) ?>
 </div>
-<div class="other-meals">
-    <?php if($past_meals->count() > 0): ?><?php echo link_to('<span><< Past Meals</span>', '@meal_list?tense=past', array('class' => 'past')) ?><?php endif; ?>
-    <?php if($future_meals->count() > 0): ?><?php echo link_to('<span>Future Meals >></span>', '@meal_list?tense=future', array('class' => 'future')) ?><?php endif; ?>
+<div class="week-nav">
+    <?php echo link_to('<span><< Previous Week</span>', '@meals?week=' . ($week - 1), array('class' => 'prev')) ?>
+    <?php echo link_to('<span>Current Week</span>', '@meals', array('class' => 'current')) ?>
+    <?php echo link_to('<span>Next Week >></span>', '@meals?week=' . ($week + 1), array('class' => 'next')) ?>
 </div>

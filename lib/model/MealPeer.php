@@ -38,28 +38,11 @@ class MealPeer extends BaseMealPeer {
         $meals = self::doSelect($c);
         return $meals;
     }
-    
-    public static function getMealsByTense($tense) {
-        $meals = null;
-        if('past' == $tense) {
-            $meals = self::getPastMeals();
-        } elseif('future' == $tense) {
-            $meals = self::getFutureMeals();
-        }
-        return $meals;
-    }
-    
-    protected static function getPastMeals() {
+     
+    public static function getMealsByWeek($sunday, $saturday = null) {
         $c = new Criteria();
-        $c->add(self::SCHEDULED_AT, date('Y-m-d') . ' 00:00:00', Criteria::LESS_THAN);
-        $c->addDescendingOrderByColumn(self::SCHEDULED_AT);
-        $meals = self::doSelect($c);
-        return $meals;
-    }
-    
-    protected static function getFutureMeals() {
-        $c = new Criteria();
-        $c->add(self::SCHEDULED_AT, date('Y-m-d') . ' 23:59:59', Criteria::GREATER_THAN);
+        $c->add(self::SCHEDULED_AT, $saturday . ' 23:59:59', Criteria::LESS_EQUAL);
+        $c->addAnd(self::SCHEDULED_AT, $sunday . ' 00:00:00', Criteria::GREATER_EQUAL);
         $c->addAscendingOrderByColumn(self::SCHEDULED_AT);
         $meals = self::doSelect($c);
         return $meals;

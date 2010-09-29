@@ -12,21 +12,19 @@ class mealActions extends sfActions
 {
 
     public function executeIndex(sfWebRequest $request) {
-        $this->meals = MealPeer::getScheduledMeals();
-        $this->past_meals   = MealPeer::getMealsByTense('past');
-        $this->future_meals = MealPeer::getMealsByTense('future');
-    }
-    
-    public function executeList(sfWebRequest $request) {
-        $tense = $request->getParameter('tense');
-        $meals = MealPeer::getMealsByTense($tense);
-        if(!empty($meals)) {
-            $this->meals = $meals;
-        } else {
-            $this->getUser()->setFlash('info', 'There are no ' . $tense . ' meals.');
-            $this->redirect('@meals');
-        }
-        $this->tense = ucwords($tense);
+        $week = $request->getParameter('week');
+        
+        $date = date('Y-m-d', strtotime($week . ' week'));
+        $day_number = date('w', strtotime($date)); //Get the current day represented by number (Sunday = 0, Saturday = 6)
+        $sunday = date('Y-m-d', strtotime('-' . $day_number . ' days', strtotime($date)));
+        $saturday = date('Y-m-d', strtotime('+6 days', strtotime($sunday)));
+
+        $this->meals = MealPeer::getMealsByWeek($sunday, $saturday);
+        $this->week = $week;
+        $this->sunday = $sunday;
+        $this->saturday = $saturday;
+        $this->prev = MealPeer::getMealsByWeek($week - 1);
+        $this->next = MealPeer::getMealsByWeek($week + 1);
     }
     
     public function executeOrder(sfWebRequest $request) {

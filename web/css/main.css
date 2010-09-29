@@ -209,9 +209,13 @@ div#meal-list {}
         font-size: 120%;
         text-align: right;
         padding-bottom: 10px;
-        padding-top: 10px;
+        padding-top: 40px;
         border-bottom: 1px solid #d5d5d5;
         margin-bottom: 10px;
+    }
+    
+    div#meal-list div.date.first {
+        padding-top: 10px;
     }
     
     div#meal-list ul {
@@ -239,6 +243,7 @@ div#meal-list {}
             text-align: center;
             font-weight: bold;
             margin: 0;
+            border: 1px dashed #d5d5d5;
         }
         
         div#meal-list ul li.breakfast {
@@ -354,7 +359,7 @@ div#meal-list {}
                 border: 1px solid #A3B9DE;
             }
 
-div.other-meals {
+div.week-nav {
     clear: both;
     float: left;
     margin-top: 20px;
@@ -364,36 +369,43 @@ div.other-meals {
     line-height: 40px;
     padding-left: 10px;
     padding-right: 10px;
+    text-align: center;
 }
     
-    div.other-meals a {
-        padding-left: 10px;
-        padding-right: 10px;
+    div.week-nav a {
+        padding: 10px;
         text-decoration: none;
         font-weight: bold;
     }
     
-    div.other-meals a.past {
-        float: left;
+    div.week-nav a.prev {
         color: #ececec;
         background-color: #4b4b4b;
     }
     
     
-    div.other-meals a.past:hover {
+    div.week-nav a.prev:hover {
         background-color: #727272;
     }
     
-    div.other-meals a.future {
-        float: right;
+    div.week-nav a.next {
         color: #ececec;
         background-color: #68940E;
     }
     
-    div.other-meals a.future:hover {
+    div.week-nav a.next:hover {
         background-color: #8db93b;
     }
-            
+    
+    div.week-nav a.current {
+        background-color: #A3B9DE;
+        color: #677D9F;
+    }
+    
+    div.week-nav a.current:hover {
+        background-color: #bad1f6;
+    }
+    
 div#place-list {}
 
     div#place-list ul {

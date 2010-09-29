@@ -9,12 +9,16 @@
         <dt>Dinner</dt>
             <dd class="dinner"><?php echo image_tag('meal-dinner-icon.gif') ?></dd>
 </div>
-<?php $date = null; ?>
 <ul>
-<?php foreach($meals as $meal): ?>
-    <?php if($date != date('F j, Y', strtotime($meal->getScheduledAt()))): ?>
-        <div class="date"><?php echo date('F j, Y', strtotime($meal->getScheduledAt())) ?></div>
-    <?php endif; ?>
+<?php $days = 0; $prev = 1; ?>
+<?php while($days <= 6): ?>
+    <?php $no_meal = false ?>
+    <?php $date = date('F j, Y', strtotime('+' . $days . ' days', strtotime($sunday))) ?>
+    <?php $meal = $meals->current(); ?>
+
+    <?php if($meal != false): ?>
+        <?php if($date == date('F j, Y', strtotime($meal->getScheduledAt()))): ?>
+            <?php if($prev != $days): ?><div class="date <?php echo ($days == 0) ? 'first' : '' ; ?>"><?php echo $date ?></div><?php endif; ?>
             <li class="<?php echo $meal->getType() ?>">
                 <div class="icon"><?php echo meal_icon($meal) ?></div>
                 <dl>
@@ -27,6 +31,20 @@
                     <?php echo meal_links($meal, $user) ?>
                 </span>
             </li>
-        <?php $date = date('F j, Y', strtotime($meal->getScheduledAt())); ?>
-<?php endforeach; ?>
+            <?php $prev = $days ?>
+            <?php $meals->next(); ?>
+        <?php else: ?>
+            <?php $no_meal = true ?>
+        <?php endif; ?>
+    <?php else:?>
+        <?php $no_meal = true ?>
+    <?php endif; ?>
+    <?php if($no_meal): ?>
+        <?php if($prev != $days): ?>
+            <div class="date <?php echo ($days == 0) ? 'first' : '' ; ?>"><?php echo $date ?></div>
+            <li class="no-meal">No meals scheduled for this day yet.</li>
+        <?php endif; ?>
+        <?php $days++ ?>
+    <?php endif; ?>
+<?php endwhile; ?>
 </ul>
