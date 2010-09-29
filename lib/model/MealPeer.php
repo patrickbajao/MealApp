@@ -51,18 +51,16 @@ class MealPeer extends BaseMealPeer {
     
     protected static function getPastMeals() {
         $c = new Criteria();
-        $c->add(self::SCHEDULED_AT, date('Y-m-d') . ' 00:00:00', Criteria::LESS_EQUAL);
-        $c->addAscendingOrderByColumn(self::SCHEDULED_AT);
-        $c->addGroupByColumn(self::SCHEDULED_AT);
+        $c->add(self::SCHEDULED_AT, date('Y-m-d') . ' 00:00:00', Criteria::LESS_THAN);
+        $c->addDescendingOrderByColumn(self::SCHEDULED_AT);
         $meals = self::doSelect($c);
         return $meals;
     }
     
     protected static function getFutureMeals() {
         $c = new Criteria();
-        $c->add(self::SCHEDULED_AT, date('Y-m-d') . ' 23:59:59', Criteria::GREATER_EQUAL);
+        $c->add(self::SCHEDULED_AT, date('Y-m-d') . ' 23:59:59', Criteria::GREATER_THAN);
         $c->addAscendingOrderByColumn(self::SCHEDULED_AT);
-        $c->addGroupByColumn(self::SCHEDULED_AT);
         $meals = self::doSelect($c);
         return $meals;
     }

@@ -13,11 +13,20 @@ class mealActions extends sfActions
 
     public function executeIndex(sfWebRequest $request) {
         $this->meals = MealPeer::getScheduledMeals();
+        $this->past_meals   = MealPeer::getMealsByTense('past');
+        $this->future_meals = MealPeer::getMealsByTense('future');
     }
     
     public function executeList(sfWebRequest $request) {
         $tense = $request->getParameter('tense');
-        $this->meals = MealPeer::getMealsByTense($tense);
+        $meals = MealPeer::getMealsByTense($tense);
+        if(!empty($meals)) {
+            $this->meals = $meals;
+        } else {
+            $this->getUser()->setFlash('info', 'There are no ' . $tense . ' meals.');
+            $this->redirect('@meals');
+        }
+        $this->tense = ucwords($tense);
     }
     
     public function executeOrder(sfWebRequest $request) {
