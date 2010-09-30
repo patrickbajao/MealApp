@@ -15,6 +15,8 @@ abstract class BaseMealOrderFormFilter extends BaseFormFilterPropel
       'meal_id'          => new sfWidgetFormPropelChoice(array('model' => 'Meal', 'add_empty' => true)),
       'item_id'          => new sfWidgetFormPropelChoice(array('model' => 'Item', 'add_empty' => true)),
       'sf_guard_user_id' => new sfWidgetFormPropelChoice(array('model' => 'sfGuardUser', 'add_empty' => true)),
+      'comments'         => new sfWidgetFormFilterInput(),
+      'quantity'         => new sfWidgetFormFilterInput(),
       'created_at'       => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate())),
       'updated_at'       => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate())),
     ));
@@ -23,6 +25,8 @@ abstract class BaseMealOrderFormFilter extends BaseFormFilterPropel
       'meal_id'          => new sfValidatorPropelChoice(array('required' => false, 'model' => 'Meal', 'column' => 'id')),
       'item_id'          => new sfValidatorPropelChoice(array('required' => false, 'model' => 'Item', 'column' => 'id')),
       'sf_guard_user_id' => new sfValidatorPropelChoice(array('required' => false, 'model' => 'sfGuardUser', 'column' => 'id')),
+      'comments'         => new sfValidatorPass(array('required' => false)),
+      'quantity'         => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'created_at'       => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDate(array('required' => false)))),
       'updated_at'       => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDate(array('required' => false)))),
     ));
@@ -46,6 +50,8 @@ abstract class BaseMealOrderFormFilter extends BaseFormFilterPropel
       'meal_id'          => 'ForeignKey',
       'item_id'          => 'ForeignKey',
       'sf_guard_user_id' => 'ForeignKey',
+      'comments'         => 'Text',
+      'quantity'         => 'Number',
       'created_at'       => 'Date',
       'updated_at'       => 'Date',
     );

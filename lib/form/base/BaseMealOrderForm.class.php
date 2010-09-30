@@ -18,6 +18,8 @@ abstract class BaseMealOrderForm extends BaseFormPropel
       'meal_id'          => new sfWidgetFormPropelChoice(array('model' => 'Meal', 'add_empty' => false)),
       'item_id'          => new sfWidgetFormPropelChoice(array('model' => 'Item', 'add_empty' => false)),
       'sf_guard_user_id' => new sfWidgetFormPropelChoice(array('model' => 'sfGuardUser', 'add_empty' => false)),
+      'comments'         => new sfWidgetFormTextarea(),
+      'quantity'         => new sfWidgetFormInputText(),
       'created_at'       => new sfWidgetFormDateTime(),
       'updated_at'       => new sfWidgetFormDateTime(),
     ));
@@ -27,6 +29,8 @@ abstract class BaseMealOrderForm extends BaseFormPropel
       'meal_id'          => new sfValidatorPropelChoice(array('model' => 'Meal', 'column' => 'id')),
       'item_id'          => new sfValidatorPropelChoice(array('model' => 'Item', 'column' => 'id')),
       'sf_guard_user_id' => new sfValidatorPropelChoice(array('model' => 'sfGuardUser', 'column' => 'id')),
+      'comments'         => new sfValidatorString(array('required' => false)),
+      'quantity'         => new sfValidatorInteger(array('min' => -2147483648, 'max' => 2147483647, 'required' => false)),
       'created_at'       => new sfValidatorDateTime(array('required' => false)),
       'updated_at'       => new sfValidatorDateTime(array('required' => false)),
     ));
