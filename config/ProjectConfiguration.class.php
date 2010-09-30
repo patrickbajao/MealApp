@@ -11,5 +11,6 @@ class ProjectConfiguration extends sfProjectConfiguration
     $this->enablePlugins('sfGuardPlugin');
     $this->enablePlugins('sfPHPOpenIdPlugin');
     $this->enablePlugins('sfPropelMigrationsLightPlugin');
+    $this->enablePlugins('sfCsvPlugin');
   }
 }
