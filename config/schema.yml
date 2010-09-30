@@ -4,6 +4,8 @@ propel:
     meal_id:          { type: integer, foreignTable: meal, foreignReference: id, required: true, onDelete: cascade }
     item_id:          { type: integer, foreignTable: item, foreignReference: id, required: true, onDelete: cascade }
     sf_guard_user_id: { type: integer, foreignTable: sf_guard_user, foreignReference: id, required: true, onDelete: cascade }
+    comments:         { type: longvarchar }
+    quantity:         { type: integer, default: 1 }
     created_at:       ~
     updated_at:       ~
   meal:
