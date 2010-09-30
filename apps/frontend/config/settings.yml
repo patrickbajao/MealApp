@@ -21,7 +21,6 @@ test:
     web_debug:              false
     no_script_name:         false
     etag:                   false
-    csrf_secret:            false
 
 all:
   .settings:
