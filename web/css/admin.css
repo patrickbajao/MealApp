@@ -141,3 +141,54 @@ div#content {
     div#content ul.sf_admin_td_actions a {
         display: block;
     }
+
+div#items-upload {
+    padding: 10px;
+    padding-top: 0;
+    margin-bottom: 20px;
+    width: 878px;
+    border: 1px solid #d5d5d5;
+    background-color: #ffffff;
+}
+
+    div#items-upload div.subtitle {
+        padding: 10px;
+        border-bottom: 1px solid #d5d5d5;
+        text-align: right;
+        font-size: 120%;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    div#items-upload form {
+        display: block;
+    }
+    
+    div#items-upload form div.field { float: left; margin-bottom: 10px; width: 878px; }
+    
+    div#items-upload form div.field label {
+        font-weight: bold !important;
+        margin-bottom: 5px;
+        width: 70px;
+        margin: 0;
+        padding: 0;
+    }
+    
+    div#items-upload form div.field input {
+        float: left;
+    }
+    
+    div#items-upload form div.field input#item_purge {
+        margin-top: 3px;
+    }
+    
+    div#items-upload form div.field span.help {
+        color: #4b4b4b;
+        font-size: 80%;
+        margin: 0;
+        padding: 0;
+        margin-left: 10px;
+        margin-top: 3px;
+        float: left;
+    }
+    

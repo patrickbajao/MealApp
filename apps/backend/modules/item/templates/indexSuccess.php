@@ -7,7 +7,7 @@
     <div id="sf_admin_header">
         <?php include_partial('item/list_header', array('pager' => $pager)) ?>
     </div>
-
+    
     <div id="sf_admin_bar">
         <?php include_partial('item/filters', array('form' => $filters, 'configuration' => $configuration)) ?>
     </div>
@@ -24,5 +24,22 @@
 
     <div id="sf_admin_footer">
         <?php include_partial('item/list_footer', array('pager' => $pager)) ?>
+    </div>
+    
+    <div id="items-upload">
+        <div class="subtitle">Upload Items</div>
+        <form action="<?php echo url_for('item/upload') ?>" method="post" enctype="multipart/form-data">
+            <div class="field">
+                <?php echo $form['place_id']->renderLabel() ?>
+                <?php echo $form['place_id']->render() ?>
+            </div>
+            <div class="field">
+                <?php echo $form['items']->renderLabel() ?>
+                <?php echo $form['items']->render() ?>
+                <?php echo $form['items']->renderHelp() ?>
+            </div>
+            <?php echo $form['_csrf_token']->render() ?>
+            <input type="submit" value="Upload" />
+        </form>
     </div>
 </div>

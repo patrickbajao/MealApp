@@ -13,4 +13,8 @@ class MealAppTestFunctional extends sfTestFunctional
         return $this->post('/sfGuardAuth/signin', array('signin' => array('username' => $username, 'password' => $password, 'remember' => false)));
     }
     
+    public function loginBackend($username, $password) {
+        return $this->get('/sfGuardAuth/signin')->click('Login', array('signin' => array('username' => $username, 'password' => $password)));
+    }
+    
 }
