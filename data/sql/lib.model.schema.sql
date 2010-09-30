@@ -16,6 +16,8 @@ CREATE TABLE `meal_order`
 	`meal_id` INTEGER  NOT NULL,
 	`item_id` INTEGER  NOT NULL,
 	`sf_guard_user_id` INTEGER  NOT NULL,
+	`comments` TEXT,
+	`quantity` INTEGER default 1,
 	`created_at` DATETIME,
 	`updated_at` DATETIME,
 	PRIMARY KEY (`id`),
