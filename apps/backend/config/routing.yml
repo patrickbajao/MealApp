@@ -33,15 +33,6 @@ homepage:
   url:   /
   param: { module: user, action: index }
 
-# generic rules
-# please, remove them by adding more specific rules
-default_index:
-  url:   /:module
-  param: { action: index }
-
-default:
-  url:   /:module/:action/*
-
 sf_guard_signin:
   url:   /login
   param: { module: sfGuardAuth, action: signin }
@@ -53,3 +44,12 @@ sf_guard_signout:
 sf_guard_password:
   url:   /request_password
   param: { module: sfGuardAuth, action: password }
+  
+# generic rules
+# please, remove them by adding more specific rules
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*

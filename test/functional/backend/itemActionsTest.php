@@ -26,5 +26,5 @@ $browser->info('1 - Upload Menu Items')->
     
     info('1.2 - Menu items have been added successfully')->
     with('response')->begin()->
-        checkElement('.notice', '/items have been added successfully/i')->
+        checkElement('.notice', '/Items have been uploaded successfully/i')->
     end();
