@@ -73,7 +73,7 @@ function place_contact($place) {
 }
 
 function place_description($place) {
-    $desc = $place->getContact();
+    $desc = $place->getDescription();
     if(empty($desc)) {
         $desc = 'N/A';
     }
