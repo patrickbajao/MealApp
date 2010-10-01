@@ -201,6 +201,58 @@ div#login-form {
             margin-bottom: 20px;
         }
 
+div#scheduled-meal {
+    padding: 10px;
+    border: 1px solid #d5d5d5;
+    background-color: #ffffff;
+    float: left;
+    width: 878px;
+}
+
+    div#scheduled-meal div.no-meal {
+        font-weight: bold;
+    }
+    
+    div#scheduled-meal dl {
+        display: block;
+        float: left;
+        width: 400px;
+    }
+    
+    div#scheduled-meal dl dt,
+    div#scheduled-meal dl dd {
+        height: 40px;
+        line-height: 40px;
+        display: block;
+    }
+    
+    div#scheduled-meal dl dt{
+        float: left;
+    }
+        
+        div#scheduled-meal dl dt {
+            margin-right: 5px;
+        }
+        
+        div#scheduled-meal dl dd {
+            margin-right: 20px;
+        }
+        
+    div#scheduled-meal div.icon {
+        float: left;
+        margin-right: 10px;
+    }
+    
+    div#scheduled-meal span {
+        width: 400px;
+        float: right;
+        display: block;
+        text-align: right;
+        height: 40px;
+        line-height: 40px;
+        font-weight: bold;
+    }
+    
 div#meal-list {}
     
     div#meal-list span.date.first {

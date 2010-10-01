@@ -24,6 +24,20 @@ function meal_icon($meal) {
     return $icon;
 }
 
+function meal_status($meal) {
+    $status = null;
+    if(is_null($meal->getPlace())) {
+        if(!$meal->isVotingStopped()) {
+            $status = 'Voting is ongoing. Place your vote now.';
+        }
+    } else {
+        if(!$meal->isOrderingStopped()) {
+            $status = 'You can now place your order.';
+        }
+    }
+    return $status;
+}
+
 function meal_links($meal, $user) {
     $links = null;
     if(is_null($meal->getPlace())) {
