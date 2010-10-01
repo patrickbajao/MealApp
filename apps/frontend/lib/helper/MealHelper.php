@@ -79,3 +79,33 @@ function place_description($place) {
     }
     return $desc;
 }
+
+function order_menu($menu_items, $order) {
+    $menu = '<ul class="checkbox_list">';
+    foreach($menu_items as $item) {
+        $checked = null;
+        $quantity = 1;
+        $comments = '';
+        if($order != null) {
+            foreach($order as $o) {
+                if($o['item_id'] == $item->getId()) {
+                    $checked = 'checked';
+                    $quantity = $o['quantity'];
+                    $comments = $o['comments'];
+                }
+            }
+        }
+        $menu .= '<li>';
+        $menu .= '<label>Qty</label>';
+        $menu .= '<input type="text" value="' . $quantity . '" name="meal_order[items][' . $item->getId() . '][quantity]" class="qty" />';
+        $menu .= '<input type="checkbox" value="' . $item->getId() . '" name="meal_order[items][' . $item->getId() . '][item_id]" ' . $checked . ' />';
+        $menu .= '<label>' . $item->getName() . '</label>';
+        $menu .= '<span class="details">';
+        $menu .= '<label>Comments</label>';
+        $menu .= '<input type="text" name="meal_order[items][' . $item->getId() . '][comments]" value="' . $comments . '" />';
+        $menu .= '</span>';
+        $menu .= '</li>';
+    }
+    $menu .= '</ul>';
+    return $menu;
+}

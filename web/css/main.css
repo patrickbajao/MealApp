@@ -476,16 +476,37 @@ form#meal-order { display: block; }
     
         form#meal-order ul.checkbox_list li {
             display: block;
-            width: 400px;
-            height: 30px;
-            line-height: 30px;
+            width: 878px;
             padding: 10px;
             border: 1px solid #d5d5d5;
             margin-bottom: 5px;
-            background-image: url(../images/choice-bg.gif);
-            background-repeat: no-repeat;
+            background-color: #d5d5d5;
             font-weight: bold;
+            float: left;
+            background-image: url(../images/choice-bg.gif);
+            background-repeat: repeat-x;
         }
+            
+            form#meal-order ul.checkbox_list li label {
+                margin-right: 10px;
+            }
+            
+            form#meal-order ul.checkbox_list li input.qty {
+                width: 25px;
+                margin-right: 10px;
+            }
+
+            form#meal-order ul.checkbox_list li span.details {
+                float: right;
+            }
+            
+                form#meal-order ul.checkbox_list li span.details label {
+                    margin-right: 10px;
+                }
+                
+                form#meal-order ul.checkbox_list li span.details input {
+                    width: 250px;
+                }
         
     form#meal-order div.buttons {
         padding-top: 20px;

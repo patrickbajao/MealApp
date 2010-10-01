@@ -44,18 +44,22 @@ class MealOrderPeer extends BaseMealOrderPeer
     
     public static function saveOrder($meal_id, $user_id, $items, $delete_old_order = false, $old_order = null) {
         $success = false;
-        foreach($items as $item_id) {
-            $order = new MealOrder();
-            $order->setMealId($meal_id);
-            $order->setItemId($item_id);
-            $order->setSfGuardUserId($user_id);
-            if($order->save()) {
-                $success = true;
+        foreach($items as $item) {
+            if(isset($item['item_id'])) {
+                $order = new MealOrder();
+                $order->setMealId($meal_id);
+                $order->setItemId($item['item_id']);
+                $order->setSfGuardUserId($user_id);
+                $order->setQuantity($item['quantity']);
+                $order->setComments($item['comments']);
+                if($order->save()) {
+                    $success = true;
+                }
             }
         }
         if($success) {
             if($delete_old_order) {
-                foreach($old_order['item_id'] as $id => $item_id) {
+                foreach($old_order as $id => $order) {
                     $meal_order = self::retrieveByPk($id);
                     $meal_order->delete();
                 }

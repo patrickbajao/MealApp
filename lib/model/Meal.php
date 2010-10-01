@@ -65,7 +65,9 @@ class Meal extends BaseMeal
         $orders = MealOrderPeer::getOrders($this->getId(), $user_id);
         $user_order = array();
         foreach($orders as $order) {
-            $user_order['item_id'][$order->getId()] = $order->getItemId();
+            $user_order[$order->getId()]['item_id'] = $order->getItemId();
+            $user_order[$order->getId()]['quantity'] = $order->getQuantity();
+            $user_order[$order->getId()]['comments'] = $order->getComments();
         }
         return $user_order;
     }

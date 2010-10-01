@@ -43,24 +43,23 @@ class mealActions extends sfActions
             $this->redirect('@meals');
         }
         
-        // Add criteria to the form so that it will only display items of the meal's chosen place
+        // Get the items of the place chosen for a meal to be displayed to the order page
         $c = new Criteria();
         $c->add(ItemPeer::PLACE_ID, MealPeer::getMealPlaceId($meal_id));
-        $this->form = new MealOrderForm(null, array('criteria' => $c));
+        $this->menu = ItemPeer::doSelect($c);
         
-        $old_order = null;
+        $this->order = null;
         $delete_old_order = false;
         if($meal->userHasOrdered($user_id)) {
             $this->getUser()->setFlash('info', 'You have already ordered for this meal. You are now about to change your order.');
-            $old_order = $meal->getUserOrder($user_id);
-            $this->form->bind($old_order);
+            $this->order = $meal->getUserOrder($user_id);
             $delete_old_order = true;
         }
         
-        $items = $request->getPostParameter('meal_order[item_id]');
+        $items = $request->getPostParameter('meal_order[items]');
         if('POST' == $request->getMethod()) {
             if(!empty($items)) {
-                if(MealOrderPeer::saveOrder($meal_id, $user_id, $items, $delete_old_order, $old_order)) {
+                if(MealOrderPeer::saveOrder($meal_id, $user_id, $items, $delete_old_order, $this->order)) {
                     $this->getUser()->setFlash('info', 'Your order has been placed.');
                     $this->redirect('@meals');
                 }
@@ -102,15 +101,19 @@ class mealActions extends sfActions
         $meal_id  = $request->getParameter('meal_id');
         $this->meal = MealPeer::getMeal($meal_id);
         $orders = array();
+        $ctr = 0;
         foreach($this->meal->getMealOrders() as $order) {
             $orders['orders'][$order->getSfGuardUserId()]['user'] = $order->getSfGuardUser();
-            $orders['orders'][$order->getSfGuardUserId()]['items'][] = $order->getItem();
+            $orders['orders'][$order->getSfGuardUserId()]['items'][$ctr]['item'] = $order->getItem();
+            $orders['orders'][$order->getSfGuardUserId()]['items'][$ctr]['count'] = $order->getQuantity();
+            $orders['orders'][$order->getSfGuardUserId()]['items'][$ctr]['comments'] = $order->getComments();
             $orders['all'][$order->getItem()->getId()]['name'] = $order->getItem()->getName();
             if(isset($orders['all'][$order->getItem()->getId()]['count'])) {
-                $orders['all'][$order->getItem()->getId()]['count'] += 1;
+                $orders['all'][$order->getItem()->getId()]['count'] += $order->getQuantity();
             } else {
-                $orders['all'][$order->getItem()->getId()]['count'] = 1;
+                $orders['all'][$order->getItem()->getId()]['count'] = $order->getQuantity();
             }
+            $ctr++;
         }
         $this->orders = $orders;
     }
