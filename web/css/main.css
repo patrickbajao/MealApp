@@ -221,8 +221,8 @@ div#scheduled-meal {
     
     div#scheduled-meal dl dt,
     div#scheduled-meal dl dd {
-        height: 40px;
-        line-height: 40px;
+        height: 30px;
+        line-height: 30px;
         display: block;
     }
     
@@ -241,16 +241,77 @@ div#scheduled-meal {
     div#scheduled-meal div.icon {
         float: left;
         margin-right: 10px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    div#scheduled-meal div.breakfast {
+        color: #68940e;
+    }
+    
+    div#scheduled-meal div.breakfast div.icon {
+        border: 1px solid #9fcc4e;
+    }
+    
+    div#scheduled-meal div.lunch {
+        color: #bd8f2a;
+    }
+    
+    div#scheduled-meal div.lunch div.icon {
+        border: 1px solid #ffcb65;
+    }
+    
+    div#scheduled-meal div.dinner {
+        color: #677d9f;
+    }
+    
+    div#scheduled-meal div.dinner div.icon {
+        border: 1px solid #A3B9DE;
     }
     
     div#scheduled-meal span {
         width: 400px;
         float: right;
         display: block;
-        text-align: right;
+        font-weight: bold;
+    }
+    
+    div#scheduled-meal span.links {
         height: 40px;
         line-height: 40px;
+    }
+    
+    div#scheduled-meal div span.links a {
+        padding: 5px;
+        text-decoration: none;
         font-weight: bold;
+    }
+    
+    div#scheduled-meal div.breakfast span.links a {
+        color: #BFEB6B;
+        background-color: #68940E;
+    }
+    
+    div#scheduled-meal div.breakfast span.links a:hover {
+        background-color: #8db93b;
+    }
+    
+    div#scheduled-meal div.lunch span.links a {
+        color: #FFE0A5;
+        background-color: #BD8F2A;
+    }
+    
+    div#scheduled-meal div.lunch span.links a:hover {
+        background-color: #e4b34e;
+    }
+    
+    div#scheduled-meal div.dinner span.links a {
+        color: #C5DAFF;
+        background-color: #677D9F;
+    }
+    
+    div#scheduled-meal div.dinner span.links a:hover {
+        background-color: #889fc2;
     }
     
 div#meal-list {}
@@ -357,12 +418,34 @@ div#meal-list {}
                 div#meal-list ul li.day ul.meals li span.links a {
                     padding: 5px;
                     text-decoration: none;
-                    color: #000000;
                     font-weight: bold;
                 }
                 
-                div#meal-list ul li.day ul.meals li span.links a:hover {
-                    text-decoration: underline;
+                div#meal-list ul li.day ul.meals li.breakfast span.links a {
+                    color: #BFEB6B;
+                    background-color: #68940E;
+                }
+                
+                div#meal-list ul li.day ul.meals li.breakfast span.links a:hover {
+                    background-color: #8db93b;
+                }
+                
+                div#meal-list ul li.day ul.meals li.lunch span.links a {
+                    color: #FFE0A5;
+                    background-color: #BD8F2A;
+                }
+                
+                div#meal-list ul li.day ul.meals li.lunch span.links a:hover {
+                    background-color: #e4b34e;
+                }
+                
+                div#meal-list ul li.day ul.meals li.dinner span.links a {
+                    color: #C5DAFF;
+                    background-color: #677D9F;
+                }
+                
+                div#meal-list ul li.day ul.meals li.dinner span.links a:hover {
+                    background-color: #889fc2;
                 }
 
     div#meal-list div.legend {

@@ -24,15 +24,18 @@ function meal_icon($meal) {
     return $icon;
 }
 
-function meal_status($meal) {
+function meal_status($meal, $user) {
     $status = null;
     if(is_null($meal->getPlace())) {
         if(!$meal->isVotingStopped()) {
-            $status = 'Voting is ongoing. Place your vote now.';
+            $status = $meal->userHasVoted($user->getId()) ? 'You have already voted for this meal.' : 'Voting is ongoing. Place your vote now.' ;
         }
     } else {
         if(!$meal->isOrderingStopped()) {
             $status = 'You can now place your order.';
+            $status = $meal->userHasOrdered($user->getId()) ? 'You have already ordered for this meal.' : 'You can now place your order.' ;
+        } else {
+            $status = 'Ordering has been stopped. You can now only view the orders for this meal.';
         }
     }
     return $status;
@@ -43,35 +46,35 @@ function meal_links($meal, $user) {
     if(is_null($meal->getPlace())) {
         $vote_link = $meal->userHasVoted($user->getId()) ? 'Change Vote' : 'Vote' ;
         if(!$meal->isVotingStopped()) {
-            $links .= link_to($vote_link, 'vote/' . $meal->getId());
+            $links .= link_to($vote_link, 'vote/' . $meal->getId(), array('class' => 'vote-link'));
         }
         
         if($meal->getVoteCount() > 0) {
             $links .= '&nbsp;|&nbsp;';
-            $links .= link_to('View Votes', 'votes/' . $meal->getId());
+            $links .= link_to('View Votes', 'votes/' . $meal->getId(), array('class' => 'view-votes-link'));
         }
         
         if($user->getIsSuperAdmin()) {
             if($meal->getVoteCount() > 0 && !$meal->isVotingStopped()) {
                 $links .= '&nbsp;|&nbsp;';
-                $links .= link_to('Stop Votes', 'stopVotes/' . $meal->getId());
+                $links .= link_to('Stop Votes', 'stopVotes/' . $meal->getId(), array('class' => 'stop-vote-link'));
             }
         }
     } else {
         $order_link = $meal->userHasOrdered($user->getId()) ? 'Change Order' : 'Order' ;
         if(!$meal->isOrderingStopped()) {
-            $links .= link_to($order_link, 'order/' . $meal->getId());
+            $links .= link_to($order_link, 'order/' . $meal->getId(), array('class' => 'order-link'));
         }
         
         if($meal->getOrderCount() > 0) {
-            $links .= '&nbsp;|&nbsp;';
-            $links .= link_to('View Orders', 'orders/' . $meal->getId());
+            $links .= !$meal->isOrderingStopped() ? '&nbsp;|&nbsp;' : '' ;
+            $links .= link_to('View Orders', 'orders/' . $meal->getId(), array('class' => 'vote-orders-link'));
         }
         
         if($user->getIsSuperAdmin()) {
             if($meal->getOrderCount() > 0 && !$meal->isOrderingStopped()) {
                 $links .= '&nbsp;|&nbsp;';
-                $links .= link_to('Stop Orders', 'stopOrders/' . $meal->getId());
+                $links .= link_to('Stop Orders', 'stopOrders/' . $meal->getId(), array('class' => 'stop-vote-link'));
             }
         }
     }
