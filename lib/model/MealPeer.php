@@ -32,7 +32,7 @@ class MealPeer extends BaseMealPeer {
     
     public static function getScheduledMeal() {
         $c = new Criteria();
-        $c->add(self::SCHEDULED_AT, date('Y-m-d h:i:s'), Criteria::GREATER_EQUAL);
+        $c->add(self::SCHEDULED_AT, date('Y-m-d H:i:s'), Criteria::GREATER_EQUAL);
         $c->addAscendingOrderByColumn(self::SCHEDULED_AT);
         $meal = self::doSelectOne($c);
         return $meal;
