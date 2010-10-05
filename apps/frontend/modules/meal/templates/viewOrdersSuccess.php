@@ -7,7 +7,7 @@
         <span class="user"><strong><?php echo $order['user']->getProfile()->getFirstName() ?> <?php echo $order['user']->getProfile()->getLastName() ?></strong> ordered for:</span>
         <ul>
         <?php foreach($order['items'] as $item): ?>
-            <li><strong><?php echo $item['count'] ?></strong> <?php echo $item['item']->getName() ?> <?php echo (!empty($item['comments'])) ? ' - ' . $item['comments'] : '' ; ?></li>
+            <li><strong><?php echo $item['count'] ?></strong> <?php echo $item['item']->getName() ?> <?php echo (!empty($item['comments'])) ? ' - <em>' . $item['comments'] . '</em>' : '' ; ?></li>
         <?php endforeach; ?>
         </ul>
     </li>
