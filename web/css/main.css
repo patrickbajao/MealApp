@@ -624,7 +624,22 @@ div#place-list {}
                         }
                         
 form#meal-order { display: block; }
-
+    
+    form#meal-order a.prev-order {
+        padding: 10px;
+        margin-bottom: 10px;
+        float: left;
+        text-decoration: none;
+        background-color: #4b4b4b;
+        color: #ececec;
+        font-weight: bold;
+        font-size: 90%;
+    }
+    
+    form#meal-order a.prev-order:hover {
+        background-color: #727272;
+    }
+    
     form#meal-order ul.checkbox_list {
         list-style: none;
         display: block;

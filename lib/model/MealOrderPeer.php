@@ -69,4 +69,12 @@ class MealOrderPeer extends BaseMealOrderPeer
         return false;
     }
     
+    public static function getPreviousOrder($meal_id, $user_id) {
+        $c = new Criteria();
+        $c->add(self::MEAL_ID, $meal_id, Criteria::EQUAL);
+        $c->addAnd(self::SF_GUARD_USER_ID, $user_id, Criteria::EQUAL);
+        $order = self::doSelect($c);
+        return $order;
+    }
+    
 } // MealOrderPeer

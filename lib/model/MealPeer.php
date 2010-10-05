@@ -47,4 +47,13 @@ class MealPeer extends BaseMealPeer {
         return $meals;
     }
     
+    public static function getPreviousMealWithSamePlace($scheduled_at, $place_id) {
+        $c = new Criteria();
+        $c->add(self::SCHEDULED_AT, $scheduled_at, Criteria::LESS_THAN);
+        $c->addAnd(self::PLACE_ID, $place_id, Criteria::EQUAL);
+        $c->addDescendingOrderByColumn(self::SCHEDULED_AT);
+        $meal = self::doSelectOne($c);
+        return $meal;
+    }
+    
 } // MealPeer

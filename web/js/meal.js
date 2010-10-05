@@ -80,11 +80,22 @@
                 return false;
             });
             self.setCancelLink();
+            self.setPrevOrderLink();
         },
         setCancelLink: function() {
             var self = this;
             $('a.cancel', this.response).click(function() {
                 $("#dialog-modal").remove();
+                return false;
+            });
+        },
+        setPrevOrderLink: function() {
+            var self = this;
+            $('a.prev-order', this.response).click(function() {
+                self.dialog.load(this.href, function(responseText, textStatus, XMLHttpRequest) {
+                    $('div.title', this).remove();
+                    self.setAjaxForm();
+                });
                 return false;
             });
         }

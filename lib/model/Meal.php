@@ -72,4 +72,19 @@ class Meal extends BaseMeal
         return $user_order;
     }
     
+    public function getPreviousOrder($user_id) {
+        $prev_meal = MealPeer::getPreviousMealWithSamePlace($this->getScheduledAt(), $this->getPlaceId());
+        $user_order = array();
+        if(!empty($prev_meal)) {
+            $orders = MealOrderPeer::getPreviousOrder($prev_meal->getId(), $user_id);
+            $user_order = array();
+            foreach($orders as $order) {
+                $user_order[$order->getId()]['item_id'] = $order->getItemId();
+                $user_order[$order->getId()]['quantity'] = $order->getQuantity();
+                $user_order[$order->getId()]['comments'] = $order->getComments();
+            }
+        }
+        return $user_order;
+    }
+    
 } // Meal

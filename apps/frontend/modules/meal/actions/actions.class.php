@@ -30,6 +30,7 @@ class mealActions extends sfActions
         $meal_id    = $request->getParameter('meal_id');
         $from_param = $request->getParameter('from');
         $from       = $this->_parseQuery($from_param); // Call the _parseQuery to parse the $from_parameter and convert it into an acceptable symfony route
+        $prev_meal  = $request->getParameter('prev_meal');
         $meal       = MealPeer::getMeal($meal_id);
         
         // Check if ordering for a meal is stopped, then redirect it to Meals page
@@ -52,8 +53,13 @@ class mealActions extends sfActions
         
         $this->order = null;
         $delete_old_order = false;
-        if($meal->userHasOrdered($user_id)) {
+        if($meal->userHasOrdered($user_id) && !$prev_meal) {
             $this->order = $meal->getUserOrder($user_id);
+            $delete_old_order = true;
+        }
+        
+        if($prev_meal) {
+            $this->order = $meal->getPreviousOrder($user_id);
             $delete_old_order = true;
         }
         
