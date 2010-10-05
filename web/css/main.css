@@ -814,6 +814,10 @@ div#user-orders {
             list-style: none;
             padding: 10px;
         }
+        
+            div#user-orders ul li > ul li {
+                margin-bottom: 10px;
+            }
 
 div#all-orders {
     float: right;
@@ -849,6 +853,24 @@ div#all-votes {}
         padding: 10px;
     }
 
+a.print-link {
+    padding: 10px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    background-color: #4b4b4b;
+    color: #ececec !important;
+    font-weight: bold;
+    font-size: 90%;
+    margin-left: 10px;
+    float: left;
+}
+
+a.print-link:hover {
+    background-color: #727272;
+}
+    
+div.schedule { padding: 10px; clear: both; }
+    
 form#register {
     padding: 10px;
 }

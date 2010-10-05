@@ -166,6 +166,7 @@ class mealActions extends sfActions
     
     public function executeViewOrders(sfWebRequest $request) {
         $meal_id  = $request->getParameter('meal_id');
+        $layout  = $request->getParameter('layout');
         $this->meal = MealPeer::getMeal($meal_id);
         $orders = array();
         $ctr = 0;
@@ -183,6 +184,9 @@ class mealActions extends sfActions
             $ctr++;
         }
         $this->orders = $orders;
+        if('print' == $layout) {
+            $this->setLayout($layout);
+        }
     }
     
     public function executeViewVotes(sfWebRequest $request) {

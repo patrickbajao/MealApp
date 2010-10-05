@@ -37,8 +37,8 @@ show_place:
   param: { module: place, action: show }
 
 view_orders:
-  url:   /orders/:meal_id
-  param: { module: meal, action: viewOrders }
+  url:   /orders/:meal_id/:layout
+  param: { module: meal, action: viewOrders, layout: html }
 
 view_votes:
   url:   /votes/:meal_id

@@ -1,0 +1,138 @@
+body, div, p, h1, h2, h3, h4, h5, ul, ol, li, dl, dt, dd, table, thead, tbody, tr, th, td, form, label, span, img, a, blockquote {
+    margin: 0;
+    padding: 0;
+}
+
+h1 { font-size: 200%; }
+
+h2 { font-size: 180%; }
+
+h3 { font-size: 160%; }
+
+h4 { font-size: 140%; }
+
+h5 { font-size: 120%; }
+
+a img { border: 0 none; }
+
+table { border-collapse: collapse; }
+
+.clear { clear: both; }
+
+body {
+    font-family: arial, helvetica, sans-serif;
+    font-size: 14px;
+    color: #292929;
+}
+
+a.print-link { display: none; }
+
+div#bar {
+    height: 40px;
+    line-height: 40px;
+    background-color: #4b4b4b;
+    color: #ececec;
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    display: none;
+}
+
+    div#bar strong {
+        margin-right: 20px;
+        margin-left: 40px;
+    }
+
+    div#bar a {
+        padding: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        text-decoration: none;
+        background-color: #ececec;
+        color: #292929;
+        font-weight: bold;
+    }
+    
+    div#bar a:hover {
+        background-color: #292929;
+        color: #ececec;
+    }
+
+div#container {
+    width: 940px;
+    padding: 0 !important;
+}
+
+div#content {
+    padding: 20px;
+    width: 900px;
+}
+
+    div#content > div.title {
+        font-size: 140%;
+        text-align: left;
+        color: #000000;
+        padding: 10px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #000000;
+    }
+
+div#user-orders {
+    float: left;
+    width: 400px;
+    padding: 10px;
+}
+
+    div#user-orders > div.subtitle {
+        font-size: 140%;
+        text-align: left;
+        color: #292929;
+        padding: 10px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #000000;
+    }
+
+    div#user-orders  > ul{
+        list-style: none;
+    }
+
+        div#user-orders ul li > ul {
+            list-style: none;
+            padding: 10px;
+        }
+        
+            div#user-orders ul li > ul li {
+                margin-bottom: 10px;
+            }
+
+div#all-orders {
+    float: right;
+    width: 400px;
+    padding: 10px;
+}
+
+    div#all-orders > div.subtitle {
+        font-size: 140%;
+        text-align: left;
+        color: #292929;
+        padding: 10px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #000000;
+    }
+
+    div#all-orders  > ul{
+        list-style: none;
+        padding: 10px;
+    }
+
+        div#all-orders ul li {
+            list-style: none;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+div.schedule { padding: 10px; }

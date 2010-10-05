@@ -1,4 +1,6 @@
-<div class="title">Meal No. <?php echo $meal->getId() ?> Orders: <?php echo $meal->getPlace()->getName() ?></div>
+<div class="title">Meal Orders: <?php echo $meal->getPlace()->getName() ?></div>
+<?php echo link_to('<span>Print Order</span>', '@view_orders?meal_id=' . $meal->getId() . '&layout=print', array('class' => 'print-link', 'target' => '_new')) ?>
+<div class="schedule"><strong>Schedule:</strong> <?php echo date('F j, Y g:i a', strtotime($meal->getScheduledAt()))?></div>
 <div id="user-orders">
 <div class="subtitle">User Orders</div>
 <ul>
