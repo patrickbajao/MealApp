@@ -70,7 +70,7 @@
                         } else if(!response.success) {
                             // Add p.error if it does not exists
                             if($('p.error').length == 0) {
-                                $('<p class="error></p>"').prependTo(self.dialog);
+                                $('<p class="error"></p>').prependTo(self.dialog);
                             }
                             $('p.error').text(response.error);
                             self.setAjaxForm();
