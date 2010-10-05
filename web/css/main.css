@@ -846,13 +846,44 @@ div#all-orders {
             margin-bottom: 10px;
         }
 
-div#all-votes {}
+div#all-votes {
+    float: left;
+    width: 400px;
+    padding: 10px;
+}
 
     div#all-votes ul {
         list-style: none;
         padding: 10px;
     }
 
+div#user-votes {
+    float: right;
+    width: 400px;
+    padding: 10px;
+}
+
+    div#user-votes > div.subtitle {
+        font-size: 140%;
+        text-align: left;
+        background-color: #FF7400;
+        color: #ffffff;
+        padding: 10px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    div#user-votes  > ul{
+        list-style: none;
+        padding: 10px;
+    }
+
+        div#user-votes ul li {
+            list-style: none;
+            display: block;
+            margin-bottom: 10px;
+        }
+    
 a.print-link {
     padding: 10px;
     margin-bottom: 10px;
@@ -911,5 +942,3 @@ form#register {
             margin-right: 3px;
             font-size: 140%;
         }
-        
-        

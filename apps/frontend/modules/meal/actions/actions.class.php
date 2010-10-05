@@ -196,11 +196,13 @@ class mealActions extends sfActions
         $meal_votes = $this->meal->getVotes();
         if(!empty($meal_votes)) {
             foreach($this->meal->getVotes() as $vote) {
-                $votes[$vote->getPlaceId()]['place'] = $vote->getPlace()->getName();
-                if(isset( $votes[$vote->getPlaceId()]['votes'])) {
-                     $votes[$vote->getPlaceId()]['votes'] += 1;
+                $votes['votes'][$vote->getSfGuardUserId()]['user'] = $vote->getSfGuardUser();
+                $votes['votes'][$vote->getSfGuardUserId()]['place'] = $vote->getPlace()->getName();
+                $votes['all'][$vote->getPlaceId()]['place'] = $vote->getPlace()->getName();
+                if(isset( $votes['all'][$vote->getPlaceId()]['votes'])) {
+                     $votes['all'][$vote->getPlaceId()]['votes'] += 1;
                 } else {
-                     $votes[$vote->getPlaceId()]['votes'] = 1;
+                     $votes['all'][$vote->getPlaceId()]['votes'] = 1;
                 }
             }
         } else {
