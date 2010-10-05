@@ -149,6 +149,7 @@ div#items-upload {
     width: 878px;
     border: 1px solid #d5d5d5;
     background-color: #ffffff;
+    clear:both;
 }
 
     div#items-upload div.subtitle {

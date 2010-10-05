@@ -24,7 +24,7 @@ generator:
         actions:
           _new: ~
         sort:  id
-        display: [place_id, name, description, price]
+        display: [_place, name, description, price]
       filter:  ~
       form:    ~
       edit:    ~

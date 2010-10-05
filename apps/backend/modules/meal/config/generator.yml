@@ -24,7 +24,7 @@ generator:
         actions:
           _new: ~
         sort:  id
-        display: [place_id, type, voting_stopped, ordering_stopped]
+        display: [_place, type, voting_stopped, ordering_stopped]
       filter:  ~
       form:    ~
       edit:    ~

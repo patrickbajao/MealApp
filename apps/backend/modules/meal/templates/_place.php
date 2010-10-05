@@ -1,0 +1,1 @@
+<?php echo $meal->getPlace()->getName() ?>
