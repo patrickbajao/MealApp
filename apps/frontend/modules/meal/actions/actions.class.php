@@ -104,8 +104,9 @@ class mealActions extends sfActions
         
         // Pass variables needed in the view
         $this->from_param = $from_param;
-        $this->from = $from;
-        $this->meal_id = $meal_id;
+        $this->from       = $from;
+        $this->meal       = $meal;
+        $this->meal_id    = $meal_id;
     }
     
     public function executeVote(sfWebRequest $request) {
