@@ -52,6 +52,11 @@
                     type: this.method,
                     url:  this.action,
                     data: data,
+                    complete: function(transport) {
+                        if(transport.status == 401) {
+                            $(window.location).attr('href', '/');
+                        }
+                    },
                     success: function(response){
                         if(response.success) {
                             // Destroy the dialog box when the form was submitted successfully
@@ -93,8 +98,12 @@
             var self = this;
             $('a.prev-order', this.response).click(function() {
                 self.dialog.load(this.href, function(responseText, textStatus, XMLHttpRequest) {
-                    $('div.title', this).remove();
-                    self.setAjaxForm();
+                    if(XMLHttpRequest.status == 401) {
+                        $(window.location).attr('href', '/');
+                    } else {
+                        $('div.title', this).remove();
+                        self.setAjaxForm();
+                    }
                 });
                 return false;
             });
@@ -117,8 +126,12 @@
                 dialog.load(
                     url,
                     function (responseText, textStatus, XMLHttpRequest) {
-                        var modal = new Modal(dialog, this);
-                        modal.show();
+                        if(XMLHttpRequest.status == 401) {
+                            $(window.location).attr('href', '/');
+                        } else {
+                            var modal = new Modal(dialog, this);
+                            modal.show();
+                        }
                     }
                 );
                 return false;
@@ -129,9 +142,15 @@
     $.fn.mealLinks = function() {
         this.each(function(i) {
             $(this).click(function() {
-                $.getJSON(
-                    this.href,
-                    function(response) {
+                $.ajax({
+                    type: 'GET',
+                    url:  this.href,
+                    complete: function(transport) {
+                        if(transport.status == 401) {
+                            $(window.location).attr('href', '/');
+                        }
+                    },
+                    success: function(response) {
                         if(response.success) {
                             contentDiv = $('div#content');
                             
@@ -145,7 +164,7 @@
                             $('#meal-' + response.id, contentDiv).update(response.load + ' #meal-' + response.id + '>div');
                         }
                     }
-                );
+                });
                 return false;
             });
         });
