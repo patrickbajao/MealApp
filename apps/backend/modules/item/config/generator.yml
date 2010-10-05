@@ -24,7 +24,8 @@ generator:
         actions:
           _new: ~
         sort:  id
-        display: [_place, name, description, price]
+        display: [place, name, description, price]
+        max_per_page: 10
       filter:  ~
       form:    ~
       edit:    ~

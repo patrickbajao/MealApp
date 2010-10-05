@@ -25,6 +25,7 @@ generator:
           _new: ~
         sort:  id
         display: [name, description, contact]
+        max_per_page: 10
       filter:  ~
       form:    ~
       edit:    ~

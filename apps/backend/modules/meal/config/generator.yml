@@ -24,7 +24,8 @@ generator:
         actions:
           _new: ~
         sort:  id
-        display: [_place, type, voting_stopped, ordering_stopped]
+        display: [place, type, voting_stopped, ordering_stopped]
+        max_per_page: 10
       filter:  ~
       form:    ~
       edit:    ~
