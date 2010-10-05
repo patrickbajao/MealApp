@@ -146,7 +146,7 @@ div#content {
         margin-bottom: 20px;
     }
     
-    div#content p.info {
+    p.info {
         text-align: left;
         background-color: #C3D9FF;
         color: #223b58;
@@ -154,6 +154,27 @@ div#content {
         font-weight: bold;
         margin-bottom: 20px;
         border: 1px solid #a3b9de;
+    }
+    
+    p.notice {
+        text-align: left;
+        background-color: #C3D9FF;
+        color: #223b58;
+        padding: 10px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        border: 1px solid #a3b9de;
+    }
+    
+    p.error {
+        text-align: left;
+        padding: 10px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        border: 1px solid #FF1A00;
+        background-color: #ffa56d;
+        color: #970000;
+        margin-bottom: 20px;
     }
 
 div#login-form {
@@ -644,8 +665,19 @@ form#meal-order { display: block; }
                 }
         
     form#meal-order div.buttons {
+        clear: both;
         padding-top: 20px;
     }
+    
+        form#meal-order div.buttons a.cancel {
+            font-weight: bold;
+            text-decoration: none;
+            color: #FF1A00;
+        }
+        
+        form#meal-order div.buttons a.cancel:hover {
+            text-decoration: underline;
+        }
         
 form#place-vote { display: block; }
 
@@ -657,8 +689,6 @@ form#place-vote { display: block; }
         form#place-vote ul.radio_list li {
             display: block;
             width: 400px;
-            height: 30px;
-            line-height: 30px;
             padding: 10px;
             border: 1px solid #d5d5d5;
             margin-bottom: 5px;
@@ -668,8 +698,19 @@ form#place-vote { display: block; }
         }
     
     form#place-vote div.buttons {
+        clear: both;
         padding-top: 20px;
     }
+    
+        form#place-vote div.buttons a.cancel {
+            font-weight: bold;
+            text-decoration: none;
+            color: #FF1A00;
+        }
+        
+        form#place-vote div.buttons a.cancel:hover {
+            text-decoration: underline;
+        }
 
 div#place-data {}
 

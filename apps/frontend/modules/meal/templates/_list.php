@@ -18,17 +18,19 @@
         <?php $no_meal = true ?>
         <?php foreach($meals as $meal): ?>
             <?php if(meal_date($sunday, $days) == date('F j, Y', strtotime($meal->getScheduledAt()))): ?>
-                <li class="<?php echo $meal->getType() ?>">
-                    <div class="icon"><?php echo meal_icon($meal) ?></div>
-                    <dl>
-                        <dt><strong>Place: </strong></dt>
-                            <dd><?php echo meal_place($meal) ?></dd>
-                        <dt><strong>Time Scheduled: </strong></dt>
-                            <dd><?php echo date('g:i a', strtotime($meal->getScheduledAt())) ?></dd>
-                    </dl>
-                    <span class="links">
-                        <?php echo meal_links($meal, $user) ?>
-                    </span>
+                <li class="meal <?php echo $meal->getType() ?>" id="meal-<?php echo $meal->getId() ?>">
+                    <div>
+                        <div class="icon"><?php echo meal_icon($meal) ?></div>
+                        <dl>
+                            <dt><strong>Place: </strong></dt>
+                                <dd><?php echo meal_place($meal) ?></dd>
+                            <dt><strong>Time Scheduled: </strong></dt>
+                                <dd><?php echo date('g:i a', strtotime($meal->getScheduledAt())) ?></dd>
+                        </dl>
+                        <span class="links">
+                            <?php echo meal_links($meal, $user, ($week != 0) ? 'meals.week=' . $week :  'meals') ?>
+                        </span>
+                    </div>
                 </li>
                 <?php $no_meal = false ?>
             <?php endif; ?>

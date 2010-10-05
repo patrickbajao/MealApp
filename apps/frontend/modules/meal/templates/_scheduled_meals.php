@@ -11,7 +11,7 @@
 </div>
 <div id="scheduled-meal">
     <?php if(!empty($meal)): ?>
-        <div class="<?php echo $meal->getType() ?>">
+        <div class="meal <?php echo $meal->getType() ?>">
             <div class="icon"><?php echo meal_icon($meal) ?></div>
             <dl>
                 <dt><strong>Place: </strong></dt>
@@ -23,7 +23,7 @@
                 <?php echo meal_status($meal, $user) ?>
             </span>
             <span class="links">
-                <?php echo meal_links($meal, $user) ?>
+                <?php echo meal_links($meal, $user, 'homepage') ?>
             </span>
         </div>
     <?php else: ?>

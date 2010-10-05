@@ -28,19 +28,20 @@ class mealActions extends sfActions
     public function executeOrder(sfWebRequest $request) {
         $user_id = $this->getUser()->getGuardUser()->getId();
         $meal_id  = $request->getParameter('meal_id');
+        $from  = str_replace('.', '?', $request->getParameter('from'));
         $meal = MealPeer::getMeal($meal_id);
         
         // Check if ordering for a meal is stopped, then redirect it to Meals page
         if($meal->isOrderingStopped()) {
             $this->getUser()->setFlash('info', 'Ordering for meal ' . $meal_id . ' has already been stopped.');
-            $this->redirect('@meals');
+            $this->redirect($from);
         }
         
         // Check if a meal has no chosen place, then redirect it to Meals page
         $place_id = $meal->getPlaceId();
         if(empty($place_id)) {
             $this->getUser()->setFlash('info', 'You can\'t place an order for that meal. It has no chosen place yet.');
-            $this->redirect('@meals');
+            $this->redirect($from);
         }
         
         // Get the items of the place chosen for a meal to be displayed to the order page
@@ -51,35 +52,63 @@ class mealActions extends sfActions
         $this->order = null;
         $delete_old_order = false;
         if($meal->userHasOrdered($user_id)) {
-            $this->getUser()->setFlash('info', 'You have already ordered for this meal. You are now about to change your order.');
             $this->order = $meal->getUserOrder($user_id);
             $delete_old_order = true;
         }
         
-        $items = $request->getPostParameter('meal_order[items]');
         if('POST' == $request->getMethod()) {
+            $items = $request->getPostParameter('meal_order[items]');
+            
+            // Check if item_id is passed. If not passed, unset the whole row
+            foreach($items as $key => $item) {
+                if(!isset($item['item_id'])) {
+                    unset($items[$key]);
+                }
+            }
+            
             if(!empty($items)) {
                 if(MealOrderPeer::saveOrder($meal_id, $user_id, $items, $delete_old_order, $this->order)) {
-                    $this->getUser()->setFlash('info', 'Your order has been placed.');
-                    $this->redirect('@meals');
+                    if(!$request->isXmlHttpRequest()) {
+                        $this->getUser()->setFlash('info', 'Your order has been placed.');
+                        $this->redirect($from);
+                    } else {
+                        $response = array(
+                            'success' => true,
+                            'info' => 'Your order has been placed.',
+                            'load' => $this->generateUrl($from),
+                            'id' => $meal_id
+                        );
+                        return $this->renderJSON($response);
+                    }
                 }
             } else {
-                $this->getUser()->setFlash('info', 'Please order some food.');
+                if(!$request->isXmlHttpRequest()) {
+                    $this->getUser()->setFlash('error', 'Please order some food.');
+                    $this->order = $items;
+                } else {
+                    $response = array(
+                        'success' => false,
+                        'error' => 'Please order some food.'
+                    );
+                    return $this->renderJSON($response);
+                }
             }
         }
+        $this->from = $from;
+        $this->meal_id = $meal_id;
     }
     
     public function executeVote(sfWebRequest $request) {
         $user_id = $this->getUser()->getGuardUser()->getId();
         $meal_id  = $request->getParameter('meal_id');
+        $from  = $request->getParameter('from');
         $meal = MealPeer::getMeal($meal_id);
         if($meal->isVotingStopped()) {
             $this->getUser()->setFlash('info', 'Voting for meal ' . $meal_id . ' has already been stopped.');
-            $this->redirect('@meals');
+            $this->redirect($from);
         }
         $vote = null;
         if($meal->userHasVoted($user_id)) {
-            $this->getUser()->setFlash('info', 'You have already voted for this meal. You are now about to change your vote.');
             $vote = VotePeer::getVote($meal_id, $user_id);
         } else {
             $vote = new Vote();
@@ -89,12 +118,32 @@ class mealActions extends sfActions
         $this->form = new VoteForm($vote);
         if('POST' == $request->getMethod()) {
             if($this->processForm($request, $this->form)) {
-                $this->getUser()->setFlash('info', 'Your vote has been placed.');
-                $this->redirect('@meals');
+                if(!$request->isXmlHttpRequest()) {
+                    $this->getUser()->setFlash('info', 'Your vote has been placed.');
+                    $this->redirect($from);
+                } else {
+                    $response = array(
+                        'success' => true,
+                        'info' => 'Your vote has been placed.',
+                        'load' => $this->generateUrl($from),
+                        'id' => $meal_id
+                    );
+                    return $this->renderJSON($response);
+                }
             } else {
-                $this->getUser()->setFlash('info', 'Please choose one place to vote.');
+                if(!$request->isXmlHttpRequest()) {
+                    $this->getUser()->setFlash('error', 'Please choose one place to vote.');
+                } else {
+                    $response = array(
+                        'success' => false,
+                        'error' => 'Please choose one place to vote.'
+                    );
+                    return $this->renderJSON($response);
+                }
             }
         }
+        $this->from = $from;
+        $this->meal_id = $meal_id;
     }
     
     public function executeViewOrders(sfWebRequest $request) {
@@ -141,32 +190,54 @@ class mealActions extends sfActions
     
     public function executeStopVotes(sfWebRequest $request) {
         $meal_id  = $request->getParameter('meal_id');
+        $from  = $request->getParameter('from');
         $meal = MealPeer::getMeal($meal_id);
         if(!$meal->isVotingStopped()) {
             $meal->setPlaceId($meal->getMostVotedPlace()->getId());
             $meal->setVotingStopped(1);
             if($meal->save()) {
-                $this->getUser()->setFlash('info', 'Voting has stopped for meal ' . $meal_id . '.');
-                $this->redirect('@meals');
+                if(!$request->isXmlHttpRequest()) {
+                    $this->getUser()->setFlash('info', 'Voting has been stopped.');
+                    $this->redirect($from);
+                } else {
+                    $response = array(
+                        'success' => true,
+                        'info' => 'Voting has been stopped.',
+                        'load' => $this->generateUrl($from),
+                        'id' => $meal_id
+                    );
+                    return $this->renderJSON($response);
+                }
             }
         } else {
             $this->getUser()->setFlash('info', 'Voting for meal ' . $meal_id . ' has already been stopped.');
-            $this->redirect('@meals');
+            $this->redirect($from);
         }
     }
     
     public function executeStopOrders(sfWebRequest $request) {
         $meal_id  = $request->getParameter('meal_id');
+        $from  = $request->getParameter('from');
         $meal = MealPeer::getMeal($meal_id);
         if(!$meal->isOrderingStopped()) {
             $meal->setOrderingStopped(1);
             if($meal->save()) {
-                $this->getUser()->setFlash('info', 'Ordering has stopped for meal ' . $meal_id . '.');
-                $this->redirect('@meals');
+                if(!$request->isXmlHttpRequest()) {
+                    $this->getUser()->setFlash('info', 'Ordering has been stopped.');
+                    $this->redirect($from);
+                } else {
+                    $response = array(
+                        'success' => true,
+                        'info' => 'Ordering has been stopped.',
+                        'load' => $this->generateUrl($from),
+                        'id' => $meal_id
+                    );
+                    return $this->renderJSON($response);
+                }
             }
         } else {
             $this->getUser()->setFlash('info', 'Ordering for meal ' . $meal_id . ' has already been stopped.');
-            $this->redirect('@meals');
+            $this->redirect($from);
         }
     }
     
@@ -183,6 +254,11 @@ class mealActions extends sfActions
             return true;
         }
         return false;
+    }
+    
+    protected function renderJSON($response) {
+        $this->getResponse()->setHttpHeader('Content-type', 'application/json');
+        return $this->renderText(json_encode($response));
     }
     
 }
