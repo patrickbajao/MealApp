@@ -28,7 +28,7 @@
                                 <dd><?php echo date('g:i a', strtotime($meal->getScheduledAt())) ?></dd>
                         </dl>
                         <span class="links">
-                            <?php echo meal_links($meal, $user, ($week != 0) ? 'meals.week=' . $week :  'meals') ?>
+                            <?php echo meal_links($meal, $user, ($week != 0) ? 'meals-week' . $week :  'meals') ?>
                         </span>
                     </div>
                 </li>

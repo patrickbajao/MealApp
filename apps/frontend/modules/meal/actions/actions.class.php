@@ -5,7 +5,7 @@
  *
  * @package    MealApp
  * @subpackage meal
- * @author     Your name here
+ * @author     Earl Patrick Bajao
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
 class mealActions extends sfActions
@@ -26,10 +26,11 @@ class mealActions extends sfActions
     }
     
     public function executeOrder(sfWebRequest $request) {
-        $user_id = $this->getUser()->getGuardUser()->getId();
-        $meal_id  = $request->getParameter('meal_id');
-        $from  = str_replace('.', '?', $request->getParameter('from'));
-        $meal = MealPeer::getMeal($meal_id);
+        $user_id    = $this->getUser()->getGuardUser()->getId();
+        $meal_id    = $request->getParameter('meal_id');
+        $from_param = $request->getParameter('from');
+        $from       = $this->_parseQuery($from_param); // Call the _parseQuery to parse the $from_parameter and convert it into an acceptable symfony route
+        $meal       = MealPeer::getMeal($meal_id);
         
         // Check if ordering for a meal is stopped, then redirect it to Meals page
         if($meal->isOrderingStopped()) {
@@ -75,7 +76,7 @@ class mealActions extends sfActions
                         $response = array(
                             'success' => true,
                             'info' => 'Your order has been placed.',
-                            'load' => $this->generateUrl($from),
+                            'load' => $from,
                             'id' => $meal_id
                         );
                         return $this->renderJSON($response);
@@ -94,19 +95,25 @@ class mealActions extends sfActions
                 }
             }
         }
+        
+        // Pass variables needed in the view
+        $this->from_param = $from_param;
         $this->from = $from;
         $this->meal_id = $meal_id;
     }
     
     public function executeVote(sfWebRequest $request) {
-        $user_id = $this->getUser()->getGuardUser()->getId();
-        $meal_id  = $request->getParameter('meal_id');
-        $from  = $request->getParameter('from');
-        $meal = MealPeer::getMeal($meal_id);
+        $user_id    = $this->getUser()->getGuardUser()->getId();
+        $meal_id    = $request->getParameter('meal_id');
+        $from_param = $request->getParameter('from');
+        $from       = $this->_parseQuery($from_param); // Call the _parseQuery to parse the $from_parameter and convert it into an acceptable symfony route
+        $meal       = MealPeer::getMeal($meal_id);
+        
         if($meal->isVotingStopped()) {
             $this->getUser()->setFlash('info', 'Voting for meal ' . $meal_id . ' has already been stopped.');
             $this->redirect($from);
         }
+        
         $vote = null;
         if($meal->userHasVoted($user_id)) {
             $vote = VotePeer::getVote($meal_id, $user_id);
@@ -115,6 +122,7 @@ class mealActions extends sfActions
             $vote->setSfGuardUserId($user_id);
             $vote->setMealId($meal_id);
         }
+        
         $this->form = new VoteForm($vote);
         if('POST' == $request->getMethod()) {
             if($this->processForm($request, $this->form)) {
@@ -125,7 +133,7 @@ class mealActions extends sfActions
                     $response = array(
                         'success' => true,
                         'info' => 'Your vote has been placed.',
-                        'load' => $this->generateUrl($from),
+                        'load' => $from,
                         'id' => $meal_id
                     );
                     return $this->renderJSON($response);
@@ -142,6 +150,9 @@ class mealActions extends sfActions
                 }
             }
         }
+        
+        // Pass variables needed in the view
+        $this->from_param = $from_param;
         $this->from = $from;
         $this->meal_id = $meal_id;
     }
@@ -189,9 +200,10 @@ class mealActions extends sfActions
     }
     
     public function executeStopVotes(sfWebRequest $request) {
-        $meal_id  = $request->getParameter('meal_id');
-        $from  = $request->getParameter('from');
-        $meal = MealPeer::getMeal($meal_id);
+        $meal_id    = $request->getParameter('meal_id');
+        $from_param = $request->getParameter('from');
+        $from       = $this->_parseQuery($from_param); // Call the _parseQuery to parse the $from_parameter and convert it into an acceptable symfony route
+        $meal       = MealPeer::getMeal($meal_id);
         if(!$meal->isVotingStopped()) {
             $meal->setPlaceId($meal->getMostVotedPlace()->getId());
             $meal->setVotingStopped(1);
@@ -203,7 +215,7 @@ class mealActions extends sfActions
                     $response = array(
                         'success' => true,
                         'info' => 'Voting has been stopped.',
-                        'load' => $this->generateUrl($from),
+                        'load' => $from,
                         'id' => $meal_id
                     );
                     return $this->renderJSON($response);
@@ -216,9 +228,10 @@ class mealActions extends sfActions
     }
     
     public function executeStopOrders(sfWebRequest $request) {
-        $meal_id  = $request->getParameter('meal_id');
-        $from  = $request->getParameter('from');
-        $meal = MealPeer::getMeal($meal_id);
+        $meal_id    = $request->getParameter('meal_id');
+        $from_param = $request->getParameter('from');
+        $from       = $this->_parseQuery($from_param); // Call the _parseQuery to parse the $from_parameter and convert it into an acceptable symfony route
+        $meal       = MealPeer::getMeal($meal_id);
         if(!$meal->isOrderingStopped()) {
             $meal->setOrderingStopped(1);
             if($meal->save()) {
@@ -229,7 +242,7 @@ class mealActions extends sfActions
                     $response = array(
                         'success' => true,
                         'info' => 'Ordering has been stopped.',
-                        'load' => $this->generateUrl($from),
+                        'load' => $from,
                         'id' => $meal_id
                     );
                     return $this->renderJSON($response);
@@ -259,6 +272,18 @@ class mealActions extends sfActions
     protected function renderJSON($response) {
         $this->getResponse()->setHttpHeader('Content-type', 'application/json');
         return $this->renderText(json_encode($response));
+    }
+    
+    private function _parseQuery($query) {
+        $from  = str_replace('week', 'week=', str_replace('meals-', 'meals?', $query));
+        $url = parse_url($from);
+        $params = array();
+        if(isset($url['query'])) {
+            $query = explode('=', $url['query']);
+            $params = array($query[0] => $query[1]);
+        }
+        $route = $this->generateUrl($url['path'], $params);
+        return $route;
     }
     
 }
