@@ -10,8 +10,8 @@ propel:
     updated_at:       ~
   meal_place:
     id:               ~
-    meal_id:          { type: integer, foreignTable: meal, foreignReference: id, required: true, onDelete: cascade }
-    place_id:         { type: integer, foreignTable: place, foreignReference: id, required: true, onDelete: cascade }
+    meal_id:          { type: integer, foreignTable: meal, foreignReference: id, required: true, primaryKey: true, onDelete: cascade }
+    place_id:         { type: integer, foreignTable: place, foreignReference: id, required: true, primaryKey: true, onDelete: cascade }
   meal:
     id:               ~
     place_id:         { type: integer, foreignTable: place, foreignReference: id, onDelete: cascade }

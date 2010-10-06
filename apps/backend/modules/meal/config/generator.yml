@@ -29,6 +29,6 @@ generator:
       filter:  ~
       form:    ~
       edit:
-        display: [place_id, type, voting_stopped, ordering_stopped, scheduled_at, _created, _updated]
+        display: [place_id, type, voting_stopped, ordering_stopped, scheduled_at, meal_place_list, _created, _updated]
       new:
-        display: [place_id, type, voting_stopped, ordering_stopped, scheduled_at]
+        display: [place_id, type, voting_stopped, ordering_stopped, scheduled_at, meal_place_list]

@@ -19,6 +19,7 @@ abstract class BaseMealFormFilter extends BaseFormFilterPropel
       'scheduled_at'     => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
       'created_at'       => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate())),
       'updated_at'       => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate())),
+      'meal_place_list'  => new sfWidgetFormPropelChoice(array('model' => 'Place', 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
@@ -29,6 +30,7 @@ abstract class BaseMealFormFilter extends BaseFormFilterPropel
       'scheduled_at'     => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDate(array('required' => false)))),
       'created_at'       => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDate(array('required' => false)))),
       'updated_at'       => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDate(array('required' => false)))),
+      'meal_place_list'  => new sfValidatorPropelChoice(array('model' => 'Place', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('meal_filters[%s]');
@@ -36,6 +38,31 @@ abstract class BaseMealFormFilter extends BaseFormFilterPropel
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
     parent::setup();
+  }
+
+  public function addMealPlaceListColumnCriteria(Criteria $criteria, $field, $values)
+  {
+    if (!is_array($values))
+    {
+      $values = array($values);
+    }
+
+    if (!count($values))
+    {
+      return;
+    }
+
+    $criteria->addJoin(MealPlacePeer::MEAL_ID, MealPeer::ID);
+
+    $value = array_pop($values);
+    $criterion = $criteria->getNewCriterion(MealPlacePeer::PLACE_ID, $value);
+
+    foreach ($values as $value)
+    {
+      $criterion->addOr($criteria->getNewCriterion(MealPlacePeer::PLACE_ID, $value));
+    }
+
+    $criteria->add($criterion);
   }
 
   public function getModelName()
@@ -54,6 +81,7 @@ abstract class BaseMealFormFilter extends BaseFormFilterPropel
       'scheduled_at'     => 'Date',
       'created_at'       => 'Date',
       'updated_at'       => 'Date',
+      'meal_place_list'  => 'ManyKey',
     );
   }
 }

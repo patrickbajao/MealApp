@@ -50,7 +50,7 @@ CREATE TABLE `meal_place`
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`meal_id` INTEGER  NOT NULL,
 	`place_id` INTEGER  NOT NULL,
-	PRIMARY KEY (`id`),
+	PRIMARY KEY (`id`,`meal_id`,`place_id`),
 	INDEX `meal_place_FI_1` (`meal_id`),
 	CONSTRAINT `meal_place_FK_1`
 		FOREIGN KEY (`meal_id`)
