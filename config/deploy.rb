@@ -76,8 +76,8 @@ namespace (:sf) do
   DESC
   task :symlinks do
     # symlink to uploads
-    # run "rm -rf #{current_path}/web/uploads"
-    # run "ln -s #{shared_path}/uploads #{current_path}/web/uploads"
+    run "rm -rf #{current_path}/web/uploads"
+    run "ln -s #{shared_path}/uploads #{current_path}/web/uploads"
   end
   
   desc <<-DESC
