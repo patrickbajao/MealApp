@@ -12,7 +12,7 @@
     <div id="wrapper">
         <div id="container">
             <div id="header">
-                <h1 id="logo"><?php echo link_to('<span>LunchApp</span>', '@homepage') ?></h1>
+                <h1 id="logo"><?php echo link_to('<span>EatPips Administration Console</span>', '@homepage') ?></h1>
                 <?php if($sf_user->isAuthenticated()): ?>
                 <div id="user-info">
                     <span class="username">You are logged in as <strong><?php echo $sf_user->getGuardUser()->getUsername() ?></strong></span>&nbsp;|&nbsp;<?php echo link_to('Logout', '@sf_guard_signout') ?>
