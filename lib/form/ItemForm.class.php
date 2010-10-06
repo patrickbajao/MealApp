@@ -38,7 +38,7 @@ class ItemForm extends BaseItemForm
             
             $thumbnail = new sfThumbnail($thumbnails['width'], $thumbnails['height'], true, false);
             $thumbnail->loadFile(sfConfig::get('sf_upload_dir') . '/items/' . $fn);
-            $thumbnail->save(sfConfig::get('sf_upload_dir'). '/items/' . $thumbnails['dir'] . '/' . $fn, 'image/jpeg');
+            $thumbnail->save(sfConfig::get('sf_upload_dir'). '/items/' . $thumbnails['dir'] . '/' . $fn, $values[$field]->getType());
         }
         
         return $fn;

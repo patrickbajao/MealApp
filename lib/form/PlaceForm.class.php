@@ -37,7 +37,7 @@ class PlaceForm extends BasePlaceForm
             
             $thumbnail = new sfThumbnail($thumbnails['width'], $thumbnails['height'], true, false);
             $thumbnail->loadFile(sfConfig::get('sf_upload_dir') . '/places/' . $fn);
-            $thumbnail->save(sfConfig::get('sf_upload_dir'). '/places/' . $thumbnails['dir'] . '/' . $fn, 'image/jpeg');
+            $thumbnail->save(sfConfig::get('sf_upload_dir'). '/places/' . $thumbnails['dir'] . '/' . $fn, $values[$field]->getType());
         }
         
         return $fn;

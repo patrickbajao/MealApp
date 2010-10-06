@@ -695,8 +695,18 @@ form#place-vote { display: block; }
             text-decoration: underline;
         }
 
-div#place-data {}
-
+div#place-data { float: left; width: 900px; margin-bottom: 20px; }
+    
+    div#place-data div.image {
+        float: left;
+        margin-right: 10px;
+    }
+    
+    div#place-data dl {
+        float: left;
+        width: 800px;
+    }
+    
     div#place-data dt,
     div#place-data dd {
         display: block;
@@ -716,7 +726,7 @@ div#menu {
     width: 700px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 20px;
+    clear: both;
 }
 
     div#menu div.subtitle {

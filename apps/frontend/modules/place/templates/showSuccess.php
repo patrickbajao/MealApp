@@ -1,6 +1,10 @@
 <?php use_helper('Meal') ?>
 <div class="title"><?php echo $place->getName() ?></div>
 <div id="place-data">
+<?php $image = $place->getImage() ?>
+<?php if(!empty($image)): ?>
+    <div class="image"><img src="/uploads/places/thumbnails/<?php echo $image ?>" alt="thumbnail" /></div>
+<?php endif; ?>
 <dl>
     <dt>Description:</dt>
         <dd><?php echo place_description($place) ?></dd>
