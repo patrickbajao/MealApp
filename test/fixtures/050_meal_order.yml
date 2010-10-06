@@ -1,0 +1,7 @@
+MealOrder:
+  meal_order_jollibee:
+    meal_id:          meal_jollibee
+    item_id:          item_jollibee_yum
+    sf_guard_user_id: mealapp_test
+    quantity:         1
+    comments:         blah!

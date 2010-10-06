@@ -8,6 +8,7 @@
     <script type="text/javascript" src="/js/print.js" /></script>
 </head>
 <body>
+    <div id="bar"><strong>Print Preview</strong><a href="#">Print</a></div>
     <div id="wrapper">
         <div id="container">
             <div id="content">

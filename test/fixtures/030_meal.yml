@@ -3,7 +3,13 @@ Meal:
     place_id:         jollibee
     type:             lunch
     voting_stopped:   1
+    scheduled_at:     2010-10-06 12:00:00
   meal_unknown:
     type:             dinner
     voting_stopped:   0
     ordering_stopped: 0
+  meal_jollibee2:
+    place_id:         jollibee
+    type:             lunch
+    voting_stopped:   1
+    scheduled_at:     2010-10-07 12:00:00

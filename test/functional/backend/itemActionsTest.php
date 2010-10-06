@@ -15,7 +15,7 @@ $c->add(PlacePeer::NAME, 'Jollibee');
 $place = PlacePeer::doSelectOne($c);
  
 $browser->info('1 - Upload Menu Items')->
-    loginBackend('mealapp.test@gmail.com', 'p4ssw0rd!')->
+    login('mealapp.test@gmail.com', 'p4ssw0rd!')->
     get('/item')->
     
     info('1.1 - Admin user upload a CSV file containing menu items for a specific place')->
