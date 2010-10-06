@@ -559,69 +559,37 @@ div.week-nav {
     
 div#place-list {}
 
-    div#place-list ul {
-        list-style: none;
-        float: left;
-        display: block;
+    div#place-list table {
+        width: 100%;
+        text-align: center;
+        background-color: #ffffff;
+        padding: 10px;
     }
     
-        div#place-list ul li {
-            display: block;
-            float: left;
-            width: 256px;
-            margin: 10px;
-            margin-top: 0;
-            margin-bottom: 20px;
-            padding: 10px;
-            background-color: #9FCC4E;
-            border-left: 4px solid #82ad2f;
+    div#place-list table th {
+        background-color: #C3D9FF;
+        height: 40px;
+        line-height: 40px;
+    }
+    
+    div#place-list table td {
+        padding: 10px;
+        border-bottom: 1px dashed #d5d5d5;
+    }
+
+        div#place-list table td.actions a {
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 85%;
+            color: #BFEB6B;
+            padding: 5px;
+            font-weight: bold;
+            background-color: #68940E;
         }
-        
-            div#place-list ul li span.counter {
-                color: #ffffff;
-                float: left;
-                padding-right: 10px;
-                padding-bottom: 10px;
-                font-size: 200%;
-                font-weight: bold;
-                display: block;
-            }
-            
-                div#place-list ul li div.place-info {
-                    float: left;
-                    width: 210px;
-                }
-            
-                    div#place-list ul li div.place-info dt,
-                    div#place-list ul li div.place-info dd {
-                        display: block;
-                        padding: 5px;
-                    }
-                    
-                    div#place-list ul li div.place-info dt { float: left; font-weight: bold; }
-                    
-                    div#place-list ul li div.place-info span.links {
-                        padding-top: 5px;
-                        float: left;
-                        display: block;
-                    }
-                    
-                        div#place-list ul li div.place-info span.links a {
-                            text-decoration: none;
-                            text-transform: uppercase;
-                            font-size: 85%;
-                            color: #000000;
-                            padding: 5px;
-                            margin-right: 10px;
-                            margin-bottom: 5px;
-                            font-weight: bold;
-                            background-color: #82AD2F;
-                            float: left;
-                        }
-                        
-                        div#place-list ul li div.place-info span.links a:hover {
-                            background-color: #ececec;
-                        }
+
+        div#place-list table td.actions a:hover {
+            background-color: #8db93b;
+        }
                         
 form#meal-order { display: block; }
     
@@ -941,4 +909,61 @@ form#register {
             color: #FF1A00;
             margin-right: 3px;
             font-size: 140%;
+        }
+
+div.pagination {
+    clear: both;
+    float: left;
+    margin-top: 20px;
+    display: block;
+    width: 880px;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+}
+
+    div.pagination a {
+        text-decoration: none;
+        padding: 10px;
+        font-weight: bold;
+    }
+    
+        div.pagination a.first-page,
+        div.pagination a.last-page {
+            color: #4b4b4b;
+        }
+        
+        div.pagination a.first-page:hover,
+        div.pagination a.last-page:hover {
+            background-color: #727272;
+            color: #ececec;
+        }
+        
+        div.pagination a.prev-page,
+        div.pagination a.next-page {
+            color: #68940E;
+        }
+        
+        div.pagination a.prev-page:hover,
+        div.pagination a.next-page:hover {
+            background-color: #8db93b;
+            color: #bfeb6b;
+        }
+        
+        div.pagination a.page {
+            background-color: #ececec;
+            color: #677D9F;
+        }
+        
+        div.pagination a.page:hover {
+            background-color: #bad1f6;
+        }
+        
+        div.pagination span.current-page {
+            background-color: #A3B9DE;
+            color: #677D9F;
+            padding: 10px;
+            font-weight: bold;
         }

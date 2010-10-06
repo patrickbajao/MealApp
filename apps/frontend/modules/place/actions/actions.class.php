@@ -16,7 +16,12 @@ class placeActions extends sfActions
      * @param sfRequest $request A request object
      */
     public function executeIndex(sfWebRequest $request) {
-        $this->places = PlacePeer::doSelect(new Criteria());
+        $c = new Criteria();
+        $c->addAscendingOrderByColumn(PlacePeer::NAME);
+        $this->pager = new sfPropelPager('Place', 20);
+        $this->pager->setCriteria($c);
+        $this->pager->setPage($request->getParameter('page', 1));
+        $this->pager->init();
     }
     
     public function executeShow(sfWebRequest $request) {
