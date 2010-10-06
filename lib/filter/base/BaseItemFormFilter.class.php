@@ -16,6 +16,7 @@ abstract class BaseItemFormFilter extends BaseFormFilterPropel
       'name'        => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'description' => new sfWidgetFormFilterInput(),
       'price'       => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'image'       => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
@@ -23,6 +24,7 @@ abstract class BaseItemFormFilter extends BaseFormFilterPropel
       'name'        => new sfValidatorPass(array('required' => false)),
       'description' => new sfValidatorPass(array('required' => false)),
       'price'       => new sfValidatorSchemaFilter('text', new sfValidatorNumber(array('required' => false))),
+      'image'       => new sfValidatorPass(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('item_filters[%s]');
@@ -45,6 +47,7 @@ abstract class BaseItemFormFilter extends BaseFormFilterPropel
       'name'        => 'Text',
       'description' => 'Text',
       'price'       => 'Number',
+      'image'       => 'Text',
     );
   }
 }

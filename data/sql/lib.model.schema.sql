@@ -77,6 +77,7 @@ CREATE TABLE `item`
 	`name` VARCHAR(150)  NOT NULL,
 	`description` TEXT,
 	`price` FLOAT  NOT NULL,
+	`image` VARCHAR(255),
 	PRIMARY KEY (`id`),
 	INDEX `item_FI_1` (`place_id`),
 	CONSTRAINT `item_FK_1`
@@ -98,6 +99,7 @@ CREATE TABLE `place`
 	`name` VARCHAR(150)  NOT NULL,
 	`description` TEXT,
 	`contact` VARCHAR(15),
+	`image` VARCHAR(255),
 	PRIMARY KEY (`id`)
 )Type=InnoDB;
 

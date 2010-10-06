@@ -18,6 +18,7 @@ abstract class BasePlaceForm extends BaseFormPropel
       'name'        => new sfWidgetFormInputText(),
       'description' => new sfWidgetFormTextarea(),
       'contact'     => new sfWidgetFormInputText(),
+      'image'       => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
@@ -25,6 +26,7 @@ abstract class BasePlaceForm extends BaseFormPropel
       'name'        => new sfValidatorString(array('max_length' => 150)),
       'description' => new sfValidatorString(array('required' => false)),
       'contact'     => new sfValidatorString(array('max_length' => 15, 'required' => false)),
+      'image'       => new sfValidatorString(array('max_length' => 255, 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('place[%s]');

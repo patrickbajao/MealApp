@@ -15,12 +15,14 @@ abstract class BasePlaceFormFilter extends BaseFormFilterPropel
       'name'        => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'description' => new sfWidgetFormFilterInput(),
       'contact'     => new sfWidgetFormFilterInput(),
+      'image'       => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
       'name'        => new sfValidatorPass(array('required' => false)),
       'description' => new sfValidatorPass(array('required' => false)),
       'contact'     => new sfValidatorPass(array('required' => false)),
+      'image'       => new sfValidatorPass(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('place_filters[%s]');
@@ -42,6 +44,7 @@ abstract class BasePlaceFormFilter extends BaseFormFilterPropel
       'name'        => 'Text',
       'description' => 'Text',
       'contact'     => 'Text',
+      'image'       => 'Text',
     );
   }
 }

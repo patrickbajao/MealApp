@@ -19,6 +19,7 @@ abstract class BaseItemForm extends BaseFormPropel
       'name'        => new sfWidgetFormInputText(),
       'description' => new sfWidgetFormTextarea(),
       'price'       => new sfWidgetFormInputText(),
+      'image'       => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
@@ -27,6 +28,7 @@ abstract class BaseItemForm extends BaseFormPropel
       'name'        => new sfValidatorString(array('max_length' => 150)),
       'description' => new sfValidatorString(array('required' => false)),
       'price'       => new sfValidatorNumber(),
+      'image'       => new sfValidatorString(array('max_length' => 255, 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('item[%s]');
