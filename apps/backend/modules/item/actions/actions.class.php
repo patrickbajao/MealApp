@@ -56,6 +56,10 @@ class itemActions extends autoItemActions
                 $item['description'] = $data[1];
                 $item['price'] = $data[2];
                 $item['_csrf_token'] = $csrf_token;
+                
+                // Unset the image field because it is not needed
+                unset($item_form['image']);
+                
                 $item_form->bind($item);
                 if($item_form->isValid()) {
                     $item_form->save();

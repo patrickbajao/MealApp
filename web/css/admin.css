@@ -157,6 +157,15 @@ div#content {
     div#content ul.sf_admin_td_actions a {
         display: block;
     }
+    
+    div#content div.sf_admin_form_field_image ul {
+        list-style: none;
+    }
+    
+        div#content div.sf_admin_form_field_image ul li {
+            display: block;
+            margin-bottom: 5px;
+        }
 
 div#items-upload {
     padding: 10px;
