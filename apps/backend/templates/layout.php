@@ -20,11 +20,13 @@
                 <?php endif; ?>
                 <?php if($sf_user->isAuthenticated() && $sf_user->getGuardUser()->getIsSuperAdmin()): ?>
                 <ul id="navbar">
+                    <?php use_helper('Meal') ?>
                     <li><?php echo link_to('Home', '@homepage') ?></li>
                     <li><?php echo link_to('Places', '@place') ?></li>
                     <li><?php echo link_to('Items', '@item') ?></li>
                     <li><?php echo link_to('Meals', '@meal') ?></li>
                     <li><?php echo link_to('Users', '@sf_guard_user') ?></li>
+                    <li class="frontend-link"><?php echo link_to('Frontend', cross_app_link_to('frontend', 'homepage')) ?></li>
                 </ul>
                 <?php endif; ?>
             </div>

@@ -87,9 +87,8 @@ div#header {
         display: block;
         height: 40px;
         list-style: none;
-        width: 500px;
+        width: 610px;
         float: right;
-        background-color: #ececec;
     }
     
         div#header ul#navbar li {
@@ -98,6 +97,12 @@ div#header {
             float: left;
             height: 40px;
             text-align: center;
+            background-color: #ececec;
+        }
+        
+        div#header ul#navbar li.frontend-link {
+            background-color: #4b4b4b;
+            margin-left: 10px;
         }
         
             div#header ul#navbar li a {
@@ -115,6 +120,17 @@ div#header {
             div#header ul#navbar li a:hover {
                 background-color: #9FCC4E;
                 background-image: url(../images/navbar-bg.gif);
+                background-repeat: no-repeat;
+                color: #292929;
+            }
+            
+            div#header ul#navbar li.frontend-link a {
+                color: #ececec;
+            }
+            
+            div#header ul#navbar li.frontend-link a:hover {
+                background-color: #4096ee;
+                background-image: url(../images/navbar-app-bg.gif);
                 background-repeat: no-repeat;
                 color: #292929;
             }
