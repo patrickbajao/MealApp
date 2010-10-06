@@ -26,4 +26,32 @@ class ItemForm extends BaseItemForm
         ));
     }
     
+    protected function processUploadedFile($field, $filename = null, $values = null) {
+       $fn = parent::processUploadedFile($field, $filename, $values);
+       
+       if (!is_null($values[$field])) {
+            $thumbnails = array('dir' => 'thumbnails', 'width' => 150, 'height' => 150);
+            $current_file = sfConfig::get('sf_upload_dir') . '/items/' . $thumbnails['dir'] . '/' . $fn;
+            if(is_file($current_file)) {
+                unlink($current_file);
+            }
+            
+            $thumbnail = new sfThumbnail($thumbnails['width'], $thumbnails['height'], true, false);
+            $thumbnail->loadFile(sfConfig::get('sf_upload_dir') . '/items/' . $fn);
+            $thumbnail->save(sfConfig::get('sf_upload_dir'). '/items/' . $thumbnails['dir'] . '/' . $fn, 'image/jpeg');
+        }
+        
+        return $fn;
+    }
+    
+    protected function removeFile($field) {
+        parent::removeFile($field);
+        
+        $directory = $this->validatorSchema[$field]->getOption('path');
+        $thumbnail = $directory . DIRECTORY_SEPARATOR . 'thumbnails' . DIRECTORY_SEPARATOR . $this->getObject()->getImage();
+        if(is_file($thumbnail)) {
+            unlink($thumbnail);
+        }
+    }
+    
 }

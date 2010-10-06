@@ -26,23 +26,30 @@ class PlaceForm extends BasePlaceForm
     }
     
     protected function processUploadedFile($field, $filename = null, $values = null) {
-
        $fn = parent::processUploadedFile($field, $filename, $values);
-
-       if ($filename != "") {
-            $thumbnails[] = array('dir' => 'thumbnails', 'width' => 150, 'height' => 150);
-            foreach ($thumbnails as $thumb_param) {
-                $current_file = sfConfig::get('sf_upload_dir') . '/places/' . $thumb_param['dir'] . '/' . $fn;
-                if(is_file($current_file)) {
-                    unlink($current_file);
-                }
+       
+       if (!is_null($values[$field])) {
+            $thumbnails = array('dir' => 'thumbnails', 'width' => 150, 'height' => 150);
+            $current_file = sfConfig::get('sf_upload_dir') . '/places/' . $thumbnails['dir'] . '/' . $fn;
+            if(is_file($current_file)) {
+                unlink($current_file);
             }
-            foreach ($thumbnails as $thumb_param) {
-                $thumbnail = new sfThumbnail($thumb_param['width'], $thumb_param['height'], true, false);
-                $thumbnail->loadFile(sfConfig::get('sf_upload_dir') . '/places/' . $fn);
-                $thumbnail->save(sfConfig::get('sf_upload_dir').'/places/' . $thumb_param['dir'] . '/' . $fn, 'image/jpeg');
-            }
+            
+            $thumbnail = new sfThumbnail($thumbnails['width'], $thumbnails['height'], true, false);
+            $thumbnail->loadFile(sfConfig::get('sf_upload_dir') . '/places/' . $fn);
+            $thumbnail->save(sfConfig::get('sf_upload_dir'). '/places/' . $thumbnails['dir'] . '/' . $fn, 'image/jpeg');
         }
+        
         return $fn;
+    }
+    
+    protected function removeFile($field) {
+        parent::removeFile($field);
+        
+        $directory = $this->validatorSchema[$field]->getOption('path');
+        $thumbnail = $directory . DIRECTORY_SEPARATOR . 'thumbnails' . DIRECTORY_SEPARATOR . $this->getObject()->getImage();
+        if(is_file($thumbnail)) {
+            unlink($thumbnail);
+        }
     }
 }
