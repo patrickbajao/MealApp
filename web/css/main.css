@@ -744,7 +744,12 @@ div#menu {
             padding: 5px;
             border-bottom: 1px dashed #ececec;
         }
-        
+            
+            div#menu ul li span.item-image {
+                float: left;
+                padding-right: 5px;
+            }
+            
             div#menu ul li span.item-name {
                 float: left;
                 padding: 5px;

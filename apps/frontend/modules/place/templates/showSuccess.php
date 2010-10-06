@@ -17,6 +17,10 @@
     <ul>
     <?php foreach($place->getItems() as $item): ?>
         <li>
+            <?php $item_image = $item->getImage() ?>
+            <?php if(!empty($item_image)): ?>
+                <span class="item-image"><img src="/uploads/items/thumbnails/<?php echo $item_image ?>" alt="thumbnail" /></span>
+            <?php endif; ?>
             <span class="item-name"><?php echo $item->getName() ?></span>
             <span class="price"><?php echo $item->getPrice() ?></span>
             <p class="description"><?php echo $item->getDescription() ?></p>
