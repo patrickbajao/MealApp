@@ -15,5 +15,7 @@ class MealForm extends BaseMealForm
                 'default'  => array('breakfast', 0)
             ));
         unset($this['created_at'], $this['updated_at']);
+        $this->widgetSchema['meal_place_list']->setOption('renderer_class', 'sfWidgetFormSelectDoubleList');
+         $this->widgetSchema['meal_place_list']->setLabel('Places for Voting');
     }
 }
