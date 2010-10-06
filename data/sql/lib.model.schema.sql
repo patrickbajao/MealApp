@@ -39,6 +39,31 @@ CREATE TABLE `meal_order`
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------
+#-- meal_place
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `meal_place`;
+
+
+CREATE TABLE `meal_place`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`meal_id` INTEGER  NOT NULL,
+	`place_id` INTEGER,
+	PRIMARY KEY (`id`),
+	INDEX `meal_place_FI_1` (`meal_id`),
+	CONSTRAINT `meal_place_FK_1`
+		FOREIGN KEY (`meal_id`)
+		REFERENCES `meal` (`id`)
+		ON DELETE CASCADE,
+	INDEX `meal_place_FI_2` (`place_id`),
+	CONSTRAINT `meal_place_FK_2`
+		FOREIGN KEY (`place_id`)
+		REFERENCES `place` (`id`)
+		ON DELETE CASCADE
+)Type=InnoDB;
+
+#-----------------------------------------------------------------------------
 #-- meal
 #-----------------------------------------------------------------------------
 
@@ -113,26 +138,20 @@ DROP TABLE IF EXISTS `vote`;
 CREATE TABLE `vote`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`place_id` INTEGER  NOT NULL,
+	`meal_place_id` INTEGER  NOT NULL,
 	`sf_guard_user_id` INTEGER  NOT NULL,
-	`meal_id` INTEGER  NOT NULL,
 	`created_at` DATETIME,
 	`updated_at` DATETIME,
 	PRIMARY KEY (`id`),
-	INDEX `vote_FI_1` (`place_id`),
+	INDEX `vote_FI_1` (`meal_place_id`),
 	CONSTRAINT `vote_FK_1`
-		FOREIGN KEY (`place_id`)
-		REFERENCES `place` (`id`)
+		FOREIGN KEY (`meal_place_id`)
+		REFERENCES `meal_place` (`id`)
 		ON DELETE CASCADE,
 	INDEX `vote_FI_2` (`sf_guard_user_id`),
 	CONSTRAINT `vote_FK_2`
 		FOREIGN KEY (`sf_guard_user_id`)
 		REFERENCES `sf_guard_user` (`id`)
-		ON DELETE CASCADE,
-	INDEX `vote_FI_3` (`meal_id`),
-	CONSTRAINT `vote_FK_3`
-		FOREIGN KEY (`meal_id`)
-		REFERENCES `meal` (`id`)
 		ON DELETE CASCADE
 )Type=InnoDB;
 

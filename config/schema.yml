@@ -11,7 +11,7 @@ propel:
   meal_place:
     id:               ~
     meal_id:          { type: integer, foreignTable: meal, foreignReference: id, required: true, onDelete: cascade }
-    place_id:         { type: integer, foreignTable: place, foreignReference: id, onDelete: cascade }
+    place_id:         { type: integer, foreignTable: place, foreignReference: id, required: true, onDelete: cascade }
   meal:
     id:               ~
     place_id:         { type: integer, foreignTable: place, foreignReference: id, onDelete: cascade }
@@ -36,7 +36,7 @@ propel:
     image:            { type: varchar(255) }
   vote:
     id:               ~
-    meal_place_id:    { type: integer, foreignTable: meal_place, foreignReference: id, required: true, onDelete: cascade }
+    meal_place_id:    { type: integer, foreignTable: meal_place, foreignReference: id, onDelete: cascade }
     sf_guard_user_id: { type: integer, foreignTable: sf_guard_user, foreignReference: id, required: true, onDelete: cascade }
     created_at:       ~
     updated_at:       ~
