@@ -24,4 +24,25 @@ class PlaceForm extends BasePlaceForm
             'mime_types' => 'web_images',
         ));
     }
+    
+    protected function processUploadedFile($field, $filename = null, $values = null) {
+
+       $fn = parent::processUploadedFile($field, $filename, $values);
+
+       if ($filename != "") {
+            $thumbnails[] = array('dir' => 'thumbnails', 'width' => 150, 'height' => 150);
+            foreach ($thumbnails as $thumb_param) {
+                $current_file = sfConfig::get('sf_upload_dir') . '/places/' . $thumb_param['dir'] . '/' . $fn;
+                if(is_file($current_file)) {
+                    unlink($current_file);
+                }
+            }
+            foreach ($thumbnails as $thumb_param) {
+                $thumbnail = new sfThumbnail($thumb_param['width'], $thumb_param['height'], true, false);
+                $thumbnail->loadFile(sfConfig::get('sf_upload_dir') . '/places/' . $fn);
+                $thumbnail->save(sfConfig::get('sf_upload_dir').'/places/' . $thumb_param['dir'] . '/' . $fn, 'image/jpeg');
+            }
+        }
+        return $fn;
+    }
 }
