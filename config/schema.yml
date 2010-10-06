@@ -23,11 +23,13 @@ propel:
     name:             { type: varchar(150), required: true }
     description:      { type: longvarchar }
     price:            { type: float, required: true }
+    image:            { type: varchar(255) }
   place:
     id:               ~
     name:             { type: varchar(150), required: true }
     description:      { type: longvarchar }
     contact:          { type: varchar(15) }
+    image:            { type: varchar(255) }
   vote:
     id:               ~
     place_id:         { type: integer, foreignTable: place, foreignReference: id, required: true, onDelete: cascade }
