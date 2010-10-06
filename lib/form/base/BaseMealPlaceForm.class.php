@@ -16,13 +16,13 @@ abstract class BaseMealPlaceForm extends BaseFormPropel
     $this->setWidgets(array(
       'id'       => new sfWidgetFormInputHidden(),
       'meal_id'  => new sfWidgetFormPropelChoice(array('model' => 'Meal', 'add_empty' => false)),
-      'place_id' => new sfWidgetFormPropelChoice(array('model' => 'Place', 'add_empty' => true)),
+      'place_id' => new sfWidgetFormPropelChoice(array('model' => 'Place', 'add_empty' => false)),
     ));
 
     $this->setValidators(array(
       'id'       => new sfValidatorChoice(array('choices' => array($this->getObject()->getId()), 'empty_value' => $this->getObject()->getId(), 'required' => false)),
       'meal_id'  => new sfValidatorPropelChoice(array('model' => 'Meal', 'column' => 'id')),
-      'place_id' => new sfValidatorPropelChoice(array('model' => 'Place', 'column' => 'id', 'required' => false)),
+      'place_id' => new sfValidatorPropelChoice(array('model' => 'Place', 'column' => 'id')),
     ));
 
     $this->widgetSchema->setNameFormat('meal_place[%s]');

@@ -15,16 +15,18 @@ abstract class BaseVoteForm extends BaseFormPropel
   {
     $this->setWidgets(array(
       'id'               => new sfWidgetFormInputHidden(),
-      'meal_place_id'    => new sfWidgetFormPropelChoice(array('model' => 'MealPlace', 'add_empty' => false)),
+      'place_id'         => new sfWidgetFormPropelChoice(array('model' => 'Place', 'add_empty' => false)),
       'sf_guard_user_id' => new sfWidgetFormPropelChoice(array('model' => 'sfGuardUser', 'add_empty' => false)),
+      'meal_id'          => new sfWidgetFormPropelChoice(array('model' => 'Meal', 'add_empty' => false)),
       'created_at'       => new sfWidgetFormDateTime(),
       'updated_at'       => new sfWidgetFormDateTime(),
     ));
 
     $this->setValidators(array(
       'id'               => new sfValidatorChoice(array('choices' => array($this->getObject()->getId()), 'empty_value' => $this->getObject()->getId(), 'required' => false)),
-      'meal_place_id'    => new sfValidatorPropelChoice(array('model' => 'MealPlace', 'column' => 'id')),
+      'place_id'         => new sfValidatorPropelChoice(array('model' => 'Place', 'column' => 'id')),
       'sf_guard_user_id' => new sfValidatorPropelChoice(array('model' => 'sfGuardUser', 'column' => 'id')),
+      'meal_id'          => new sfValidatorPropelChoice(array('model' => 'Meal', 'column' => 'id')),
       'created_at'       => new sfValidatorDateTime(array('required' => false)),
       'updated_at'       => new sfValidatorDateTime(array('required' => false)),
     ));
