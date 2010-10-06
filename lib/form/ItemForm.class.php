@@ -35,7 +35,9 @@ class ItemForm extends BaseItemForm
             if(is_file($current_file)) {
                 unlink($current_file);
             }
-            
+            if(!file_exists(sfConfig::get('sf_upload_dir') . '/items/' . $thumbnails['dir'])) { 
+                mkdir(sfConfig::get('sf_upload_dir') . '/items/' . $thumbnails['dir']); 
+            }
             $thumbnail = new sfThumbnail($thumbnails['width'], $thumbnails['height'], true, false);
             $thumbnail->loadFile(sfConfig::get('sf_upload_dir') . '/items/' . $fn);
             $thumbnail->save(sfConfig::get('sf_upload_dir'). '/items/' . $thumbnails['dir'] . '/' . $fn, $values[$field]->getType());
