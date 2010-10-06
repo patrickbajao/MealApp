@@ -30,7 +30,7 @@ class ItemForm extends BaseItemForm
        $fn = parent::processUploadedFile($field, $filename, $values);
        
        if (!is_null($values[$field])) {
-            $thumbnails = array('dir' => 'thumbnails', 'width' => 150, 'height' => 150);
+            $thumbnails = array('dir' => 'thumbnails', 'width' => 70, 'height' => 70);
             $current_file = sfConfig::get('sf_upload_dir') . '/items/' . $thumbnails['dir'] . '/' . $fn;
             if(is_file($current_file)) {
                 unlink($current_file);
