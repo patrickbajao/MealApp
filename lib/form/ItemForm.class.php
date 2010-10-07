@@ -13,7 +13,7 @@ class ItemForm extends BaseItemForm
     public function configure() {
         $this->widgetSchema['image'] = new sfWidgetFormInputFileEditable(array(
             'label'     => 'Image',
-            'file_src'  => '/uploads/items/' . $this->getObject()->getImage(),
+            'file_src'  => '/uploads/items/thumbnails/' . $this->getObject()->getImage(),
             'is_image'  => true,
             'edit_mode' => !$this->isNew(),
             'template'  => '<div><ul><li>%file%</li><li>%input%</li><li>%delete% %delete_label%</li></ul></div>',
