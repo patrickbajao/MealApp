@@ -745,16 +745,37 @@ div#menu {
             border-bottom: 1px dashed #ececec;
         }
             
+            div#menu ul li span.clear { clear: both; display: block; }
+            
             div#menu ul li span.item-image {
-                float: left;
                 padding-right: 5px;
+                float: left;
+                width: 70px;
+                height: 70px;
+                display: block;
             }
             
-            div#menu ul li span.item-name {
+            div#menu ul li dl {
+                display: block;
+                width: 550px;
+                float: left;
+            }
+            
+            div#menu ul li dl dt.item-name {
                 float: left;
                 padding: 5px;
                 font-weight: bold;
                 font-size: 120%;
+                width: 550px;
+            }
+            
+            div#menu ul li dl dd.description {
+                font-size: 90%;
+                color: #656565;
+                padding: 5px;
+                padding-top: 0;
+                float: left;
+                width: 550px;
             }
             
             div#menu ul li span.price {
@@ -762,14 +783,7 @@ div#menu {
                 padding: 5px;
                 font-weight: bold;
                 font-size: 120%;
-            }
-            
-            div#menu ul li p.description {
-                font-size: 90%;
-                color: #656565;
-                padding: 5px;
-                padding-top: 0;
-                clear: both;
+                width: 50px;
             }
 
 div#user-orders {

@@ -21,9 +21,12 @@
             <?php if(!empty($item_image)): ?>
                 <span class="item-image"><img src="/uploads/items/thumbnails/<?php echo $item_image ?>" alt="thumbnail" /></span>
             <?php endif; ?>
-            <span class="item-name"><?php echo $item->getName() ?></span>
             <span class="price"><?php echo $item->getPrice() ?></span>
-            <p class="description"><?php echo $item->getDescription() ?></p>
+            <dl>
+                <dt class="item-name"><?php echo $item->getName() ?></dt>
+                    <dd class="description"><?php echo $item->getDescription() ?></dd>
+            </dl>
+            <span class="clear"></span>
         </li>
     <?php endforeach; ?>
     </ul>
