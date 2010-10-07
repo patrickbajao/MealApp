@@ -7,18 +7,22 @@
     $.extend(Modal.prototype, {
         dialog:    '',
         response:  '',
-        maxHeight: $(window).height() - 50,
+        maxHeight: window.innerHeight ? window.innerHeight : $(window).height(),
+        height:    'auto',
         init: function(dialog, response) {
-            this.dialog  = dialog;
+            this.dialog   = dialog;
             this.response = response;
+            if($(this.response).height() > this.maxHeight) {
+                this.height = this.maxHeight - 50;
+            }
         },
         show: function() {
             var self  = this;
-            
             this.dialog.dialog({
                 title: $('div.title', self.response),
                 width: 940,
                 maxWidth: 980,
+                height: self.height,
                 maxHeight: self.maxHeight,
                 modal: true,
                 resizable: true,
