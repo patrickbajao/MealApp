@@ -43,14 +43,16 @@ $c3->add(MealPeer::VOTING_STOPPED, 0);
 $c3->add(MealPeer::ORDERING_STOPPED, 0);
 $meal  = MealPeer::doSelectOne($c3);
 
-$place = PlacePeer::doSelectOne(new Criteria());
+$c = new Criteria();
+$c->add(MealPlacePeer::MEAL_ID, $meal->getId());
+$meal_place = MealPlacePeer::doSelectOne($c);
 
 $browser->info('2 - Vote Page')->
     login('mealapp.test@gmail.com', 'p4ssw0rd!')->
     get('/vote/' . $meal->getId())->
     
     info('2.1 - User clicks on the Place Vote button')->
-    click('Place Vote', array('vote' => array('place_id' => $place->getId())))->
+    click('Place Vote', array('vote' => array('place_id' => $meal_place->getPlaceId())))->
     with('response')->
         isRedirected()->
         followRedirect()->

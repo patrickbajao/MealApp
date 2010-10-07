@@ -13,3 +13,10 @@ Meal:
     type:             lunch
     voting_stopped:   1
     scheduled_at:     2010-10-07 12:00:00
+MealPlace:
+  meal_place_unknown1:
+    meal_id:          meal_unknown
+    place_id:         jollibee
+  meal_place_unknown2:
+    meal_id:          meal_unknown
+    place_id:         mcdo

@@ -16,6 +16,11 @@
  *
  * @package    lib.model
  */
-class MealPlace extends BaseMealPlace {
+class MealPlace extends BaseMealPlace
+{
+
+    public function __toString() {
+        return $this->getPlace()->getName();
+    }
 
 } // MealPlace

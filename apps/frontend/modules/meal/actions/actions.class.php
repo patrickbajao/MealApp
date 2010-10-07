@@ -116,6 +116,12 @@ class mealActions extends sfActions
         $from       = $this->_parseQuery($from_param); // Call the _parseQuery to parse the $from_parameter and convert it into an acceptable symfony route
         $meal       = MealPeer::getMeal($meal_id);
         
+        $meal_places = $meal->getMealPlaces();
+        if(empty($meal_places)) {
+            $this->getUser()->setFlash('info', 'Meal has no places for voting yet.');
+            $this->redirect($from);
+        }
+        
         if($meal->isVotingStopped()) {
             $this->getUser()->setFlash('info', 'Voting for meal ' . $meal_id . ' has already been stopped.');
             $this->redirect($from);
@@ -130,7 +136,10 @@ class mealActions extends sfActions
             $vote->setMealId($meal_id);
         }
         
-        $this->form = new VoteForm($vote);
+        $c = new Criteria();
+        $c->add(MealPlacePeer::MEAL_ID, $meal_id);
+        
+        $this->form = new VoteForm($vote, array('criteria' => $c));
         if('POST' == $request->getMethod()) {
             if($this->processForm($request, $this->form)) {
                 if(!$request->isXmlHttpRequest()) {
