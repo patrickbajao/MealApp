@@ -16,6 +16,10 @@ class MealForm extends BaseMealForm
             ));
         unset($this['created_at'], $this['updated_at']);
         
+        $c = new Criteria();
+        $c->addAscendingOrderByColumn(PlacePeer::NAME);
+        
+        $this->widgetSchema['meal_place_list']->setOption('criteria', $c);
         $this->widgetSchema['meal_place_list']->setOption('renderer_class', 'sfWidgetFormSelectDoubleList');
         $this->widgetSchema['meal_place_list']->setOption('renderer_options', array('label_unassociated' => 'Places', 'label_associated' => 'For Voting'));
         $this->widgetSchema['meal_place_list']->setLabel('Places for Voting');
