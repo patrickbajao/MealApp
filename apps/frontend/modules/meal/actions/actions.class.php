@@ -138,6 +138,7 @@ class mealActions extends sfActions
         
         $c = new Criteria();
         $c->add(MealPlacePeer::MEAL_ID, $meal_id);
+        $c->addAscendingOrderByColumn(PlacePeer::NAME);
         
         $this->form = new VoteForm($vote, array('criteria' => $c));
         if('POST' == $request->getMethod()) {
