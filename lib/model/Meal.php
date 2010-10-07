@@ -49,6 +49,14 @@ class Meal extends BaseMeal
         return false;
     }
     
+    public function isMealFinished() {
+        $schedule = $this->getScheduledAt();
+        if(strtotime($schedule) < strtotime(date('Y-m-d h:i:s'))) {
+            return true;
+        }
+        return false;
+    }
+    
     public function getVoteCount() {
         return VotePeer::getVoteCount($this->getId());
     }

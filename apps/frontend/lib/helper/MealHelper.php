@@ -51,17 +51,17 @@ function meal_links($meal, $user, $current_page = 'meals') {
         $vote_link = $meal->userHasVoted($user->getId()) ? 'Change Vote' : 'Vote' ;
         $meal_places = $meal->getMealPlaces();
         if($meal_places->count() > 0) {
-            if(!$meal->isVotingStopped()) {
+            if(!$meal->isVotingStopped() && !$meal->isMealFinished()) {
                 $links .= link_to($vote_link, '@vote?meal_id=' . $meal->getId() . '&from=' . $current_page, array('class' => 'modal'));
             }
             
-            if($meal->getVoteCount() > 0) {
+            if($meal->getVoteCount() > 0 && !$meal->isMealFinished()) {
                 $links .= '&nbsp;|&nbsp;';
                 $links .= link_to('View Votes', 'votes/' . $meal->getId(), array('class' => 'modal'));
             }
         
             if($user->getIsSuperAdmin()) {
-                if($meal->getVoteCount() > 0 && !$meal->isVotingStopped()) {
+                if($meal->getVoteCount() > 0 && !$meal->isVotingStopped() && !$meal->isMealFinished()) {
                     $links .= '&nbsp;|&nbsp;';
                     $links .= link_to('Stop Votes', '@stop_vote?meal_id=' . $meal->getId() . '&from=' . $current_page, array('class' => 'meal-link'));
                 }
@@ -69,17 +69,17 @@ function meal_links($meal, $user, $current_page = 'meals') {
         }
     } else {
         $order_link = $meal->userHasOrdered($user->getId()) ? 'Change Order' : 'Order' ;
-        if(!$meal->isOrderingStopped()) {
+        if(!$meal->isOrderingStopped() && !$meal->isMealFinished()) {
             $links .= link_to($order_link, '@order?meal_id=' . $meal->getId() . '&from=' . $current_page, array('class' => 'modal'));
         }
         
         if($meal->getOrderCount() > 0) {
-            $links .= !$meal->isOrderingStopped() ? '&nbsp;|&nbsp;' : '' ;
+            $links .= !$meal->isOrderingStopped() && !$meal->isMealFinished() ? '&nbsp;|&nbsp;' : '' ;
             $links .= link_to('View Orders', 'orders/' . $meal->getId(), array('class' => 'modal'));
         }
         
         if($user->getIsSuperAdmin()) {
-            if($meal->getOrderCount() > 0 && !$meal->isOrderingStopped()) {
+            if($meal->getOrderCount() > 0 && !$meal->isOrderingStopped() && !$meal->isMealFinished()) {
                 $links .= '&nbsp;|&nbsp;';
                 $links .= link_to('Stop Orders', '@stop_order?meal_id=' . $meal->getId() . '&from=' . $current_page, array('class' => 'meal-link'));
             }
