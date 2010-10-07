@@ -37,9 +37,10 @@ class PlaceForm extends BasePlaceForm
             if(!file_exists(sfConfig::get('sf_upload_dir') . '/places/' . $thumbnails['dir'])) { 
                 mkdir(sfConfig::get('sf_upload_dir') . '/places/' . $thumbnails['dir']); 
             }
-            $thumbnail = new sfThumbnail($thumbnails['width'], $thumbnails['height'], true, false);
-            $thumbnail->loadFile(sfConfig::get('sf_upload_dir') . '/places/' . $fn);
-            $thumbnail->save(sfConfig::get('sf_upload_dir'). '/places/' . $thumbnails['dir'] . '/' . $fn, $values[$field]->getType());
+            
+            $thumbnail = PhpThumbFactory::create(sfConfig::get('sf_upload_dir') . '/places/' . $fn);
+            $thumbnail->adaptiveResize($thumbnails['width'], $thumbnails['height']);
+            $thumbnail->save(sfConfig::get('sf_upload_dir'). '/places/' . $thumbnails['dir'] . '/' . $fn, 'png');
         }
         
         return $fn;

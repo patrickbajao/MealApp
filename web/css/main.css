@@ -765,12 +765,11 @@ div#menu {
             }
             
             div#menu ul li p.description {
-                clear: both;
                 font-size: 90%;
                 color: #656565;
                 padding: 5px;
-                padding-left: 10px;
                 padding-top: 0;
+                clear: both;
             }
 
 div#user-orders {
