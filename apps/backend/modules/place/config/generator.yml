@@ -29,6 +29,6 @@ generator:
       filter:
         display: [name, description, contact]
       form:
-        display: [name, description, contact]
+        display: [name, description, contact, image]
       edit:    ~
       new:     ~
