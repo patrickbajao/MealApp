@@ -662,7 +662,7 @@ form#meal-order { display: block; }
             text-decoration: underline;
         }
         
-form#place-vote { display: block; }
+form#place-vote { display: block; position: relative; }
 
     form#place-vote ul.radio_list{
         list-style: none;

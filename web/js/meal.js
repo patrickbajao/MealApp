@@ -12,7 +12,7 @@
         init: function(dialog, response) {
             this.dialog   = dialog;
             this.response = response;
-            if($(this.response).height() > this.maxHeight) {
+            if($(this.response).height() > (this.maxHeight / 2 + 100)) {
                 this.height = this.maxHeight - 50;
             }
         },
