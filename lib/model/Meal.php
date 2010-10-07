@@ -51,7 +51,7 @@ class Meal extends BaseMeal
     
     public function isMealFinished() {
         $schedule = $this->getScheduledAt();
-        if(strtotime($schedule) < strtotime(date('Y-m-d h:i:s'))) {
+        if($schedule < date('Y-m-d H:i:s')) {
             return true;
         }
         return false;
