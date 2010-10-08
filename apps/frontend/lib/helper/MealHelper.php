@@ -166,3 +166,32 @@ function cross_app_link_to($app, $route, $args = null) {
     }
     return $path;
 }
+
+function suggestion_type($type) {
+    $type_text = null;
+    switch($type) {
+        case 'place':
+            $type_text = 'a Place';
+            break;
+        case 'item':
+            $type_text = 'an Item';
+            break;
+    }
+    return $type_text;
+}
+
+function suggestion_fields($type, $form) {
+    $fields = null;
+    switch($type) {
+        case 'place':
+            $fields .= $form['contact']->renderLabel();
+            $fields .= $form['contact']->render();
+            break;
+        case 'item':
+            $fields .= '<span class="required">*</span>' . $form['price']->renderLabel();
+            $fields .= $form['price']->render();
+            $fields .= $form['price']->renderError();
+            break;
+    }
+    return $fields;
+}

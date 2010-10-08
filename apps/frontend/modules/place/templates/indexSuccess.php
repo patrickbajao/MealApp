@@ -1,6 +1,8 @@
 <?php use_helper('Meal') ?>
 <div class="title">Places</div>
+<?php include_partial('meal/flashes', array('sf_user' => $sf_user)) ?>
 <div id="place-list">
+    <?php echo link_to('<span>Suggest a Place</span>', '@suggest', array('class' => 'place-suggest-link')) ?>
     <?php include_partial('place/list', array('places' => $pager->getResults())) ?>
 </div>
 <?php if ($pager->haveToPaginate()): ?>

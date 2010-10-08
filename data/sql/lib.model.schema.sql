@@ -162,6 +162,30 @@ CREATE TABLE `vote`
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------
+#-- suggestion
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `suggestion`;
+
+
+CREATE TABLE `suggestion`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`place_id` INTEGER,
+	`type` VARCHAR(5)  NOT NULL,
+	`name` VARCHAR(150)  NOT NULL,
+	`description` TEXT,
+	`contact` VARCHAR(15),
+	`price` FLOAT,
+	PRIMARY KEY (`id`),
+	INDEX `suggestion_FI_1` (`place_id`),
+	CONSTRAINT `suggestion_FK_1`
+		FOREIGN KEY (`place_id`)
+		REFERENCES `place` (`id`)
+		ON DELETE CASCADE
+)Type=InnoDB;
+
+#-----------------------------------------------------------------------------
 #-- sf_guard_user_profile
 #-----------------------------------------------------------------------------
 

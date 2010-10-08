@@ -558,7 +558,25 @@ div.week-nav {
     }
     
 div#place-list {}
-
+    
+    div#place-list a.place-suggest-link {
+        color: #bfeb6b;
+        background-color: #68940E;
+        text-decoration: none;
+        font-weight: bold;
+        height: 40px;
+        line-height: 40px;
+        display: block;
+        margin-bottom: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
+        width: 115px;
+    }
+    
+    div#place-list a.place-suggest-link:hover {
+        background-color: #8db93b;
+    }
+    
     div#place-list table {
         width: 100%;
         text-align: center;
@@ -741,6 +759,26 @@ div#menu {
         margin-bottom: 20px;
         padding: 10px;
     }
+    
+        div#menu div.subtitle a.item-suggest-link {
+            color: #bfeb6b;
+            background-color: #68940E;
+            text-decoration: none;
+            font-weight: bold;
+            height: 30px;
+            line-height: 30px;
+            display: block;
+            margin-bottom: 20px;
+            padding-left: 10px;
+            padding-right: 10px;
+            width: 115px;
+            font-size: 14px;
+            float: right;
+        }
+        
+        div#menu div.subtitle a.item-suggest-link:hover {
+            background-color: #8db93b;
+        }
     
     div#menu ul { list-style: none; }
     

@@ -32,6 +32,10 @@ places:
   url:   /places
   param: { module: place, action: index }
 
+suggest:
+  url:   /suggest/:type/:place_id
+  param: { module: place, action: suggest, type: place, place_id: 0 }
+  
 show_place:
   url:   /place/:place_id
   param: { module: place, action: show }

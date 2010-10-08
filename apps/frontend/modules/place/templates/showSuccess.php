@@ -1,5 +1,6 @@
 <?php use_helper('Meal') ?>
 <div class="title"><?php echo $place->getName() ?></div>
+<?php include_partial('meal/flashes', array('sf_user' => $sf_user)) ?>
 <div id="place-data">
 <?php $image = $place->getImage() ?>
 <?php if(!empty($image)): ?>
@@ -13,7 +14,7 @@
 </dl>
 </div>
 <div id="menu">
-    <div class="subtitle">Menu</div>
+    <div class="subtitle">Menu <?php echo link_to('<span>Suggest an Item</span>', '@suggest?type=item&place_id=' . $place->getId(), array('class' => 'item-suggest-link')) ?></div>
     <ul>
     <?php foreach($place->getItems() as $item): ?>
         <li>

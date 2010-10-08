@@ -41,6 +41,14 @@ propel:
     meal_id:          { type: integer, foreignTable: meal, foreignReference: id, required: true, onDelete: cascade }
     created_at:       ~
     updated_at:       ~
+  suggestion:
+    id:               ~
+    place_id:         { type: integer, foreignTable: place, foreignReference: id, onDelete: cascade }
+    type:             { type: varchar(5), required: true }
+    name:             { type: varchar(150), required: true }
+    description:      { type: longvarchar }
+    contact:          { type: varchar(15) }
+    price:            { type: float }
   sf_guard_user_profile:
     _attributes:     { phpName: sfGuardUserProfile }
     id:
