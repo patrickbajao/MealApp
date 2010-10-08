@@ -12,7 +12,7 @@
         init: function(dialog, response) {
             this.dialog   = dialog;
             this.response = response;
-            if($(this.response).height() > (this.maxHeight / 2 + 100)) {
+            if($(this.response).height() > (this.maxHeight / 2)) {
                 this.height = this.maxHeight - 50;
             }
         },
@@ -116,18 +116,14 @@
         setScrollFollowButtons: function() {
             var $buttons   = $('#follow'),
                 $dialog    = $(this.dialog),
-                position     = $buttons.position(),
+                position   = $buttons.position(),
                 topPadding = 15;
 
             $dialog.scroll(function() {
                 if ($dialog.scrollTop() > position.top) {
-                    $buttons.stop().animate({
-                        marginTop: $dialog.scrollTop()
-                    });
+                    $buttons.css('marginTop', $dialog.scrollTop());
                 } else {
-                    $dialog.stop().animate({
-                        marginTop: 0
-                    });
+                    $buttons.css('marginTop', 0);
                 }
             });
         }

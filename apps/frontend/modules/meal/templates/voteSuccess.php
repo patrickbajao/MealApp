@@ -8,4 +8,5 @@
     <div class="buttons" id="follow">
         <input type="submit" value="Place Vote" />&nbsp;<?php echo link_to('<span>Cancel</span>', $from, array('class' => 'cancel')) ?>
     </div>
+    <div class="clear"></div>
 </form>
