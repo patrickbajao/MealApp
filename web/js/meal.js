@@ -90,6 +90,7 @@
             });
             self.setCancelLink();
             self.setPrevOrderLink();
+            self.setScrollFollowButtons();
         },
         setCancelLink: function() {
             var self = this;
@@ -110,6 +111,24 @@
                     }
                 });
                 return false;
+            });
+        },
+        setScrollFollowButtons: function() {
+            var $buttons   = $('#follow'),
+                $dialog    = $(this.dialog),
+                position     = $buttons.position(),
+                topPadding = 15;
+
+            $dialog.scroll(function() {
+                if ($dialog.scrollTop() > position.top) {
+                    $buttons.stop().animate({
+                        marginTop: $dialog.scrollTop()
+                    });
+                } else {
+                    $dialog.stop().animate({
+                        marginTop: 0
+                    });
+                }
             });
         }
     });

@@ -5,7 +5,7 @@
     <?php echo $form['id']->render() ?>
     <?php echo $form['place_id']->render() ?>
     <?php echo $form['_csrf_token']->render() ?>
-    <div class="buttons">
+    <div class="buttons" id="follow">
         <input type="submit" value="Place Vote" />&nbsp;<?php echo link_to('<span>Cancel</span>', $from, array('class' => 'cancel')) ?>
     </div>
 </form>
