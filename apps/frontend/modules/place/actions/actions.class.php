@@ -50,9 +50,7 @@ class placeActions extends sfActions
                 } else {
                     $response = array(
                         'success' => true,
-                        'info' => 'Your suggestion has been submitted.',
-                        'load' => $from,
-                        'id' => $place_id
+                        'info' => 'Your suggestion has been submitted.'
                     );
                     return $this->renderJSON($response);
                 }

@@ -18,7 +18,7 @@
     </div>
     <?php echo $form['_csrf_token']->render() ?>
     <div class="buttons">
-        <input type="submit" value="Suggest" />&nbsp;<?php echo link_to('<span>Cancel</span>', $from, array('class' => 'cancel')) ?>
+        <input type="submit" value="Suggest" />&nbsp;<?php echo link_to('<span>Cancel</span>', $from . '/', array('class' => 'cancel')) ?>
     </div>
     <div class="clear"></div>
 </form>

@@ -1,0 +1,5 @@
+indexSuccess:
+  javascripts: [place.js]
+  
+showSuccess:
+  javascripts: [place.js]

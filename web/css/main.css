@@ -1038,3 +1038,59 @@ div.pagination {
             padding: 10px;
             font-weight: bold;
         }
+
+form#suggest {
+    padding: 10px;
+    width: 400px;
+}
+
+    form#suggest div {
+        margin-bottom: 10px;
+    }
+        
+        form#suggest div span.required {
+            font-weight: bold;
+            float: left;
+            color: #FF1A00;
+            margin-right: 3px;
+        }
+        
+        form#suggest div label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+                
+        form#suggest div input#suggestion_name {
+            width: 390px;
+        }
+        
+        form#suggest div input#suggestion_contact {
+            width: 250px;
+        }
+        
+        form#suggest div input#suggestion_price {
+            width: 100px;
+        }
+        
+        form#suggest div textarea {
+            width: 390px;
+        }
+        
+        form#suggest div.buttons {
+            padding-top: 20px;
+        }
+        
+            form#suggest div.buttons input {
+                font-size: 100%;
+            }
+            
+            form#suggest div.buttons a.cancel {
+                font-weight: bold;
+                text-decoration: none;
+                color: #FF1A00;
+            }
+            
+            form#suggest div.buttons a.cancel:hover {
+                text-decoration: underline;
+            }
